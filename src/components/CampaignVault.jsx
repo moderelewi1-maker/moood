@@ -11,7 +11,7 @@ function Metric({ label, value, emphasis }) {
       <span
         dir="ltr"
         className={`font-display text-2xl font-bold tabular-nums sm:text-3xl ${
-          emphasis ? 'text-ice' : 'text-ink'
+          emphasis ? 'text-crimson-soft' : 'text-ink'
         }`}
       >
         {value}
@@ -37,13 +37,13 @@ export default function CampaignVault() {
             return (
               <Reveal key={campaign.id} delay={(i % 2) * 0.08}>
                 <article
-                  className={`surface flex h-full flex-col gap-6 rounded-2xl p-6 transition-colors duration-500 hover:border-ice/25 sm:p-8 ${
-                    primary ? 'edge-ice' : ''
+                  className={`surface glow-wine-hover flex h-full flex-col gap-6 rounded-2xl p-6 sm:p-8 ${
+                    primary ? 'edge-crimson' : ''
                   }`}
                 >
                   <header className="flex flex-col gap-4">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-ice/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-ice-soft">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-crimson/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-crimson-soft">
                         <Globe2 className="h-3 w-3" aria-hidden="true" />
                         {copy.labels.market}
                       </span>
@@ -60,14 +60,14 @@ export default function CampaignVault() {
                   <dl className="flex flex-col gap-4 border-t border-hairline pt-5">
                     <div className="flex flex-col gap-1.5">
                       <dt className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-ink-faint">
-                        <Target className="h-3 w-3 text-ice" aria-hidden="true" />
+                        <Target className="h-3 w-3 text-crimson-soft" aria-hidden="true" />
                         {copy.labels.objective}
                       </dt>
                       <dd className="text-sm leading-relaxed text-ink-muted">{text.objective}</dd>
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <dt className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-ink-faint">
-                        <Workflow className="h-3 w-3 text-ice" aria-hidden="true" />
+                        <Workflow className="h-3 w-3 text-crimson-soft" aria-hidden="true" />
                         {copy.labels.execution}
                       </dt>
                       <dd className="text-sm leading-relaxed text-ink-muted">{text.execution}</dd>

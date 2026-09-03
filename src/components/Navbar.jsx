@@ -110,7 +110,7 @@ export default function Navbar() {
             <LanguageToggle className="mt-2 self-start sm:hidden" />
             <button
               onClick={() => handleNavClick('#contact')}
-              className="mt-1 rounded-xl bg-gradient-to-r from-ice to-ice-deep px-4 py-3 text-center text-base font-semibold text-carbon"
+              className="mt-1 rounded-xl bg-crimson px-4 py-3 text-center text-base font-semibold text-ink transition-colors hover:bg-crimson-deep"
             >
               {t.nav.cta}
             </button>

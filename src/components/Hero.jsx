@@ -23,7 +23,7 @@ export default function Hero() {
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-24 pb-16">
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-ice/8 blur-[120px]"
+        className="pointer-events-none absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-wine/12 blur-[120px]"
         aria-hidden="true"
       />
 
@@ -34,7 +34,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-start gap-5 order-2 sm:gap-6 md:order-1"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-ice">
+          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-crimson-soft">
             {hero.name}
           </span>
 
@@ -45,7 +45,7 @@ export default function Hero() {
             <span className="text-gradient">{hero.headline.highlightTwo}</span>
           </h1>
 
-          <p className="max-w-xl border-s-2 border-ice/40 ps-4 text-sm font-medium leading-relaxed text-ink sm:text-base">
+          <p className="max-w-xl border-s-2 border-crimson/40 ps-4 text-sm font-medium leading-relaxed text-ink sm:text-base">
             {hero.title}
           </p>
 
@@ -62,7 +62,7 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <MagneticButton variant="primary" onClick={() => scrollToHash('#work')}>
+            <MagneticButton variant="primary" onClick={() => scrollToHash('#design')}>
               <PlayCircle className="h-4 w-4" aria-hidden="true" />
               {hero.ctaReel}
             </MagneticButton>
@@ -80,12 +80,12 @@ export default function Hero() {
           className="relative order-1 mx-auto aspect-[4/5] w-full max-w-sm md:order-2 md:max-w-none"
         >
           <div className="absolute -inset-10 z-0">
-            <Suspense fallback={<div className="animate-pulse-soft h-full w-full rounded-full bg-ice/8 blur-2xl" aria-hidden="true" />}>
+            <Suspense fallback={<div className="animate-pulse-soft h-full w-full rounded-full bg-wine/12 blur-2xl" aria-hidden="true" />}>
               <Canvas3D />
             </Suspense>
           </div>
 
-          <div className="surface-raised edge-ice relative z-10 h-full w-full overflow-hidden rounded-[2rem] p-2">
+          <div className="surface-raised edge-crimson relative z-10 h-full w-full overflow-hidden rounded-[2rem] p-2">
             <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
               <AssetImage
                 sources={heroSources}
@@ -102,7 +102,7 @@ export default function Hero() {
           <div className="animate-float absolute -bottom-5 -start-5 z-20 hidden rounded-2xl sm:block">
             <div className="surface-raised flex items-center gap-3 rounded-2xl px-4 py-3">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-pulse-soft absolute inline-flex h-full w-full rounded-full bg-ice" />
+                <span className="animate-pulse-soft absolute inline-flex h-full w-full rounded-full bg-crimson" />
               </span>
               <span className="text-xs font-medium text-ink-muted">{hero.availability}</span>
             </div>
@@ -111,8 +111,8 @@ export default function Hero() {
       </div>
 
       <button
-        onClick={() => scrollToHash('#story')}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ink-faint transition-colors hover:text-ice sm:flex"
+        onClick={() => scrollToHash('#about')}
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ink-faint transition-colors hover:text-crimson-soft sm:flex"
         aria-label={hero.scrollAria}
       >
         <span className="text-[10px] font-semibold uppercase tracking-[0.3em]">{hero.scroll}</span>

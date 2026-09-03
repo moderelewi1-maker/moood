@@ -14,7 +14,7 @@ export default function Footer() {
         </p>
         <button
           onClick={() => scrollToHash('#top')}
-          className="surface flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-ink-muted transition-colors hover:text-ice-soft"
+          className="surface flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-ink-muted transition-colors hover:text-crimson-soft"
         >
           {t.footer.backToTop}
           <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />

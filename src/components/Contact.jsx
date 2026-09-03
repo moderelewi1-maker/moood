@@ -28,7 +28,7 @@ export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden py-28 sm:py-32">
       <div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-ice/8 blur-[120px]"
+        className="pointer-events-none absolute bottom-0 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-wine/12 blur-[120px]"
         aria-hidden="true"
       />
 
@@ -41,7 +41,7 @@ export default function Contact() {
         />
 
         <Reveal delay={0.1} className="mx-auto mt-14">
-          <GlassCard className="edge-ice flex flex-col items-center gap-6 p-8 text-center sm:p-12">
+          <GlassCard className="edge-crimson flex flex-col items-center gap-6 p-8 text-center sm:p-12">
             <div className="flex flex-col items-center gap-2">
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-ink-faint">
                 {copy.emailLabel}
@@ -49,7 +49,7 @@ export default function Contact() {
               <a
                 href={`mailto:${contactInfo.email}`}
                 dir="ltr"
-                className="font-display text-2xl font-semibold text-ink transition-colors hover:text-ice-soft sm:text-3xl md:text-4xl"
+                className="font-display text-2xl font-semibold text-ink transition-colors hover:text-crimson-soft sm:text-3xl md:text-4xl"
               >
                 {contactInfo.email}
               </a>
@@ -61,13 +61,13 @@ export default function Contact() {
                 {copy.sendEmail}
               </MagneticButton>
               <MagneticButton variant="secondary" onClick={handleCopy}>
-                {copied ? <Check className="h-4 w-4 text-ice" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
+                {copied ? <Check className="h-4 w-4 text-crimson-soft" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
                 {copied ? copy.copied : copy.copy}
               </MagneticButton>
             </div>
 
             <span className="inline-flex items-center gap-2 text-sm text-ink-muted">
-              <MapPin className="h-4 w-4 shrink-0 text-ice" aria-hidden="true" />
+              <MapPin className="h-4 w-4 shrink-0 text-crimson-soft" aria-hidden="true" />
               {copy.location}
             </span>
 
@@ -82,7 +82,7 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     aria-label={copy.socials[social.id]}
                     title={copy.socials[social.id]}
-                    className="surface flex h-11 w-11 items-center justify-center rounded-full text-ink-muted transition-all duration-300 hover:-translate-y-1 hover:text-ice-soft"
+                    className="surface flex h-11 w-11 items-center justify-center rounded-full text-ink-muted transition-all duration-300 hover:-translate-y-1 hover:text-crimson-soft"
                   >
                     {Icon && <Icon className="h-5 w-5" aria-hidden="true" />}
                   </a>

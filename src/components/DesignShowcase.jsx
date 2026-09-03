@@ -71,7 +71,7 @@ export default function DesignShowcase() {
                   setExpanded(false)
                 }}
                 className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 sm:text-sm ${
-                  active === key ? 'bg-ice text-carbon' : 'surface text-ink-muted hover:text-ink'
+                  active === key ? 'bg-crimson text-ink' : 'surface text-ink-muted hover:text-ink'
                 }`}
               >
                 {copy.categories[key]}
@@ -108,7 +108,7 @@ export default function DesignShowcase() {
               <span className="pointer-events-none absolute bottom-2 start-2 rounded-full surface px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wide text-ink-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {copy.categories[asset.category]}
               </span>
-              <span className="pointer-events-none absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full surface text-ice opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="pointer-events-none absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full surface text-crimson-soft opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </motion.button>
@@ -119,7 +119,7 @@ export default function DesignShowcase() {
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setExpanded((v) => !v)}
-              className="surface inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-medium text-ink-muted transition-colors hover:text-ice sm:text-sm"
+              className="surface inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-medium text-ink-muted transition-colors hover:text-crimson-soft sm:text-sm"
             >
               {expanded ? copy.showLess : `${copy.viewAll} (${filtered.length})`}
               <ChevronDown
@@ -146,7 +146,7 @@ export default function DesignShowcase() {
             <button
               onClick={close}
               aria-label={copy.closeLightbox}
-              className="surface absolute end-5 top-5 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-ice"
+              className="surface absolute end-5 top-5 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-crimson-soft"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -157,7 +157,7 @@ export default function DesignShowcase() {
                 step(-1)
               }}
               aria-label={copy.prev}
-              className="surface absolute start-4 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-ice sm:start-8"
+              className="surface absolute start-4 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-crimson-soft sm:start-8"
             >
               <ChevronLeft className="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />
             </button>
@@ -168,7 +168,7 @@ export default function DesignShowcase() {
                 step(1)
               }}
               aria-label={copy.next}
-              className="surface absolute end-4 bottom-1/2 flex h-11 w-11 translate-y-1/2 items-center justify-center rounded-full text-ink transition-colors hover:text-ice sm:end-8"
+              className="surface absolute end-4 bottom-1/2 flex h-11 w-11 translate-y-1/2 items-center justify-center rounded-full text-ink transition-colors hover:text-crimson-soft sm:end-8"
             >
               <ChevronRight className="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />
             </button>

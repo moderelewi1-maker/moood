@@ -1,24 +1,33 @@
 @import "tailwindcss";
 
-/* ── Executive palette ─────────────────────────────────────────────────────
-   Carbon slate base, cold surfaces, hairline borders, and a single muted
-   ice-blue accent. No saturated neons: accent is reserved for KPIs, metrics
-   and active states so data reads as the brightest thing on the page. */
+/* ── Editorial Dark & Crimson Wine ────────────────────────────────────────
+   Charcoal-black ground, cold neutral surfaces, and an editorial crimson
+   accent backed by deep burgundy. Crimson is reserved for active states,
+   key metrics and brand marks so it stays a signal rather than decoration.
+
+   Contrast note: #C92A43 measures 3.05:1 on the card surface, which clears
+   AA for large text, icons and UI edges but not for body-size text. Small
+   accent text therefore uses --color-crimson-soft (5.05:1), and anything
+   sitting on a solid crimson fill uses --color-ink (4.91:1). */
 @theme {
-  --color-carbon: #080a0f;
-  --color-carbon-soft: #0b0e16;
-  --color-surface: #0f131d;
-  --color-surface-2: #141926;
-  --color-surface-3: #1b2130;
-  --color-hairline: rgba(255, 255, 255, 0.07);
+  --color-carbon: #141416;
+  --color-carbon-soft: #18191c;
+  --color-surface: #1e1f24;
+  --color-surface-2: #262830;
+  --color-surface-3: #2f323c;
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-hairline-wine: rgba(201, 42, 67, 0.15);
 
-  --color-ink: #f8fafc;
-  --color-ink-muted: #94a3b8;
-  --color-ink-faint: #64748b;
+  --color-ink: #f4f4f6;
+  --color-ink-muted: #a4a7b0;
+  --color-ink-faint: #6e717b;
 
-  --color-ice: #38bdf8;
-  --color-ice-soft: #7dd3fc;
-  --color-ice-deep: #0ea5e9;
+  --color-crimson: #c92a43;
+  --color-crimson-deep: #a82237;
+  --color-crimson-soft: #e4657a;
+  --color-wine: #852533;
+  --color-wine-deep: #5c1923;
+  --color-wine-glow: #3d1016;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -52,7 +61,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-ice) 35%, transparent);
+  background: color-mix(in srgb, var(--color-crimson) 45%, transparent);
   color: var(--color-ink);
 }
 
@@ -68,7 +77,7 @@ body {
   border: 2px solid var(--color-carbon);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-ice-deep);
+  background: var(--color-crimson);
 }
 * {
   scrollbar-color: var(--color-surface-3) var(--color-carbon);
@@ -76,7 +85,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-ice);
+  outline: 2px solid var(--color-crimson-soft);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -104,7 +113,7 @@ html.lenis, html.lenis body {
   }
 
   .text-gradient {
-    background-image: linear-gradient(100deg, var(--color-ink) 0%, var(--color-ice-soft) 55%, var(--color-ice) 100%);
+    background-image: linear-gradient(100deg, var(--color-ink) 0%, var(--color-crimson-soft) 52%, var(--color-crimson) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -131,9 +140,19 @@ html.lenis, html.lenis body {
   }
 
   /* Restrained edge light — a rim, not a neon halo. */
-  .edge-ice {
-    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-ice) 18%, transparent),
-      0 18px 60px -30px color-mix(in srgb, var(--color-ice) 45%, transparent);
+  .edge-crimson {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-crimson) 30%, transparent),
+      0 18px 60px -28px color-mix(in srgb, var(--color-wine) 75%, transparent);
+  }
+
+  /* Card hover: a soft burgundy bloom rather than a hard ring. */
+  .glow-wine-hover {
+    transition: box-shadow 500ms ease, border-color 500ms ease;
+  }
+  .glow-wine-hover:hover {
+    border-color: color-mix(in srgb, var(--color-crimson) 35%, transparent);
+    box-shadow: 0 0 0 1px var(--color-hairline-wine),
+      0 22px 70px -34px color-mix(in srgb, var(--color-wine) 85%, transparent);
   }
 
   .hero-headline {
@@ -196,7 +215,7 @@ html[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
 }
 
 html[dir="rtl"] .text-gradient {
-  background-image: linear-gradient(260deg, var(--color-ink) 0%, var(--color-ice-soft) 55%, var(--color-ice) 100%);
+  background-image: linear-gradient(260deg, var(--color-ink) 0%, var(--color-crimson-soft) 52%, var(--color-crimson) 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

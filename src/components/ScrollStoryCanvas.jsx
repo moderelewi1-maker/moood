@@ -13,8 +13,9 @@ import { useReducedMotion, motion, useScroll, useSpring, useTransform } from 'fr
  * the first phase when the visitor prefers reduced motion.
  */
 
-const STROKE = 'rgba(148, 163, 184, 0.55)'
-const ACCENT = 'rgba(56, 189, 248, 0.85)'
+const STROKE = 'rgba(164, 167, 176, 0.5)'
+const ACCENT = 'rgba(201, 42, 67, 0.9)'
+const ACCENT_DEEP = 'rgba(133, 37, 51, 0.85)'
 
 function ViewfinderLayer({ pulse }) {
   return (
@@ -54,8 +55,8 @@ function ViewfinderLayer({ pulse }) {
 
       {/* record indicator + telemetry */}
       <g fill={STROKE} fontFamily="monospace" fontSize="18" letterSpacing="2">
-        <motion.circle cx="228" cy="836" r="8" fill="#f87171" style={{ opacity: pulse }} />
-        <text x="252" y="843" fill="#f87171">REC</text>
+        <motion.circle cx="228" cy="836" r="8" fill="#e4657a" style={{ opacity: pulse }} />
+        <text x="252" y="843" fill="#e4657a">REC</text>
         <text x="1090" y="843">24 FPS · f/1.8</text>
         <text x="200" y="98">SCENE 01 — PRODUCTION</text>
       </g>
@@ -83,8 +84,8 @@ function EditorialLayer({ playhead }) {
           <text x="200" y={track.y + 22} fill={STROKE} fontFamily="monospace" fontSize="15">
             {track.label}
           </text>
-          <rect x="250" y={track.y} width="990" height="34" rx="3" fill="rgba(148,163,184,0.06)" stroke={STROKE} strokeWidth="1" opacity="0.5" />
-          <rect x="250" y={track.y} width={track.w} height="34" rx="3" fill="rgba(56,189,248,0.12)" stroke={ACCENT} strokeWidth="1.2" />
+          <rect x="250" y={track.y} width="990" height="34" rx="3" fill="rgba(255,255,255,0.05)" stroke={STROKE} strokeWidth="1" opacity="0.5" />
+          <rect x="250" y={track.y} width={track.w} height="34" rx="3" fill="rgba(201,42,67,0.14)" stroke={ACCENT} strokeWidth="1.2" />
         </g>
       ))}
 
@@ -151,10 +152,10 @@ function CockpitLayer({ curveLength, curveOffset }) {
               width={row.w}
               height="52"
               rx="4"
-              fill={`rgba(56,189,248,${0.06 + i * 0.045})`}
-              stroke={ACCENT}
+              fill={`rgba(201,42,67,${0.06 + i * 0.05})`}
+              stroke={ACCENT_DEEP}
               strokeWidth="1.2"
-              opacity="0.8"
+              opacity="0.9"
             />
             <text
               x={200 + 310}
@@ -210,7 +211,7 @@ function CockpitLayer({ curveLength, curveOffset }) {
             width="34"
             height={h}
             rx="3"
-            fill="rgba(56,189,248,0.22)"
+            fill="rgba(201,42,67,0.20)"
             stroke={ACCENT}
             strokeWidth="1"
             style={{ scaleY: curveOffset, originY: '100%', transformBox: 'fill-box' }}
@@ -263,6 +264,7 @@ export default function ScrollStoryCanvas() {
       </div>
 
       {/* vignette so the edges never fight the content */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(61,16,22,0.35)_0%,transparent_45%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,var(--color-carbon)_92%)]" />
     </div>
   )

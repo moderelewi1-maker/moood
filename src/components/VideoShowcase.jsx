@@ -31,7 +31,7 @@ export default function VideoShowcase() {
                 key={key}
                 onClick={() => setActive(key)}
                 className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 sm:text-sm ${
-                  active === key ? 'bg-ice text-carbon' : 'surface text-ink-muted hover:text-ink'
+                  active === key ? 'bg-crimson text-ink' : 'surface text-ink-muted hover:text-ink'
                 }`}
               >
                 {copy.formats[key]}
