@@ -1,7 +1,7 @@
 import Reveal from './Reveal.jsx'
 
 export default function SectionHeading({ eyebrow, title, description, align = 'left' }) {
-  const alignClass = align === 'center' ? 'items-center text-center mx-auto' : 'items-start text-left'
+  const alignClass = align === 'center' ? 'items-center text-center mx-auto' : 'items-start text-start'
   return (
     <div className={`flex flex-col gap-4 max-w-2xl ${alignClass}`}>
       {eyebrow && (

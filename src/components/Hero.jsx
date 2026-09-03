@@ -7,6 +7,7 @@ import AssetImage from './ui/AssetImage.jsx'
 import { heroBadges } from '../data/socials.js'
 import { portfolioAssets } from '../data/portfolioAssets.js'
 import { scrollToHash } from '../lib/utils.js'
+import { useLocale } from '../i18n/useLocale.js'
 
 const Canvas3D = lazy(() => import('./Canvas3D.jsx'))
 
@@ -16,6 +17,9 @@ const heroAsset = portfolioAssets.find((a) => a.category === 'hero')
 const heroSources = [heroAsset?.url, '/assets/modar-hero.jpg', '/assets/profile.jpg']
 
 export default function Hero() {
+  const { t } = useLocale()
+  const hero = t.hero
+
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20">
       <div
@@ -31,23 +35,24 @@ export default function Hero() {
           className="flex flex-col items-start gap-7 order-2 md:order-1"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-400">
-            Modar Akram Elewi
+            {hero.name}
           </span>
 
           <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
-            Bridging <span className="text-gradient">Analytical Media Buying</span> with{' '}
-            <span className="text-gradient">High-Retention Video Production</span>
+            {hero.headline.lead}
+            <span className="text-gradient">{hero.headline.highlightOne}</span>
+            {hero.headline.mid}
+            <span className="text-gradient">{hero.headline.highlightTwo}</span>
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
-            Digital Marketing &amp; Growth Manager · Performance Media Buyer &amp; Direct-Response Video
-            Producer — turning consumer psychology into full-funnel acquisition systems.
+            {hero.subtitle}
           </p>
 
           <div className="flex flex-wrap gap-3">
             {heroBadges.map((badge) => (
               <Pill key={badge.id} icon={BADGE_ICONS[badge.icon]}>
-                {badge.label}
+                {hero.badges[badge.id]}
               </Pill>
             ))}
           </div>
@@ -55,11 +60,11 @@ export default function Hero() {
           <div className="mt-2 flex flex-wrap items-center gap-4">
             <MagneticButton variant="primary" onClick={() => scrollToHash('#work')}>
               <PlayCircle className="h-4 w-4" aria-hidden="true" />
-              View Direct-Response Reel
+              {hero.ctaReel}
             </MagneticButton>
             <MagneticButton variant="secondary" onClick={() => scrollToHash('#contact')}>
-              <Send className="h-4 w-4" aria-hidden="true" />
-              Get in Touch
+              <Send className="h-4 w-4 rtl:-scale-x-100" aria-hidden="true" />
+              {hero.ctaContact}
             </MagneticButton>
           </div>
         </motion.div>
@@ -80,7 +85,7 @@ export default function Hero() {
             <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
               <AssetImage
                 sources={heroSources}
-                alt="Portrait of Modar Akram Elewi"
+                alt={hero.portraitAlt}
                 category="hero"
                 fallbackIcon={User}
                 className="h-full w-full object-cover"
@@ -90,14 +95,12 @@ export default function Hero() {
             </div>
           </div>
 
-          <div
-            className="animate-float absolute -bottom-5 -left-5 z-20 hidden rounded-2xl sm:block"
-          >
+          <div className="animate-float absolute -bottom-5 -start-5 z-20 hidden rounded-2xl sm:block">
             <div className="glass-strong flex items-center gap-3 rounded-2xl px-4 py-3">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-pulse-glow absolute inline-flex h-full w-full rounded-full bg-emerald-400" />
               </span>
-              <span className="text-xs font-medium text-ink-muted">Open to growth roles &amp; partnerships</span>
+              <span className="text-xs font-medium text-ink-muted">{hero.availability}</span>
             </div>
           </div>
         </motion.div>
@@ -106,9 +109,9 @@ export default function Hero() {
       <button
         onClick={() => scrollToHash('#story')}
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ink-faint transition-colors hover:text-emerald-400 sm:flex"
-        aria-label="Scroll to next section"
+        aria-label={hero.scrollAria}
       >
-        <span className="text-[10px] font-semibold uppercase tracking-[0.3em]">Scroll</span>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.3em]">{hero.scroll}</span>
         <ChevronDown className="h-4 w-4 animate-bounce" aria-hidden="true" />
       </button>
     </section>

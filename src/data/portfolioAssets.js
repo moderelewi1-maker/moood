@@ -45,10 +45,4 @@ export const portfolioAssets = [
   { id: 30, url: 'https://ibb.co/4gstgtHT', category: 'creative' },
 ]
 
-export const assetCategories = [
-  { key: 'all', label: 'All Work' },
-  { key: 'creative', label: 'Creative' },
-  { key: 'brand', label: 'Brand' },
-  { key: 'proof', label: 'Proof of Performance' },
-  { key: 'hero', label: 'Portrait' },
-]
+export const assetCategoryKeys = ['all', 'creative', 'brand', 'proof']

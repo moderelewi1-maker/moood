@@ -3,15 +3,17 @@ import { motion } from 'framer-motion'
 import { Images, ChevronDown } from 'lucide-react'
 import Reveal from './ui/Reveal.jsx'
 import AssetImage from './ui/AssetImage.jsx'
-import { portfolioAssets, assetCategories } from '../data/portfolioAssets.js'
+import { portfolioAssets, assetCategoryKeys } from '../data/portfolioAssets.js'
+import { useLocale } from '../i18n/useLocale.js'
 
-const GALLERY_CATEGORIES = assetCategories.filter((c) => c.key !== 'hero')
 const GALLERY_ASSETS = portfolioAssets.filter((a) => a.category !== 'hero')
 const INITIAL_COUNT = 12
 
 export default function MediaGallery() {
   const [active, setActive] = useState('all')
   const [expanded, setExpanded] = useState(false)
+  const { t } = useLocale()
+  const copy = t.work.gallery
 
   const filtered = useMemo(
     () => (active === 'all' ? GALLERY_ASSETS : GALLERY_ASSETS.filter((a) => a.category === active)),
@@ -24,24 +26,24 @@ export default function MediaGallery() {
       <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-ink-faint">
           <Images className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
-          Creative &amp; Proof of Performance
+          {copy.label}
         </span>
 
         <div className="flex flex-wrap gap-2">
-          {GALLERY_CATEGORIES.map((cat) => (
+          {assetCategoryKeys.map((key) => (
             <button
-              key={cat.key}
+              key={key}
               onClick={() => {
-                setActive(cat.key)
+                setActive(key)
                 setExpanded(false)
               }}
               className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-300 ${
-                active === cat.key
+                active === key
                   ? 'bg-gradient-to-r from-emerald-400 to-blue-500 text-obsidian'
                   : 'glass text-ink-muted hover:text-ink'
               }`}
             >
-              {cat.label}
+              {copy.categories[key]}
             </button>
           ))}
         </div>
@@ -59,14 +61,14 @@ export default function MediaGallery() {
           >
             <AssetImage
               src={asset.url}
-              alt={`${asset.category} work sample`}
+              alt={`${copy.categories[asset.category] ?? ''} — ${copy.itemAlt}`}
               category={asset.category}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               iconClassName="h-8 w-8"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <span className="absolute bottom-2 left-2 rounded-full glass px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wide text-ink-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              {asset.category}
+            <span className="absolute bottom-2 start-2 rounded-full glass px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wide text-ink-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              {copy.categories[asset.category]}
             </span>
           </motion.div>
         ))}
@@ -78,7 +80,7 @@ export default function MediaGallery() {
             onClick={() => setExpanded((v) => !v)}
             className="glass inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-medium text-ink-muted transition-colors hover:text-emerald-300 sm:text-sm"
           >
-            {expanded ? 'Show Less' : `View Full Gallery (${filtered.length})`}
+            {expanded ? copy.showLess : `${copy.viewAll} (${filtered.length})`}
             <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} aria-hidden="true" />
           </button>
         </div>
