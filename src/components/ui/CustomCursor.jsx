@@ -30,11 +30,11 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[70] h-1.5 w-1.5 rounded-full bg-emerald-400 mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-[70] h-1.5 w-1.5 rounded-full bg-ice mix-blend-difference"
         style={{ x, y, translateX: '-50%', translateY: '-50%' }}
       />
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[70] h-8 w-8 rounded-full border border-emerald-300/40 mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-[70] h-8 w-8 rounded-full border border-ice/40 mix-blend-difference"
         style={{ x: ringX, y: ringY, translateX: '-50%', translateY: '-50%' }}
       />
     </>

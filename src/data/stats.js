@@ -1,14 +1,13 @@
-// Section 2 — structure only; all copy lives in src/i18n/translations.js
-// keyed by these ids. Every figure here is drawn from Modar's own brief.
+// Section 2 — structure only; copy lives in src/i18n/translations.js under
+// `about`. Every figure here comes from Modar's own brief.
+export const phases = [
+  { id: 'production', icon: 'Camera' },
+  { id: 'post', icon: 'Scissors' },
+  { id: 'scaling', icon: 'TrendingUp' },
+]
+
 export const stats = [
   { id: 'delivery', value: 100 },
   { id: 'rating', value: 5 },
   { id: 'promotion', value: 30 },
-]
-
-export const narrativeMilestones = [
-  { id: 'psychology', year: '01' },
-  { id: 'editing', year: '02' },
-  { id: 'acquisition', year: '03' },
-  { id: 'operations', year: '04' },
 ]

@@ -2,11 +2,12 @@ import { useMemo, useState } from 'react'
 import { ImageOff } from 'lucide-react'
 
 const CATEGORY_GRADIENTS = {
-  hero: 'from-emerald-500/25 via-obsidian to-blue-500/20',
-  creative: 'from-blue-500/20 via-obsidian to-emerald-500/15',
-  brand: 'from-emerald-500/20 via-obsidian to-emerald-500/5',
-  proof: 'from-blue-500/25 via-obsidian to-blue-500/5',
-  default: 'from-white/10 via-obsidian to-white/5',
+  hero: 'from-ice/18 via-carbon to-white/5',
+  creative: 'from-ice/12 via-carbon to-white/4',
+  brand: 'from-white/8 via-carbon to-ice/8',
+  proof: 'from-ice/16 via-carbon to-carbon',
+  campaign: 'from-ice/10 via-carbon to-white/5',
+  default: 'from-white/6 via-carbon to-white/3',
 }
 
 /**

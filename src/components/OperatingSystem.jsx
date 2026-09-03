@@ -27,9 +27,9 @@ export default function OperatingSystem() {
             const text = copy.tools[tool.id]
             return (
               <Reveal key={tool.id} delay={(i % 3) * 0.08}>
-                <GlassCard className="group flex h-full flex-col gap-4 p-6 hover:glow-emerald sm:p-7">
+                <GlassCard className="group flex h-full flex-col gap-4 p-6 hover:edge-ice sm:p-7">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400/20 to-blue-500/10 text-emerald-300 transition-transform duration-500 group-hover:scale-110">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-ice/15 to-ice/5 text-ice-soft transition-transform duration-500 group-hover:scale-110">
                       {Icon && <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />}
                     </span>
                     <span className="text-end text-[10px] font-semibold uppercase tracking-wider text-ink-faint">
@@ -47,7 +47,7 @@ export default function OperatingSystem() {
                   <div className="mt-auto flex items-center gap-3 pt-2">
                     <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
                       <motion.div
-                        className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-blue-400"
+                        className="h-full rounded-full bg-gradient-to-r from-ice-deep to-ice"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${tool.proficiency}%` }}
                         viewport={{ once: true, amount: 0.5 }}

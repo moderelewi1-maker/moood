@@ -1,45 +1,61 @@
+import { Camera, Scissors, TrendingUp } from 'lucide-react'
 import SectionHeading from './ui/SectionHeading.jsx'
 import Reveal from './ui/Reveal.jsx'
 import StatCounter from './ui/StatCounter.jsx'
-import { narrativeMilestones, stats } from '../data/stats.js'
+import { phases, stats } from '../data/stats.js'
 import { useLocale } from '../i18n/useLocale.js'
+
+const PHASE_ICONS = { Camera, Scissors, TrendingUp }
 
 export default function Narrative() {
   const { t } = useLocale()
-  const copy = t.narrative
+  const copy = t.about
 
   return (
-    <section id="story" className="relative py-28 sm:py-32">
+    <section id="about" className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <SectionHeading
-          eyebrow={copy.eyebrow}
-          title={copy.title}
-          description={copy.description}
-        />
+        <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
-        <div className="relative mt-16 ps-10 sm:mt-20 sm:ps-16">
-          <div
-            className="absolute start-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-emerald-400/70 via-blue-400/40 to-transparent sm:start-[23px]"
-            aria-hidden="true"
-          />
-          <div className="flex flex-col gap-12 sm:gap-14">
-            {narrativeMilestones.map((milestone, i) => (
-              <Reveal key={milestone.id} delay={i * 0.08} className="relative">
-                <span className="absolute -start-10 top-0 flex h-8 w-8 items-center justify-center rounded-full glass-strong font-display text-xs font-bold text-emerald-400 sm:-start-16 sm:h-11 sm:w-11 sm:text-sm">
-                  {milestone.year}
-                </span>
-                <h3 className="font-display text-xl font-semibold text-ink sm:text-2xl">
-                  {copy.milestones[milestone.id].title}
-                </h3>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-base">
-                  {copy.milestones[milestone.id].text}
-                </p>
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:mt-20 lg:grid-cols-3">
+          {phases.map((phase, i) => {
+            const Icon = PHASE_ICONS[phase.icon]
+            const text = copy.phases[phase.id]
+            return (
+              <Reveal key={phase.id} delay={i * 0.1}>
+                <article className="surface relative flex h-full flex-col gap-5 rounded-2xl p-7 transition-colors duration-500 hover:border-ice/25 sm:p-8">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-ice/10 text-ice">
+                      {Icon && <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />}
+                    </span>
+                    <span className="font-display text-3xl font-bold text-ink/10 sm:text-4xl">
+                      {text.index}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ice">
+                      {text.label}
+                    </span>
+                    <h3 className="font-display text-lg font-semibold text-ink sm:text-xl">
+                      {text.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-ink-muted">{text.text}</p>
+                  </div>
+
+                  {/* phase connector — hidden on the last card and on mobile */}
+                  {i < phases.length - 1 && (
+                    <span
+                      className="absolute -end-3 top-1/2 hidden h-px w-6 bg-gradient-to-r from-ice/40 to-transparent lg:block"
+                      aria-hidden="true"
+                    />
+                  )}
+                </article>
               </Reveal>
-            ))}
-          </div>
+            )
+          })}
         </div>
 
-        <div className="mt-20 grid grid-cols-1 gap-4 sm:mt-24 sm:grid-cols-3 sm:gap-6">
+        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
           {stats.map((stat, i) => (
             <StatCounter
               key={stat.id}

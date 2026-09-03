@@ -58,12 +58,12 @@ export default function Timeline() {
               return (
                 <div key={item.id} className="timeline-card relative" style={{ transformStyle: 'preserve-3d' }}>
                   <span
-                    className={`absolute -start-10 top-7 flex h-4 w-4 items-center justify-center rounded-full ring-4 ring-obsidian sm:-start-16 ${
-                      item.current ? 'bg-emerald-400' : 'bg-white/25'
+                    className={`absolute -start-10 top-7 flex h-4 w-4 items-center justify-center rounded-full ring-4 ring-carbon sm:-start-16 ${
+                      item.current ? 'bg-ice' : 'bg-white/25'
                     }`}
                     aria-hidden="true"
                   >
-                    {item.current && <span className="animate-pulse-glow absolute h-full w-full rounded-full bg-emerald-400" />}
+                    {item.current && <span className="animate-pulse-soft absolute h-full w-full rounded-full bg-ice" />}
                   </span>
 
                   <GlassCard
@@ -75,11 +75,11 @@ export default function Timeline() {
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <div className="flex flex-wrap items-center gap-2.5">
-                          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+                          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-ice">
                             {text.period}
                           </span>
                           {item.current && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-300">
+                            <span className="inline-flex items-center gap-1 rounded-full bg-ice/12 px-2.5 py-0.5 text-[10px] font-semibold text-ice-soft">
                               <Radio className="h-2.5 w-2.5" aria-hidden="true" />
                               {copy.current}
                             </span>
@@ -93,7 +93,7 @@ export default function Timeline() {
 
                       <ChevronDown
                         className={`mt-1 h-5 w-5 shrink-0 text-ink-faint transition-transform duration-300 ${
-                          isOpen ? 'rotate-180 text-emerald-400' : ''
+                          isOpen ? 'rotate-180 text-ice' : ''
                         }`}
                         aria-hidden="true"
                       />
@@ -104,7 +104,7 @@ export default function Timeline() {
                         <MapPin className="h-3 w-3" aria-hidden="true" />
                         {text.location}
                       </span>
-                      <span className="rounded-full glass px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-ink-muted">
+                      <span className="rounded-full surface px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-ink-muted">
                         {text.tag}
                       </span>
                     </div>
@@ -115,10 +115,10 @@ export default function Timeline() {
 
                     <div className={`grid transition-all duration-500 ease-out ${isOpen ? 'grid-rows-[1fr] mt-4' : 'grid-rows-[0fr]'}`}>
                       <div className="overflow-hidden">
-                        <ul className="flex flex-col gap-2 border-t border-white/10 pt-4">
+                        <ul className="flex flex-col gap-2 border-t border-hairline pt-4">
                           {text.achievements.map((achievement) => (
                             <li key={achievement} className="flex items-start gap-2.5 text-sm text-ink-muted">
-                              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-emerald-400" aria-hidden="true" />
+                              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ice" aria-hidden="true" />
                               {achievement}
                             </li>
                           ))}

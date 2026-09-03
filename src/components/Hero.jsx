@@ -21,9 +21,9 @@ export default function Hero() {
   const hero = t.hero
 
   return (
-    <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20">
+    <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-24 pb-16">
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[120px]"
+        className="pointer-events-none absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-ice/8 blur-[120px]"
         aria-hidden="true"
       />
 
@@ -32,18 +32,22 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-start gap-7 order-2 md:order-1"
+          className="flex flex-col items-start gap-5 order-2 sm:gap-6 md:order-1"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-400">
+          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-ice">
             {hero.name}
           </span>
 
-          <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
+          <h1 className="hero-headline font-display font-semibold tracking-tight text-ink">
             {hero.headline.lead}
             <span className="text-gradient">{hero.headline.highlightOne}</span>
             {hero.headline.mid}
             <span className="text-gradient">{hero.headline.highlightTwo}</span>
           </h1>
+
+          <p className="max-w-xl border-s-2 border-ice/40 ps-4 text-sm font-medium leading-relaxed text-ink sm:text-base">
+            {hero.title}
+          </p>
 
           <p className="max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
             {hero.subtitle}
@@ -57,7 +61,7 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="mt-2 flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <MagneticButton variant="primary" onClick={() => scrollToHash('#work')}>
               <PlayCircle className="h-4 w-4" aria-hidden="true" />
               {hero.ctaReel}
@@ -76,12 +80,12 @@ export default function Hero() {
           className="relative order-1 mx-auto aspect-[4/5] w-full max-w-sm md:order-2 md:max-w-none"
         >
           <div className="absolute -inset-10 z-0">
-            <Suspense fallback={<div className="animate-pulse-glow h-full w-full rounded-full bg-emerald-500/10 blur-2xl" aria-hidden="true" />}>
+            <Suspense fallback={<div className="animate-pulse-soft h-full w-full rounded-full bg-ice/8 blur-2xl" aria-hidden="true" />}>
               <Canvas3D />
             </Suspense>
           </div>
 
-          <div className="glass-strong glow-emerald relative z-10 h-full w-full overflow-hidden rounded-[2rem] p-2">
+          <div className="surface-raised edge-ice relative z-10 h-full w-full overflow-hidden rounded-[2rem] p-2">
             <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
               <AssetImage
                 sources={heroSources}
@@ -91,14 +95,14 @@ export default function Hero() {
                 className="h-full w-full object-cover"
                 iconClassName="h-16 w-16"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/70 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/70 via-transparent to-transparent" />
             </div>
           </div>
 
           <div className="animate-float absolute -bottom-5 -start-5 z-20 hidden rounded-2xl sm:block">
-            <div className="glass-strong flex items-center gap-3 rounded-2xl px-4 py-3">
+            <div className="surface-raised flex items-center gap-3 rounded-2xl px-4 py-3">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-pulse-glow absolute inline-flex h-full w-full rounded-full bg-emerald-400" />
+                <span className="animate-pulse-soft absolute inline-flex h-full w-full rounded-full bg-ice" />
               </span>
               <span className="text-xs font-medium text-ink-muted">{hero.availability}</span>
             </div>
@@ -108,7 +112,7 @@ export default function Hero() {
 
       <button
         onClick={() => scrollToHash('#story')}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ink-faint transition-colors hover:text-emerald-400 sm:flex"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ink-faint transition-colors hover:text-ice sm:flex"
         aria-label={hero.scrollAria}
       >
         <span className="text-[10px] font-semibold uppercase tracking-[0.3em]">{hero.scroll}</span>

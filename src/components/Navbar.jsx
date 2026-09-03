@@ -46,19 +46,19 @@ export default function Navbar() {
             e.preventDefault()
             handleNavClick('#top')
           }}
-          className={`glass shrink-0 rounded-full px-5 py-2.5 font-display text-sm font-semibold tracking-wide text-ink transition-all duration-500 ${
+          className={`surface shrink-0 rounded-full px-5 py-2.5 font-display text-sm font-semibold tracking-wide text-ink transition-all duration-500 ${
             scrolled ? 'opacity-100' : 'opacity-90'
           }`}
         >
           {t.nav.brand}
         </a>
 
-        <nav className="hidden lg:flex glass items-center gap-1 rounded-full px-2 py-2">
+        <nav className="hidden xl:flex surface items-center gap-0.5 rounded-full px-2 py-2">
           {navLinks.map((link) => (
             <button
               key={link.id}
               onClick={() => handleNavClick(link.href)}
-              className="rounded-full px-4 py-2 text-sm font-medium text-ink-muted transition-colors duration-300 hover:bg-white/5 hover:text-ink"
+              className="rounded-full px-3 py-2 text-[13px] font-medium text-ink-muted transition-colors duration-300 hover:bg-white/5 hover:text-ink"
             >
               {t.nav[link.id]}
             </button>
@@ -68,7 +68,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <LanguageToggle className="hidden sm:flex" />
 
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <MagneticButton
               variant="secondary"
               onClick={() => handleNavClick('#contact')}
@@ -80,7 +80,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="glass flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink lg:hidden"
+            className="surface flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink xl:hidden"
             aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
             aria-expanded={open}
           >
@@ -96,7 +96,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="glass-strong mx-4 mt-3 flex flex-col gap-1 rounded-2xl p-3 lg:hidden"
+            className="surface-raised mx-4 mt-3 flex flex-col gap-1 rounded-2xl p-3 xl:hidden"
           >
             {navLinks.map((link) => (
               <button
@@ -110,7 +110,7 @@ export default function Navbar() {
             <LanguageToggle className="mt-2 self-start sm:hidden" />
             <button
               onClick={() => handleNavClick('#contact')}
-              className="mt-1 rounded-xl bg-gradient-to-r from-emerald-400 to-blue-500 px-4 py-3 text-center text-base font-semibold text-obsidian"
+              className="mt-1 rounded-xl bg-gradient-to-r from-ice to-ice-deep px-4 py-3 text-center text-base font-semibold text-carbon"
             >
               {t.nav.cta}
             </button>

@@ -8,7 +8,7 @@ export default function LanguageToggle({ className = '', showIcon = true }) {
 
   return (
     <div
-      className={`glass flex items-center gap-0.5 rounded-full p-1 ${className}`}
+      className={`surface flex items-center gap-0.5 rounded-full p-1 ${className}`}
       role="group"
       aria-label={t.meta.switchTo}
     >
@@ -26,7 +26,7 @@ export default function LanguageToggle({ className = '', showIcon = true }) {
             lang={code}
             className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 ${
               active
-                ? 'bg-gradient-to-r from-emerald-400 to-blue-500 text-obsidian'
+                ? 'bg-ice text-carbon'
                 : 'text-ink-muted hover:text-ink'
             }`}
           >

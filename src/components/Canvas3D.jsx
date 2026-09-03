@@ -154,9 +154,9 @@ export default function Canvas3D({ className = '' }) {
 
     const uniforms = {
       uTime: { value: 0 },
-      uIntensity: { value: 0.22 },
-      uColorA: { value: new THREE.Color('#10b981') },
-      uColorB: { value: new THREE.Color('#3b82f6') },
+      uIntensity: { value: 0.18 },
+      uColorA: { value: new THREE.Color('#38bdf8') },
+      uColorB: { value: new THREE.Color('#cbd5e1') },
     }
 
     const orbGeometry = new THREE.IcosahedronGeometry(1.35, 32)
@@ -171,10 +171,10 @@ export default function Canvas3D({ className = '' }) {
 
     const particleGeometry = buildParticleField(260, 2.6)
     const particleMaterial = new THREE.PointsMaterial({
-      color: 0x5fd9c0,
+      color: 0x7dd3fc,
       size: 0.02,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.4,
       sizeAttenuation: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
