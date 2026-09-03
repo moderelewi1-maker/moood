@@ -35,9 +35,9 @@ export default function MagneticButton({
     'group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4'
   const variants = {
     primary:
-      'bg-gradient-to-r from-emerald-400 to-blue-500 text-obsidian hover:shadow-[0_0_40px_-8px_rgba(16,185,129,0.6)]',
+      'bg-ice text-carbon hover:shadow-[0_18px_50px_-24px_rgba(56,189,248,0.65)]',
     secondary:
-      'glass text-ink hover:border-emerald-400/40 hover:text-emerald-300',
+      'surface text-ink hover:border-ice/40 hover:text-ice-soft',
   }
 
   return (

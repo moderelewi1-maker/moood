@@ -5,7 +5,7 @@ export default function GlassCard({ children, className = '', as: Tag = 'div', r
     <Tag
       ref={ref}
       className={cn(
-        'glass rounded-2xl transition-all duration-500 hover:border-white/20',
+        'surface rounded-2xl transition-all duration-500 hover:border-ice/25',
         className
       )}
       {...props}
