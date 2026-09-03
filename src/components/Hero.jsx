@@ -12,7 +12,8 @@ const Canvas3D = lazy(() => import('./Canvas3D.jsx'))
 
 const BADGE_ICONS = { BadgeCheck, TrendingUp, Layers }
 const heroAsset = portfolioAssets.find((a) => a.category === 'hero')
-const heroSources = [heroAsset?.url, '/assets/profile.jpg']
+// Tries the mapped portfolio asset first, then either local placeholder filename.
+const heroSources = [heroAsset?.url, '/assets/modar-hero.jpg', '/assets/profile.jpg']
 
 export default function Hero() {
   return (
