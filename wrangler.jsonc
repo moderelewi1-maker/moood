@@ -1,0 +1,31 @@
+{
+  // Cloudflare Workers — Static Assets (assets-only Worker).
+  //
+  // This site is a client-rendered Vite SPA with no server-side code, so the
+  // Worker has no `main` entry point: Cloudflare serves the built assets
+  // directly from its edge network. If server logic is ever needed, add a
+  // `"main": "./src/worker.js"` entry and the assets binding stays as-is.
+  //
+  // ⚠ `name` must match the Worker in your Cloudflare dashboard. It defaults
+  // to the repo name; if your Worker is named something else, change it here
+  // or the deploy will target the wrong Worker.
+  "name": "moood",
+
+  // Pins the Workers runtime API behaviour. Safe to bump to a later date after
+  // reading the compatibility notes; never set a date in the future.
+  "compatibility_date": "2026-09-03",
+
+  "assets": {
+    // Vite's default build output (see `npm run build`).
+    "directory": "./dist",
+
+    // Anchor-scrolled single page: serve index.html for any unmatched path
+    // instead of a 404, so deep links and refreshes resolve to the app.
+    "not_found_handling": "single-page-application"
+  },
+
+  // Surfaces request logs and errors in the Workers dashboard.
+  "observability": {
+    "enabled": true
+  }
+}
