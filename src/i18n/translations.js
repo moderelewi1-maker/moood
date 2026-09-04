@@ -19,7 +19,7 @@ export const translations = {
       on: 'Sound: On',
       off: 'Sound: Off',
       enable: 'Turn ambient sound on',
-      prompt: 'Click to enable sound',
+      prompt: 'Enable ambient audio',
       disable: 'Turn ambient sound off',
     },
     nav: {
@@ -29,6 +29,7 @@ export const translations = {
       design: 'Design',
       video: 'Video',
       systems: 'Systems',
+      ads: 'Performance',
       campaigns: 'Campaigns',
       system: 'Stack',
       contact: 'Contact',
@@ -413,7 +414,7 @@ export const translations = {
       on: 'الصوت: مفعّل',
       off: 'الصوت: صامت',
       enable: 'تشغيل الصوت المحيط',
-      prompt: 'اضغط هنا للاستماع',
+      prompt: 'استمع للأجواء الصوتية',
       disable: 'كتم الصوت المحيط',
     },
     nav: {
@@ -423,6 +424,7 @@ export const translations = {
       design: 'التصاميم',
       video: 'الفيديو',
       systems: 'الأنظمة',
+      ads: 'الأداء',
       campaigns: 'الحملات',
       system: 'الأدوات',
       contact: 'تواصل معي',

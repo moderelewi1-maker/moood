@@ -27,6 +27,11 @@ export default function SoundToggle() {
   const { t, isRTL } = useLocale()
   const copy = t.audio
 
+  function engage() {
+    setDismissed(true)
+    toggle()
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -34,41 +39,63 @@ export default function SoundToggle() {
       transition={{ duration: 0.6, delay: 1.1, ease: EASE_AUTHORITY }}
       className="fixed bottom-6 left-6 z-50"
     >
-      {/* Invitation, shown until the visitor engages. It is dismissed on the
-          first press rather than on playback starting, because autoplay
-          policy can refuse that press — leaving the prompt on screen after
-          someone has already acted on it. */}
+      {/* Invitation, shown until the visitor engages.
+          It is a real button, not a label: a prompt that says "click here"
+          and then ignores the click is worse than no prompt. Pressing it does
+          exactly what pressing the toggle does.
+
+          Dismissal is on the press rather than on playback starting, because
+          autoplay policy can refuse that press — which would leave the prompt
+          on screen after someone had already acted on it.
+
+          Enter/exit and the float loop live on different elements. Sharing
+          one element means the exit's y fights the loop's y mid-flight, which
+          is exactly the jitter this is meant to avoid. */}
       <AnimatePresence>
         {!playing && !dismissed && (
           <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.94 }}
-            animate={{ opacity: 1, y: [0, -6, 0], scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.35, ease: EASE_AUTHORITY } }}
-            transition={{
-              opacity: { duration: 0.5, ease: EASE_AUTHORITY },
-              scale: { duration: 0.5, ease: EASE_AUTHORITY },
-              y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
-            }}
-            className="pointer-events-none absolute bottom-full start-0 mb-3 whitespace-nowrap"
-            aria-hidden="true"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4, transition: { duration: 0.5, ease: EASE_AUTHORITY } }}
+            transition={{ duration: 0.5, ease: EASE_AUTHORITY }}
+            /* Physical left, not logical start. The toggle is pinned to the
+               physical bottom-left in both locales, so `start-0` under RTL
+               anchored the pill's right edge to the button and grew it
+               leftward — off the screen at x -108. Placement here follows the
+               empty space beside a left-pinned control, not reading order;
+               only the text inside flips. Same rule as the tooltip below. */
+            className="absolute bottom-full left-0 mb-3"
           >
-            <span className="flex items-center gap-2 rounded-full border border-accent/30 bg-[#12141A]/90 px-3.5 py-2 shadow-[0_8px_30px_-12px_rgba(240,169,60,0.45)] backdrop-blur-md">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+            <motion.button
+              type="button"
+              onClick={engage}
+              aria-label={copy.enable}
+              animate={{ y: [0, -3, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              className="relative flex items-center gap-2 whitespace-nowrap rounded-full border border-accent/25 bg-[#0D0F14]/95 px-3.5 py-2 shadow-[0_10px_34px_-14px_rgba(240,169,60,0.5)] backdrop-blur-md transition-colors duration-300 hover:border-accent/50"
+            >
+              <span className="relative flex h-1.5 w-1.5 shrink-0" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
               </span>
-              <span className="text-[11px] font-medium text-ink">{copy.prompt}</span>
-            </span>
+              <span className="font-mono text-[11px] tracking-wide text-ink-muted">{copy.prompt}</span>
+
+              {/* Caret, sitting over the button's centre (22px in from the
+                  container edge on a 44px control). A rotated square showing
+                  only its two lower edges, so it reads as one shape with the
+                  pill rather than a box stuck underneath it. */}
+              <span
+                className="absolute -bottom-[5px] left-[17px] h-2.5 w-2.5 rotate-45 border-b border-r border-accent/25 bg-[#0D0F14]/95"
+                aria-hidden="true"
+              />
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>
 
       <button
         type="button"
-        onClick={() => {
-          setDismissed(true)
-          toggle()
-        }}
+        onClick={engage}
         aria-pressed={playing}
         aria-label={playing ? copy.disable : copy.enable}
         className="group surface glow-ember-hover relative flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-500 hover:border-accent/40 sm:h-12 sm:w-12"
