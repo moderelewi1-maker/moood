@@ -21,7 +21,7 @@ export default function StatCounter({ value, prefix = '', suffix = '', label, no
     const tween = gsap.to(proxy, {
       val: value,
       duration: 1.8,
-      ease: 'power2.out',
+      ease: 'power3.out',
       onUpdate: () => setDisplay(Math.round(proxy.val)),
       scrollTrigger: {
         trigger: el,

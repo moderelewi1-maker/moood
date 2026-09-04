@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { cn } from '../../lib/utils.js'
+import { SPRING_MAGNETIC } from '../../lib/motion.js'
 
 /** Button whose contents drift toward the cursor within a small radius — desktop only. */
 export default function MagneticButton({
@@ -13,8 +14,8 @@ export default function MagneticButton({
   const ref = useRef(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const springX = useSpring(x, { stiffness: 250, damping: 18, mass: 0.4 })
-  const springY = useSpring(y, { stiffness: 250, damping: 18, mass: 0.4 })
+  const springX = useSpring(x, SPRING_MAGNETIC)
+  const springY = useSpring(y, SPRING_MAGNETIC)
 
   function handleMouseMove(e) {
     const el = ref.current
@@ -35,9 +36,9 @@ export default function MagneticButton({
     'group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4'
   const variants = {
     primary:
-      'bg-crimson text-ink hover:bg-crimson-deep hover:shadow-[0_18px_50px_-24px_rgba(133,37,51,0.85)]',
+      'bg-accent text-ground hover:bg-accent-bright hover:shadow-[0_20px_56px_-24px_rgba(224,154,62,0.55)]',
     secondary:
-      'surface text-ink hover:border-crimson/40 hover:text-crimson-soft',
+      'surface text-ink hover:border-accent/40 hover:text-accent-bright',
   }
 
   return (

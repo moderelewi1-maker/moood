@@ -27,7 +27,7 @@ export default function Timeline() {
             y: 0,
             rotateX: 0,
             duration: 1,
-            ease: 'power3.out',
+            ease: 'power4.out',
             scrollTrigger: { trigger: card, start: 'top 85%', once: true },
           }
         )
@@ -40,6 +40,7 @@ export default function Timeline() {
     <section id="experience" ref={sectionRef} className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <SectionHeading
+          index="02"
           eyebrow={copy.eyebrow}
           title={copy.title}
           description={copy.description}
@@ -58,12 +59,12 @@ export default function Timeline() {
               return (
                 <div key={item.id} className="timeline-card relative" style={{ transformStyle: 'preserve-3d' }}>
                   <span
-                    className={`absolute -start-10 top-7 flex h-4 w-4 items-center justify-center rounded-full ring-4 ring-carbon sm:-start-16 ${
-                      item.current ? 'bg-crimson' : 'bg-white/25'
+                    className={`absolute -start-10 top-7 flex h-4 w-4 items-center justify-center rounded-full ring-4 ring-ground sm:-start-16 ${
+                      item.current ? 'bg-accent' : 'bg-white/25'
                     }`}
                     aria-hidden="true"
                   >
-                    {item.current && <span className="animate-pulse-soft absolute h-full w-full rounded-full bg-crimson" />}
+                    {item.current && <span className="animate-pulse-soft absolute h-full w-full rounded-full bg-accent" />}
                   </span>
 
                   <GlassCard
@@ -75,11 +76,11 @@ export default function Timeline() {
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <div className="flex flex-wrap items-center gap-2.5">
-                          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-crimson-soft">
+                          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-bright">
                             {text.period}
                           </span>
                           {item.current && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-crimson/12 px-2.5 py-0.5 text-[10px] font-semibold text-crimson-soft">
+                            <span className="inline-flex items-center gap-1 rounded-full bg-accent/12 px-2.5 py-0.5 text-[10px] font-semibold text-accent-bright">
                               <Radio className="h-2.5 w-2.5" aria-hidden="true" />
                               {copy.current}
                             </span>
@@ -93,7 +94,7 @@ export default function Timeline() {
 
                       <ChevronDown
                         className={`mt-1 h-5 w-5 shrink-0 text-ink-faint transition-transform duration-300 ${
-                          isOpen ? 'rotate-180 text-crimson-soft' : ''
+                          isOpen ? 'rotate-180 text-accent-bright' : ''
                         }`}
                         aria-hidden="true"
                       />
@@ -118,7 +119,7 @@ export default function Timeline() {
                         <ul className="flex flex-col gap-2 border-t border-hairline pt-4">
                           {text.achievements.map((achievement) => (
                             <li key={achievement} className="flex items-start gap-2.5 text-sm text-ink-muted">
-                              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-crimson" aria-hidden="true" />
+                              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                               {achievement}
                             </li>
                           ))}

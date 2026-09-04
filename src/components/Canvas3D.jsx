@@ -155,8 +155,8 @@ export default function Canvas3D({ className = '' }) {
     const uniforms = {
       uTime: { value: 0 },
       uIntensity: { value: 0.18 },
-      uColorA: { value: new THREE.Color('#c92a43') },
-      uColorB: { value: new THREE.Color('#852533') },
+      uColorA: { value: new THREE.Color('#e09a3e') },
+      uColorB: { value: new THREE.Color('#3a2410') },
     }
 
     const orbGeometry = new THREE.IcosahedronGeometry(1.35, 32)
@@ -228,10 +228,27 @@ export default function Canvas3D({ className = '' }) {
       renderer.render(scene, camera)
     }
 
+    // The orb lives in the hero, which is off-screen for most of the page.
+    // Rendering a shader-displaced mesh every frame while nobody can see it
+    // is pure waste, so the loop is gated on visibility: it stops when the
+    // hero scrolls away and when the tab is backgrounded, and picks straight
+    // back up on return. The timer is not paused, so the animation stays
+    // continuous rather than jumping on resume.
+    let visible = true
+
     function tick() {
-      renderFrame()
       rafId = requestAnimationFrame(tick)
+      if (!visible || document.hidden) return
+      renderFrame()
     }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting
+      },
+      { rootMargin: '120px' }
+    )
+    observer.observe(container)
 
     if (prefersReduced) {
       renderFrame()
@@ -241,6 +258,7 @@ export default function Canvas3D({ className = '' }) {
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId)
+      observer.disconnect()
       window.removeEventListener('pointermove', handlePointerMove)
       resizeObserver.disconnect()
       orbGeometry.dispose()

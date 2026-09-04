@@ -11,12 +11,13 @@ import OperatingSystem from './components/OperatingSystem.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import CustomCursor from './components/ui/CustomCursor.jsx'
+import SoundToggle from './components/ui/SoundToggle.jsx'
 
 export default function App() {
   useLenis()
 
   return (
-    <div className="relative min-h-screen bg-carbon text-ink">
+    <div className="relative min-h-screen bg-ground text-ink">
       <ScrollStoryCanvas />
       <div className="noise-overlay" aria-hidden="true" />
       <CustomCursor />
@@ -32,6 +33,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <SoundToggle />
     </div>
   )
 }

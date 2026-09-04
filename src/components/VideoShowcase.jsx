@@ -3,8 +3,9 @@ import { motion } from 'framer-motion'
 import SectionHeading from './ui/SectionHeading.jsx'
 import Reveal from './ui/Reveal.jsx'
 import VideoCard from './ui/VideoCard.jsx'
-import { videos, videoFormats } from '../data/videos.js'
+import { videoItems, videoFormats } from '../data/media.js'
 import { useLocale } from '../i18n/useLocale.js'
+import { EASE_AUTHORITY } from '../lib/motion.js'
 
 export default function VideoShowcase() {
   const [active, setActive] = useState('all')
@@ -12,7 +13,7 @@ export default function VideoShowcase() {
   const copy = t.video
 
   const { landscape, vertical } = useMemo(() => {
-    const pool = active === 'all' ? videos : videos.filter((v) => v.orientation === active)
+    const pool = active === 'all' ? videoItems : videoItems.filter((v) => v.orientation === active)
     return {
       landscape: pool.filter((v) => v.orientation === 'landscape'),
       vertical: pool.filter((v) => v.orientation === 'vertical'),
@@ -23,7 +24,7 @@ export default function VideoShowcase() {
     <section id="video" className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
+          <SectionHeading index="04" eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
           <Reveal delay={0.1} className="flex flex-wrap gap-2">
             {videoFormats.map((key) => (
@@ -31,7 +32,7 @@ export default function VideoShowcase() {
                 key={key}
                 onClick={() => setActive(key)}
                 className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 sm:text-sm ${
-                  active === key ? 'bg-crimson text-ink' : 'surface text-ink-muted hover:text-ink'
+                  active === key ? 'bg-accent text-ink' : 'surface text-ink-muted hover:text-ink'
                 }`}
               >
                 {copy.formats[key]}
@@ -49,7 +50,7 @@ export default function VideoShowcase() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: (i % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.5, delay: (i % 2) * 0.08, ease: EASE_AUTHORITY }}
               >
                 <VideoCard video={video} />
               </motion.div>
@@ -69,7 +70,7 @@ export default function VideoShowcase() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: (i % 4) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.5, delay: (i % 4) * 0.06, ease: EASE_AUTHORITY }}
               >
                 <VideoCard video={video} />
               </motion.div>
