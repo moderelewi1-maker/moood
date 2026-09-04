@@ -190,6 +190,12 @@ export const translations = {
         ctr: 'CTR Impact',
       },
       addEmbed: 'Add YouTube / Vimeo embed',
+      controls: {
+        play: 'Play',
+        pause: 'Pause',
+        mute: 'Mute',
+        unmute: 'Unmute',
+      },
       playAria: 'Play',
     },
     systems: {
@@ -498,6 +504,12 @@ export const translations = {
         ctr: 'أثر نسبة النقر',
       },
       addEmbed: 'أضف رابط يوتيوب / فيميو',
+      controls: {
+        play: 'تشغيل',
+        pause: 'إيقاف مؤقت',
+        mute: 'كتم الصوت',
+        unmute: 'تشغيل الصوت',
+      },
       playAria: 'تشغيل',
     },
     systems: {

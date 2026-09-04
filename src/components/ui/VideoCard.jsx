@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { PlayCircle, Clock3, Film, Gauge, Crosshair, TrendingUp } from 'lucide-react'
+import { PlayCircle, PauseCircle, Volume2, VolumeX, Clock3, Film, Gauge, Crosshair, TrendingUp } from 'lucide-react'
 import AssetImage from './AssetImage.jsx'
 import { toEmbedUrl } from '../../lib/utils.js'
 import { useLocale } from '../../i18n/useLocale.js'
@@ -8,6 +8,8 @@ import { useLocale } from '../../i18n/useLocale.js'
 export default function VideoCard({ video }) {
   const videoRef = useRef(null)
   const [videoErrored, setVideoErrored] = useState(false)
+  const [playing, setPlaying] = useState(false)
+  const [muted, setMuted] = useState(true)
   const [embedLoaded, setEmbedLoaded] = useState(false)
   const { t, locale } = useLocale()
   const copy = t.video
@@ -23,15 +25,52 @@ export default function VideoCard({ video }) {
   const hasLocalSrc = !hasEmbed && Boolean(video.src) && !videoErrored
   const isVertical = video.orientation === 'vertical'
 
+  // Hover preview is a convenience, not the control surface — touch devices
+  // have no hover at all, so playback also has explicit buttons.
+  //
+  // The two must not be driven by the same flag. `playing` mirrors the
+  // element's real state so the icon is always honest, but it is set by the
+  // media events, which fire for the hover preview too. Gating hover on
+  // `playing` therefore made the preview look like a deliberate play and the
+  // button's next press read as "already playing", so pressing pause did
+  // nothing. Intent is tracked separately, in a ref only the buttons touch.
+  // Once the buttons have been used, hover preview stands down for good on
+  // this card. Anything short of that loses a fight with itself: pressing
+  // pause swaps the icon under the cursor, React replaces that SVG, the
+  // pointer re-enters the card, and the hover handler restarts playback about
+  // ten milliseconds later — so the button appeared completely dead while the
+  // event log showed a clean `pause` immediately followed by `play`.
+  // Deferring to explicit intent is also the correct behaviour on its own
+  // terms: a visitor driving the controls should not be overridden by where
+  // their mouse happens to rest.
+  const controlled = useRef(false)
+
   function handleEnter() {
-    if (hasLocalSrc && videoRef.current) videoRef.current.play().catch(() => {})
+    if (hasLocalSrc && videoRef.current && !controlled.current) {
+      videoRef.current.play().catch(() => {})
+    }
   }
 
   function handleLeave() {
-    if (hasLocalSrc && videoRef.current) {
+    if (hasLocalSrc && videoRef.current && !controlled.current) {
       videoRef.current.pause()
       videoRef.current.currentTime = 0
     }
+  }
+
+  function togglePlay() {
+    const el = videoRef.current
+    if (!el) return
+    controlled.current = true
+    if (el.paused) el.play().catch(() => {})
+    else el.pause()
+  }
+
+  function toggleMute() {
+    const el = videoRef.current
+    if (!el) return
+    el.muted = !el.muted
+    setMuted(el.muted)
   }
 
   return (
@@ -61,6 +100,9 @@ export default function VideoCard({ video }) {
           playsInline
           preload="metadata"
           onError={() => setVideoErrored(true)}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onEnded={() => setPlaying(false)}
           className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         />
       )}
@@ -93,8 +135,33 @@ export default function VideoCard({ video }) {
       )}
 
       {hasLocalSrc && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-60 transition-opacity duration-300 group-hover:opacity-0">
-          <PlayCircle className="h-12 w-12 text-ink/70" strokeWidth={1.25} aria-hidden="true" />
+        <div className="absolute inset-x-3 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center gap-2">
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-pressed={playing}
+            aria-label={playing ? copy.controls.pause : copy.controls.play}
+            className="surface flex h-11 w-11 items-center justify-center rounded-full text-ink opacity-80 transition-all duration-300 hover:text-accent focus-visible:opacity-100 group-hover:opacity-100"
+          >
+            {playing ? (
+              <PauseCircle className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+            ) : (
+              <PlayCircle className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={toggleMute}
+            aria-pressed={!muted}
+            aria-label={muted ? copy.controls.unmute : copy.controls.mute}
+            className="surface flex h-11 w-11 items-center justify-center rounded-full text-ink opacity-0 transition-all duration-300 hover:text-accent focus-visible:opacity-100 group-hover:opacity-100"
+          >
+            {muted ? (
+              <VolumeX className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+            ) : (
+              <Volume2 className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+            )}
+          </button>
         </div>
       )}
 

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
+import Modal from './Modal.jsx'
 import { X, Plus, Minus, Maximize2, Scan } from 'lucide-react'
-import { EASE_AUTHORITY } from '../../lib/motion.js'
 import { useLocale } from '../../i18n/useLocale.js'
 
 const MIN_SCALE = 0.2
@@ -56,23 +56,18 @@ export default function SchematicViewer({ item, onClose }) {
     return () => window.removeEventListener('resize', apply)
   }, [item, computeFit])
 
-  // Escape to close, and lock the page behind the overlay.
+  // Escape, the scroll lock and focus handling belong to Modal; only the
+  // viewer's own zoom shortcuts stay here.
   useEffect(() => {
     if (!item) return undefined
     const onKey = (e) => {
-      if (e.key === 'Escape') onClose()
       if (e.key === '+' || e.key === '=') setScale((s) => Math.min(s * 1.3, MAX_SCALE))
       if (e.key === '-') setScale((s) => Math.max(s / 1.3, MIN_SCALE))
       if (e.key === '0') { setScale(computeFit()); setOffset({ x: 0, y: 0 }) }
     }
     window.addEventListener('keydown', onKey)
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prev
-    }
-  }, [item, onClose, computeFit])
+    return () => window.removeEventListener('keydown', onKey)
+  }, [item, computeFit])
 
   /** Zoom about a point in container coordinates. */
   const zoomAt = useCallback((nextScale, px, py) => {
@@ -152,19 +147,16 @@ export default function SchematicViewer({ item, onClose }) {
   return (
     <AnimatePresence>
       {item && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: EASE_AUTHORITY }}
-          className="fixed inset-0 z-[90] flex flex-col bg-void/97"
-          role="dialog"
-          aria-modal="true"
-          aria-label={item.title[isRTL ? 'ar' : 'en']}
+        <Modal
+          open={Boolean(item)}
+          onClose={onClose}
+          label={item.title[isRTL ? 'ar' : 'en']}
+          backdropClassName="bg-void/97 backdrop-blur-xl"
+          className="flex flex-col"
         >
           {/* Console bar */}
           <div className="flex flex-none items-center gap-3 border-b border-hairline px-4 py-3 sm:px-6">
-            <span className="mono-meta text-accent" dir="ltr">{item.ref}</span>
+            <span className="mono-meta text-cobalt" dir="ltr">{item.ref}</span>
             <span className="mono-meta hidden sm:inline">{item.nodeCount} NODES</span>
             <span className="mono-meta hidden md:inline" dir="ltr">
               {Math.round(scale * 100)}%
@@ -173,14 +165,14 @@ export default function SchematicViewer({ item, onClose }) {
             <div className="ms-auto flex items-center gap-1.5">
               <button
                 onClick={() => zoomAt(scale / 1.35, boxRef.current.clientWidth / 2, boxRef.current.clientHeight / 2)}
-                className="surface rounded-sm p-2 text-ink-muted transition-colors duration-300 hover:text-accent"
+                className="surface rounded-sm p-2 text-ink-muted transition-colors duration-300 hover:text-cobalt"
                 aria-label={copy.viewer.zoomOut}
               >
                 <Minus className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 onClick={() => zoomAt(scale * 1.35, boxRef.current.clientWidth / 2, boxRef.current.clientHeight / 2)}
-                className="surface rounded-sm p-2 text-ink-muted transition-colors duration-300 hover:text-accent"
+                className="surface rounded-sm p-2 text-ink-muted transition-colors duration-300 hover:text-cobalt"
                 aria-label={copy.viewer.zoomIn}
               >
                 <Plus className="h-4 w-4" aria-hidden="true" />
@@ -188,7 +180,7 @@ export default function SchematicViewer({ item, onClose }) {
               <button
                 onClick={() => { setScale(computeFit()); setOffset({ x: 0, y: 0 }) }}
                 className={`surface rounded-sm p-2 transition-colors duration-300 hover:text-accent ${
-                  atFit ? 'text-accent' : 'text-ink-muted'
+                  atFit ? 'text-cobalt' : 'text-ink-muted'
                 }`}
                 aria-label={copy.viewer.reset}
               >
@@ -196,14 +188,14 @@ export default function SchematicViewer({ item, onClose }) {
               </button>
               <button
                 onClick={() => { setScale(1); setOffset({ x: 0, y: 0 }) }}
-                className="surface rounded-sm p-2 text-ink-muted transition-colors duration-300 hover:text-accent"
+                className="surface rounded-sm p-2 text-ink-muted transition-colors duration-300 hover:text-cobalt"
                 aria-label={copy.viewer.actual}
               >
                 <Scan className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 onClick={onClose}
-                className="surface ms-1 rounded-sm p-2 text-ink transition-colors duration-300 hover:text-accent"
+                className="surface ms-1 rounded-sm p-2 text-ink transition-colors duration-300 hover:text-cobalt"
                 aria-label={copy.viewer.close}
               >
                 <X className="h-4 w-4" aria-hidden="true" />
@@ -241,7 +233,7 @@ export default function SchematicViewer({ item, onClose }) {
           <div className="flex-none border-t border-hairline px-4 py-2.5 text-center sm:px-6">
             <span className="mono-meta">{copy.labels.zoomHint}</span>
           </div>
-        </motion.div>
+        </Modal>
       )}
     </AnimatePresence>
   )

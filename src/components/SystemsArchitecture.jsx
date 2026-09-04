@@ -51,8 +51,8 @@ export default function SystemsArchitecture() {
             >
               {/* Console bar */}
               <div className="flex items-center gap-3 border-b border-hairline px-4 py-3">
-                <CircuitBoard className="h-3.5 w-3.5 shrink-0 text-accent" aria-hidden="true" />
-                <span className="mono-meta text-accent" dir="ltr">{item.ref}</span>
+                <CircuitBoard className="h-3.5 w-3.5 shrink-0 text-cobalt" aria-hidden="true" />
+                <span className="mono-meta text-cobalt" dir="ltr">{item.ref}</span>
                 <span className="mono-meta ms-auto" dir="ltr">
                   {item.nodeCount} {copy.labels.nodes}
                 </span>
@@ -76,10 +76,10 @@ export default function SystemsArchitecture() {
                   />
                 </div>
 
-                <span className="pointer-events-none absolute inset-3 rounded-[2px] ring-1 ring-inset ring-hairline-accent" aria-hidden="true" />
+                <span className="pointer-events-none absolute inset-3 rounded-[2px] ring-1 ring-inset ring-cobalt/25" aria-hidden="true" />
 
                 <span className="surface absolute bottom-5 end-5 flex items-center gap-2 rounded-sm px-3 py-2 opacity-0 transition-opacity duration-500 group-hover/screen:opacity-100">
-                  <Maximize2 className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                  <Maximize2 className="h-3.5 w-3.5 text-cobalt" aria-hidden="true" />
                   <span className="mono-meta text-ink">{copy.labels.inspect}</span>
                 </span>
               </button>
@@ -99,7 +99,7 @@ export default function SystemsArchitecture() {
                       <dt className="mono-meta">{m.label[locale]}</dt>
                       <dd
                         className={`text-sm font-medium ${
-                          m.kind === 'target' ? 'text-ink-faint' : 'text-accent'
+                          m.kind === 'target' ? 'text-ink-faint' : 'text-cobalt'
                         }`}
                       >
                         <span dir={typeof m.value === 'string' ? 'ltr' : undefined}>{val(m.value)}</span>
