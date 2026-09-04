@@ -5,16 +5,15 @@ import Pill from './ui/Pill.jsx'
 import MagneticButton from './ui/MagneticButton.jsx'
 import AssetImage from './ui/AssetImage.jsx'
 import { heroBadges } from '../data/socials.js'
-import { portfolioAssets } from '../data/portfolioAssets.js'
+import { profileImage } from '../data/media.js'
 import { scrollToHash } from '../lib/utils.js'
 import { useLocale } from '../i18n/useLocale.js'
 
 const Canvas3D = lazy(() => import('./Canvas3D.jsx'))
 
 const BADGE_ICONS = { BadgeCheck, TrendingUp, Layers }
-const heroAsset = portfolioAssets.find((a) => a.category === 'hero')
-// Tries the mapped portfolio asset first, then either local placeholder filename.
-const heroSources = [heroAsset?.url, '/assets/modar-hero.jpg', '/assets/profile.jpg']
+// Real portrait first; the legacy placeholder names stay as fallbacks.
+const heroSources = [profileImage, '/assets/modar-hero.jpg', '/assets/profile.jpg']
 
 export default function Hero() {
   const { t } = useLocale()

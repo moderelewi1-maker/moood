@@ -54,6 +54,7 @@ export default function AssetImage({
       src={current}
       alt={alt}
       loading="lazy"
+      decoding="async"
       onError={() => setIndex((i) => i + 1)}
       className={className}
     />

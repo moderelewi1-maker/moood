@@ -9,12 +9,18 @@ export default function VideoCard({ video }) {
   const videoRef = useRef(null)
   const [videoErrored, setVideoErrored] = useState(false)
   const [embedLoaded, setEmbedLoaded] = useState(false)
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
   const copy = t.video
-  const text = copy.items[video.id]
+  // Per-asset copy ships beside the file in src/data/media.js
+  const text = {
+    title: video.title[locale],
+    hook: video.hook[locale],
+    pacing: video.pacing[locale],
+    ctr: video.ctr,
+  }
 
-  const hasLocalSrc = video.type === 'local' && !videoErrored
-  const hasEmbed = video.type === 'embed' && Boolean(video.embedUrl)
+  const hasEmbed = Boolean(video.embedUrl)
+  const hasLocalSrc = !hasEmbed && Boolean(video.src) && !videoErrored
   const isVertical = video.orientation === 'vertical'
 
   function handleEnter() {
@@ -59,7 +65,7 @@ export default function VideoCard({ video }) {
         />
       )}
 
-      {video.type === 'embed' && !hasEmbed && (
+      {!hasEmbed && !video.src && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 border border-dashed border-hairline text-ink-faint">
           <Film className="h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
           <span className="px-4 text-center text-xs font-medium">{copy.addEmbed}</span>
@@ -86,7 +92,7 @@ export default function VideoCard({ video }) {
         </button>
       )}
 
-      {video.type === 'local' && (
+      {hasLocalSrc && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-60 transition-opacity duration-300 group-hover:opacity-0">
           <PlayCircle className="h-12 w-12 text-ink/70" strokeWidth={1.25} aria-hidden="true" />
         </div>

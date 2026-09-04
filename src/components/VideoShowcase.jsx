@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import SectionHeading from './ui/SectionHeading.jsx'
 import Reveal from './ui/Reveal.jsx'
 import VideoCard from './ui/VideoCard.jsx'
-import { videos, videoFormats } from '../data/videos.js'
+import { videoItems, videoFormats } from '../data/media.js'
 import { useLocale } from '../i18n/useLocale.js'
 
 export default function VideoShowcase() {
@@ -12,7 +12,7 @@ export default function VideoShowcase() {
   const copy = t.video
 
   const { landscape, vertical } = useMemo(() => {
-    const pool = active === 'all' ? videos : videos.filter((v) => v.orientation === active)
+    const pool = active === 'all' ? videoItems : videoItems.filter((v) => v.orientation === active)
     return {
       landscape: pool.filter((v) => v.orientation === 'landscape'),
       vertical: pool.filter((v) => v.orientation === 'vertical'),

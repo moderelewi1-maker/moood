@@ -4,20 +4,18 @@ import { ChevronDown, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-rea
 import SectionHeading from './ui/SectionHeading.jsx'
 import Reveal from './ui/Reveal.jsx'
 import AssetImage from './ui/AssetImage.jsx'
-import { portfolioAssets, assetCategoryKeys } from '../data/portfolioAssets.js'
+import { designItems, designCategoryKeys } from '../data/media.js'
 import { useLocale } from '../i18n/useLocale.js'
 
-const GALLERY_ASSETS = portfolioAssets.filter((a) => a.category !== 'hero')
+const GALLERY_ASSETS = designItems
+// Keep the first paint light: 71 assets would otherwise decode at once.
 const INITIAL_COUNT = 12
-// Deterministic masonry rhythm: every 5th and 8th tile spans two rows so the
-// grid reads as a composed wall rather than a uniform matrix.
-const TALL_TILES = new Set([2, 5, 9, 12, 16, 19, 23, 26])
 
 export default function DesignShowcase() {
   const [active, setActive] = useState('all')
   const [expanded, setExpanded] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(null)
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
   const copy = t.design
 
   const filtered = useMemo(
@@ -63,7 +61,7 @@ export default function DesignShowcase() {
           <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
           <Reveal delay={0.1} className="flex flex-wrap gap-2">
-            {assetCategoryKeys.map((key) => (
+            {designCategoryKeys.map((key) => (
               <button
                 key={key}
                 onClick={() => {
@@ -92,21 +90,21 @@ export default function DesignShowcase() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => setLightboxIndex(i)}
-              aria-label={`${copy.openLightbox} — ${copy.categories[asset.category]}`}
+              aria-label={`${copy.openLightbox} — ${asset.title[locale]}`}
               className={`group relative overflow-hidden rounded-xl hairline border ${
-                TALL_TILES.has(i) ? 'row-span-2' : ''
+                asset.orientation === 'portrait' ? 'row-span-2' : ''
               }`}
             >
               <AssetImage
-                src={asset.url}
-                alt={`${copy.categories[asset.category] ?? ''} — ${copy.itemAlt}`}
+                src={asset.src}
+                alt={asset.title[locale]}
                 category={asset.category}
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 iconClassName="h-8 w-8"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/85 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <span className="pointer-events-none absolute bottom-2 start-2 rounded-full surface px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wide text-ink-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {copy.categories[asset.category]}
+              <span className="pointer-events-none absolute inset-x-2 bottom-2 truncate rounded-full surface px-2.5 py-1 text-start text-[10px] font-medium text-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {asset.title[locale]}
               </span>
               <span className="pointer-events-none absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full surface text-crimson-soft opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
@@ -183,14 +181,15 @@ export default function DesignShowcase() {
             >
               <div className="hairline w-full flex-1 overflow-hidden rounded-2xl border">
                 <AssetImage
-                  src={activeAsset?.url}
-                  alt={`${copy.categories[activeAsset?.category] ?? ''} — ${copy.itemAlt}`}
+                  src={activeAsset?.src}
+                  alt={activeAsset?.title?.[locale] ?? ''}
                   category={activeAsset?.category}
                   className="max-h-[70vh] w-full object-contain"
                   iconClassName="h-14 w-14"
                 />
               </div>
-              <figcaption className="flex items-center gap-3 text-xs text-ink-muted">
+              <figcaption className="flex flex-wrap items-center justify-center gap-3 text-xs text-ink-muted">
+                <span className="font-medium text-ink">{activeAsset?.title?.[locale]}</span>
                 <span className="rounded-full surface px-3 py-1 font-semibold uppercase tracking-wide">
                   {copy.categories[activeAsset?.category]}
                 </span>
