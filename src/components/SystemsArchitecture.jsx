@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { Maximize2, CircuitBoard } from 'lucide-react'
 import SectionHeading from './ui/SectionHeading.jsx'
 import SchematicViewer from './ui/SchematicViewer.jsx'
-import MetaAdsLedger from './ui/MetaAdsLedger.jsx'
 import { automationItems } from '../data/automation.js'
 import { EASE_AUTHORITY } from '../lib/motion.js'
 import { useLocale } from '../i18n/useLocale.js'
@@ -34,7 +33,7 @@ export default function SystemsArchitecture() {
     <section id="systems" className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <SectionHeading
-          index="05"
+          index="03"
           eyebrow={copy.eyebrow}
           title={copy.title}
           description={copy.description}
@@ -128,10 +127,6 @@ export default function SystemsArchitecture() {
               </div>
             </motion.article>
           ))}
-        </div>
-
-        <div className="mt-6">
-          <MetaAdsLedger />
         </div>
 
         {hasTarget && (

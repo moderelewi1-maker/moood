@@ -589,6 +589,10 @@ export const videoItems = [
   {
     id: 'video-production-reel',
     src: '/assets/video/video-production-reel.mp4',
+    // Plays silent everywhere — inline preview and cinema modal alike — so it
+    // never competes with the ambient bed. Enforced by the player, not by a
+    // default the viewer could toggle off.
+    forceMuted: true,
     poster: '/assets/video/video-production-reel-poster.jpg',
     orientation: 'vertical',
     duration: '0:26',

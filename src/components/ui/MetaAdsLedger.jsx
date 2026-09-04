@@ -207,6 +207,15 @@ export default function MetaAdsLedger() {
         </div>
       </motion.div>
 
+      {/* How to read the figures. Placed before the competency read-out
+          because sub-cent costs invite disbelief, and the answer is what
+          objective produced them and where the conversion actually happens —
+          not a louder claim. */}
+      <div className="surface rounded-sm border-s-2 border-s-accent/50 p-5 sm:p-6">
+        <h3 className="mono-meta mb-2.5 text-accent">{copy.contextTitle}</h3>
+        <p className="max-w-4xl text-sm leading-relaxed text-ink-muted">{copy.context}</p>
+      </div>
+
       {/* Read-out */}
       <div>
         <h3 className="mono-meta mb-4 text-accent">{copy.findingsTitle}</h3>

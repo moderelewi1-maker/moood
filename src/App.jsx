@@ -7,6 +7,7 @@ import Timeline from './components/Timeline.jsx'
 import DesignShowcase from './components/DesignShowcase.jsx'
 import VideoShowcase from './components/VideoShowcase.jsx'
 import SystemsArchitecture from './components/SystemsArchitecture.jsx'
+import PerformanceAudit from './components/PerformanceAudit.jsx'
 import CampaignVault from './components/CampaignVault.jsx'
 import OperatingSystem from './components/OperatingSystem.jsx'
 import Contact from './components/Contact.jsx'
@@ -25,11 +26,12 @@ export default function App() {
       <Navbar />
       <main className="relative z-10">
         <Hero />
+        <VideoShowcase />
+        <DesignShowcase />
+        <SystemsArchitecture />
+        <PerformanceAudit />
         <Narrative />
         <Timeline />
-        <DesignShowcase />
-        <VideoShowcase />
-        <SystemsArchitecture />
         <CampaignVault />
         <OperatingSystem />
         <Contact />

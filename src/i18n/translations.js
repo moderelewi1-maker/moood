@@ -19,6 +19,7 @@ export const translations = {
       on: 'Sound: On',
       off: 'Sound: Off',
       enable: 'Turn ambient sound on',
+      prompt: 'Click to enable sound',
       disable: 'Turn ambient sound off',
     },
     nav: {
@@ -175,7 +176,7 @@ export const translations = {
       counter: 'of',
     },
     video: {
-      eyebrow: 'Video Production',
+      eyebrow: 'Media Direction & Production',
       title: 'Shot for Attention, Cut for Retention',
       description:
         'Landscape commercials and long-form retention edits alongside vertical direct-response hooks built for the feed.',
@@ -190,6 +191,19 @@ export const translations = {
         ctr: 'CTR Impact',
       },
       addEmbed: 'Add YouTube / Vimeo embed',
+      cinema: {
+        play: 'Play',
+        pause: 'Pause',
+        mute: 'Mute',
+        unmute: 'Unmute',
+        volume: 'Volume',
+        scrub: 'Seek',
+        fullscreen: 'Full screen',
+        exitFullscreen: 'Exit full screen',
+        close: 'Close',
+        silent: 'Silent by design',
+        hint: 'Space to play · M to mute · Esc to close',
+      },
       controls: {
         play: 'Play',
         pause: 'Pause',
@@ -219,10 +233,10 @@ export const translations = {
       },
     },
     audit: {
-      eyebrow: 'Performance Marketing',
+      eyebrow: 'Paid Media Management',
       title: 'Meta Ads Scaling Ledger',
       description:
-        'Ads Manager telemetry across acquisition, conversational commerce and localized reach funnels.',
+        'Managing and scaling return-oriented advertising budgets across acquisition, conversational commerce and localized reach funnels.',
       beacon: 'Verified Meta Ads audit',
       inspect: 'Inspect ledger',
       inspectHint: 'Opens the raw Ads Manager capture · zoom and pan to read individual rows',
@@ -261,6 +275,9 @@ export const translations = {
       },
       reachUnit: 'Meta accounts',
       scrollHint: 'Scroll to see all columns',
+      contextTitle: 'How to read these figures',
+      context:
+        'Every objective here is top-of-funnel — reach, link clicks, profile visits and messaging — so cost per result is the cost of a click, a visit or an opened conversation, not the cost of a sale. The qualifying step happens after the click, inside WhatsApp, where intent is filtered before anything reaches a sales agent. Costs at this level reflect MENA reach inventory priced at a $0.079 blended CPM, held there by frequency discipline between 1.03 and 1.81 rather than by repeated impressions against the same audience. Reach and impressions are cumulative across the account, not a single campaign.',
       findingsTitle: 'Strategic Performance Audit',
       findings: {
         acquisition: {
@@ -396,6 +413,7 @@ export const translations = {
       on: 'الصوت: مفعّل',
       off: 'الصوت: صامت',
       enable: 'تشغيل الصوت المحيط',
+      prompt: 'اضغط هنا للاستماع',
       disable: 'كتم الصوت المحيط',
     },
     nav: {
@@ -552,7 +570,7 @@ export const translations = {
       counter: 'من',
     },
     video: {
-      eyebrow: 'إنتاج الفيديو',
+      eyebrow: 'إخراج وإنتاج الوسائط السينمائية',
       title: 'تصوير يجذب الانتباه، ومونتاج يحافظ عليه',
       description:
         'إعلانات أفقية ومونتاج طويل عالي الاحتفاظ، إلى جانب خطّافات عمودية للاستجابة المباشرة مصمّمة لبيئة التمرير السريع.',
@@ -567,6 +585,19 @@ export const translations = {
         ctr: 'أثر نسبة النقر',
       },
       addEmbed: 'أضف رابط يوتيوب / فيميو',
+      cinema: {
+        play: 'تشغيل',
+        pause: 'إيقاف مؤقت',
+        mute: 'كتم الصوت',
+        unmute: 'تشغيل الصوت',
+        volume: 'مستوى الصوت',
+        scrub: 'التنقل في المقطع',
+        fullscreen: 'ملء الشاشة',
+        exitFullscreen: 'إنهاء ملء الشاشة',
+        close: 'إغلاق',
+        silent: 'صامت بحكم التصميم',
+        hint: 'مسافة للتشغيل · M للكتم · Esc للإغلاق',
+      },
       controls: {
         play: 'تشغيل',
         pause: 'إيقاف مؤقت',
@@ -596,10 +627,10 @@ export const translations = {
       },
     },
     audit: {
-      eyebrow: 'تسويق الأداء',
+      eyebrow: 'إدارة الميزانيات الإعلانية',
       title: 'سجل توسع حملات Meta',
       description:
-        'بيانات من مدير الإعلانات تغطي قنوات الاستحواذ والمحادثة والوصول الموجّه.',
+        'إدارة وتوسيع الميزانيات الإعلانية الموجهة للعائد عبر قنوات الاستحواذ والمحادثة والوصول الموجّه.',
       beacon: 'تدقيق أداء معتمد',
       inspect: 'فحص السجل',
       inspectHint: 'يفتح لقطة مدير الإعلانات الأصلية · كبّر وحرّك لقراءة الصفوف',
@@ -638,6 +669,9 @@ export const translations = {
       },
       reachUnit: 'حساب Meta',
       scrollHint: 'مرّر أفقياً لعرض كل الأعمدة',
+      contextTitle: 'كيف تُقرأ هذه الأرقام',
+      context:
+        'جميع الأهداف هنا في أعلى القمع — الوصول والنقرات وزيارات الملف والمحادثات — أي أن تكلفة النتيجة هي كلفة نقرة أو زيارة أو محادثة مفتوحة، لا كلفة عملية بيع. تتم مرحلة التأهيل بعد النقرة داخل واتساب، حيث تُصفّى نية العميل قبل تحويله إلى فريق المبيعات. وتعكس هذه الكلفة أسعار مخزون الوصول في أسواق المنطقة عند متوسط تكلفة ألف ظهور يبلغ ٠٫٠٧٩ دولار، مع انضباط في التكرار بين ١٫٠٣ و١٫٨١ بدلاً من تكرار العرض على الجمهور نفسه. أرقام الوصول والظهور تراكمية على مستوى الحساب وليست حملة واحدة.',
       findingsTitle: 'التدقيق الاستراتيجي للأداء',
       findings: {
         acquisition: {

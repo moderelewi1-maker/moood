@@ -40,7 +40,7 @@ export default function Timeline() {
     <section id="experience" ref={sectionRef} className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <SectionHeading
-          index="02"
+          index="06"
           eyebrow={copy.eyebrow}
           title={copy.title}
           description={copy.description}

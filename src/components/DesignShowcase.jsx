@@ -57,7 +57,7 @@ export default function DesignShowcase() {
     <section id="design" className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading index="03" eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
+          <SectionHeading index="02" eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
           <Reveal delay={0.1} className="flex flex-wrap gap-2">
             {designCategoryKeys.map((key) => (

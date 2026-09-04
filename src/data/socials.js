@@ -18,10 +18,11 @@ export const heroBadges = [
 
 export const navLinks = [
   { id: 'home', href: '#top' },
-  { id: 'about', href: '#about' },
-  { id: 'design', href: '#design' },
   { id: 'video', href: '#video' },
+  { id: 'design', href: '#design' },
   { id: 'systems', href: '#systems' },
+  { id: 'ads', href: '#ads' },
+  { id: 'about', href: '#about' },
   { id: 'campaigns', href: '#campaigns' },
   { id: 'system', href: '#system' },
   { id: 'contact', href: '#contact' },

@@ -14,7 +14,7 @@ export default function Narrative() {
   return (
     <section id="about" className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <SectionHeading index="01" eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
+        <SectionHeading index="05" eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
         <div className="mt-16 grid grid-cols-1 gap-5 sm:mt-20 lg:grid-cols-3">
           {phases.map((phase, i) => {

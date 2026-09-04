@@ -29,7 +29,7 @@ export default function CampaignVault() {
   return (
     <section id="campaigns" className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <SectionHeading index="06" eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
+        <SectionHeading index="07" eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
         <div className="mt-16 grid grid-cols-1 gap-5 sm:mt-20 lg:grid-cols-2">
           {campaigns.map((campaign, i) => {

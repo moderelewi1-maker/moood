@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useState } from 'react'
 import { useAmbientAudio } from '../../hooks/useAmbientAudio.js'
 import { useLocale } from '../../i18n/useLocale.js'
 import { EASE_AUTHORITY } from '../../lib/motion.js'
@@ -22,6 +23,7 @@ const BARS = [
  */
 export default function SoundToggle() {
   const { playing, toggle } = useAmbientAudio()
+  const [dismissed, setDismissed] = useState(false)
   const { t, isRTL } = useLocale()
   const copy = t.audio
 
@@ -32,9 +34,41 @@ export default function SoundToggle() {
       transition={{ duration: 0.6, delay: 1.1, ease: EASE_AUTHORITY }}
       className="fixed bottom-6 left-6 z-50"
     >
+      {/* Invitation, shown until the visitor engages. It is dismissed on the
+          first press rather than on playback starting, because autoplay
+          policy can refuse that press — leaving the prompt on screen after
+          someone has already acted on it. */}
+      <AnimatePresence>
+        {!playing && !dismissed && (
+          <motion.div
+            initial={{ opacity: 0, y: 8, scale: 0.94 }}
+            animate={{ opacity: 1, y: [0, -6, 0], scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.35, ease: EASE_AUTHORITY } }}
+            transition={{
+              opacity: { duration: 0.5, ease: EASE_AUTHORITY },
+              scale: { duration: 0.5, ease: EASE_AUTHORITY },
+              y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+            }}
+            className="pointer-events-none absolute bottom-full start-0 mb-3 whitespace-nowrap"
+            aria-hidden="true"
+          >
+            <span className="flex items-center gap-2 rounded-full border border-accent/30 bg-[#12141A]/90 px-3.5 py-2 shadow-[0_8px_30px_-12px_rgba(240,169,60,0.45)] backdrop-blur-md">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+              <span className="text-[11px] font-medium text-ink">{copy.prompt}</span>
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <button
         type="button"
-        onClick={toggle}
+        onClick={() => {
+          setDismissed(true)
+          toggle()
+        }}
         aria-pressed={playing}
         aria-label={playing ? copy.disable : copy.enable}
         className="group surface glow-ember-hover relative flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-500 hover:border-accent/40 sm:h-12 sm:w-12"

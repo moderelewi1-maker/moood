@@ -34,7 +34,7 @@ export default function Contact() {
 
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
         <SectionHeading
-          index="08"
+          index="09"
           align="center"
           eyebrow={copy.eyebrow}
           title={copy.title}

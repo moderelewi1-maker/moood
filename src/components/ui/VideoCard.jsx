@@ -1,15 +1,16 @@
 import { useRef, useState } from 'react'
-import { PlayCircle, PauseCircle, Volume2, VolumeX, Clock3, Film, Gauge, Crosshair, TrendingUp } from 'lucide-react'
+import { PlayCircle, PauseCircle, Volume2, VolumeX, Maximize2, Clock3, Film, Gauge, Crosshair, TrendingUp } from 'lucide-react'
 import AssetImage from './AssetImage.jsx'
 import { toEmbedUrl } from '../../lib/utils.js'
 import { useLocale } from '../../i18n/useLocale.js'
 
 /** One reel. Aspect ratio follows `video.orientation` (16:9 or 9:16). */
-export default function VideoCard({ video }) {
+export default function VideoCard({ video, onExpand }) {
   const videoRef = useRef(null)
   const [videoErrored, setVideoErrored] = useState(false)
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(true)
+  const silent = Boolean(video.forceMuted)
   const [embedLoaded, setEmbedLoaded] = useState(false)
   const { t, locale } = useLocale()
   const copy = t.video
@@ -68,7 +69,7 @@ export default function VideoCard({ video }) {
 
   function toggleMute() {
     const el = videoRef.current
-    if (!el) return
+    if (!el || silent) return
     el.muted = !el.muted
     setMuted(el.muted)
   }
@@ -95,12 +96,12 @@ export default function VideoCard({ video }) {
         <video
           ref={videoRef}
           src={video.src}
-          muted
+          muted={silent || muted}
           loop
           playsInline
           preload="metadata"
           onError={() => setVideoErrored(true)}
-          onPlay={() => setPlaying(true)}
+          onPlay={() => { if (silent && videoRef.current) videoRef.current.muted = true; setPlaying(true) }}
           onPause={() => setPlaying(false)}
           onEnded={() => setPlaying(false)}
           className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -149,19 +150,32 @@ export default function VideoCard({ video }) {
               <PlayCircle className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
             )}
           </button>
-          <button
-            type="button"
-            onClick={toggleMute}
-            aria-pressed={!muted}
-            aria-label={muted ? copy.controls.unmute : copy.controls.mute}
-            className="surface flex h-11 w-11 items-center justify-center rounded-full text-ink opacity-0 transition-all duration-300 hover:text-accent focus-visible:opacity-100 group-hover:opacity-100"
-          >
-            {muted ? (
-              <VolumeX className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
-            ) : (
-              <Volume2 className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
-            )}
-          </button>
+          {!silent && (
+            <button
+              type="button"
+              onClick={toggleMute}
+              aria-pressed={!muted}
+              aria-label={muted ? copy.controls.unmute : copy.controls.mute}
+              className="surface flex h-11 w-11 items-center justify-center rounded-full text-ink opacity-0 transition-all duration-300 hover:text-accent focus-visible:opacity-100 group-hover:opacity-100"
+            >
+              {muted ? (
+                <VolumeX className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+              ) : (
+                <Volume2 className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+              )}
+            </button>
+          )}
+
+          {onExpand && (
+            <button
+              type="button"
+              onClick={() => onExpand(video)}
+              aria-label={`${copy.cinema.play} — ${text.title}`}
+              className="surface flex h-11 w-11 items-center justify-center rounded-full text-ink opacity-0 transition-all duration-300 hover:text-accent focus-visible:opacity-100 group-hover:opacity-100"
+            >
+              <Maximize2 className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+            </button>
+          )}
         </div>
       )}
 
