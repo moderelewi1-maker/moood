@@ -58,7 +58,7 @@ export default function Navbar() {
             <button
               key={link.id}
               onClick={() => handleNavClick(link.href)}
-              className="rounded-full px-3 py-2 text-[13px] font-medium text-ink-muted transition-colors duration-300 hover:bg-white/5 hover:text-ink"
+              className="whitespace-nowrap rounded-full px-3 py-2 text-[13px] font-medium text-ink-muted transition-colors duration-300 hover:bg-white/5 hover:text-ink"
             >
               {t.nav[link.id]}
             </button>

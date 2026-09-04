@@ -6,6 +6,7 @@ import Narrative from './components/Narrative.jsx'
 import Timeline from './components/Timeline.jsx'
 import DesignShowcase from './components/DesignShowcase.jsx'
 import VideoShowcase from './components/VideoShowcase.jsx'
+import SystemsArchitecture from './components/SystemsArchitecture.jsx'
 import CampaignVault from './components/CampaignVault.jsx'
 import OperatingSystem from './components/OperatingSystem.jsx'
 import Contact from './components/Contact.jsx'
@@ -28,6 +29,7 @@ export default function App() {
         <Timeline />
         <DesignShowcase />
         <VideoShowcase />
+        <SystemsArchitecture />
         <CampaignVault />
         <OperatingSystem />
         <Contact />

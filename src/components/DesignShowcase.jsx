@@ -4,6 +4,7 @@ import { ChevronDown, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-rea
 import SectionHeading from './ui/SectionHeading.jsx'
 import Reveal from './ui/Reveal.jsx'
 import AssetImage from './ui/AssetImage.jsx'
+import Modal from './ui/Modal.jsx'
 import { designItems, designCategoryKeys } from '../data/media.js'
 import { useLocale } from '../i18n/useLocale.js'
 import { EASE_AUTHORITY } from '../lib/motion.js'
@@ -38,20 +39,17 @@ export default function DesignShowcase() {
     [visible.length]
   )
 
+  // Escape, the scroll lock and focus handling belong to Modal now; only the
+  // gallery-specific arrow navigation stays here.
   useEffect(() => {
     if (!isOpen) return undefined
     function onKey(e) {
-      if (e.key === 'Escape') close()
       if (e.key === 'ArrowRight') step(1)
       if (e.key === 'ArrowLeft') step(-1)
     }
-    document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
-    return () => {
-      document.body.style.overflow = ''
-      window.removeEventListener('keydown', onKey)
-    }
-  }, [isOpen, close, step])
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isOpen, step])
 
   const activeAsset = isOpen ? visible[lightboxIndex] : null
 
@@ -132,55 +130,48 @@ export default function DesignShowcase() {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-ground/95 backdrop-blur-xl"
-            role="dialog"
-            aria-modal="true"
-            onClick={close}
+          <Modal
+            open={isOpen}
+            onClose={close}
+            label={activeAsset?.title?.[locale] ?? copy.title}
+            backdropClassName="bg-ground/95 backdrop-blur-xl"
+            className="flex items-center justify-center"
           >
             <button
               onClick={close}
               aria-label={copy.closeLightbox}
-              className="surface absolute end-5 top-5 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-accent-bright"
+              className="surface absolute end-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors duration-300 hover:text-accent-bright"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
 
             <button
-              onClick={(e) => {
-                e.stopPropagation()
-                step(-1)
-              }}
+              onClick={() => step(-1)}
               aria-label={copy.prev}
-              className="surface absolute start-4 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-accent-bright sm:start-8"
+              className="surface absolute start-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-ink transition-colors duration-300 hover:text-accent-bright sm:start-8"
             >
               <ChevronLeft className="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />
             </button>
 
             <button
-              onClick={(e) => {
-                e.stopPropagation()
-                step(1)
-              }}
+              onClick={() => step(1)}
               aria-label={copy.next}
-              className="surface absolute end-4 bottom-1/2 flex h-11 w-11 translate-y-1/2 items-center justify-center rounded-full text-ink transition-colors hover:text-accent-bright sm:end-8"
+              className="surface absolute end-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-ink transition-colors duration-300 hover:text-accent-bright sm:end-8"
             >
               <ChevronRight className="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />
             </button>
 
+            {/* The figure is a sibling of the backdrop rather than a child of
+                it, so a press landing here is simply not a press on the
+                backdrop — no stopPropagation needed to keep it open. */}
             <motion.figure
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.3, ease: EASE_AUTHORITY }}
-              className="mx-6 flex max-h-[82vh] w-full max-w-4xl flex-col items-center gap-4"
-              onClick={(e) => e.stopPropagation()}
+              transition={{ duration: 0.35, ease: EASE_AUTHORITY }}
+              className="pointer-events-none mx-6 flex max-h-[82vh] w-full max-w-4xl flex-col items-center gap-4"
             >
-              <div className="hairline w-full flex-1 overflow-hidden rounded-2xl border">
+              <div className="hairline pointer-events-auto w-full flex-1 overflow-hidden rounded-2xl border">
                 <AssetImage
                   src={activeAsset?.src}
                   alt={activeAsset?.title?.[locale] ?? ''}
@@ -189,9 +180,9 @@ export default function DesignShowcase() {
                   iconClassName="h-14 w-14"
                 />
               </div>
-              <figcaption className="flex flex-wrap items-center justify-center gap-3 text-xs text-ink-muted">
+              <figcaption className="pointer-events-auto flex flex-wrap items-center justify-center gap-3 text-xs text-ink-muted">
                 <span className="font-medium text-ink">{activeAsset?.title?.[locale]}</span>
-                <span className="rounded-full surface px-3 py-1 font-semibold uppercase tracking-wide">
+                <span className="surface rounded-full px-3 py-1 font-semibold uppercase tracking-wide">
                   {copy.categories[activeAsset?.category]}
                 </span>
                 <span dir="ltr">
@@ -199,7 +190,7 @@ export default function DesignShowcase() {
                 </span>
               </figcaption>
             </motion.figure>
-          </motion.div>
+          </Modal>
         )}
       </AnimatePresence>
     </section>

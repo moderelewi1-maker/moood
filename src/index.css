@@ -6,50 +6,60 @@
    in the bundle. Scanning is scoped to the app instead. */
 @source not "../.claude";
 
-/* ── Graphite & Signal Amber ──────────────────────────────────────────────
-   Art direction: "Quiet Authority & Executive Gravity".
+/* ── Obsidian & Signal Amber ──────────────────────────────────────────────
+   Art direction: "Quiet Authority & Executive Gravity", on true obsidian.
 
-   FOUNDATION is a cool graphite, not a neutral grey and not a warm black.
-   Every step keeps blue above red (ground +4, surface +8, surface-3 +13), so
-   the interface reads as calibrated equipment — a grading suite, an anodised
-   camera body — rather than rustic (warm black) or corporate (flat grey).
-   The cast strengthens as surfaces rise, which is what actually happens when
-   ambient light scatters across a raised edge.
+   GROUND is near-absolute black (#050506) for OLED depth and cinematic
+   weight. Surfaces climb from it in ~1.08:1 steps — deliberately slight,
+   because in a dark UI the eye reads elevation from the 1px inset highlight
+   along a panel's top edge and the shadow beneath it, not from fill. Every
+   step keeps blue above red (+1, +6, +10, +13), so the interface reads as
+   calibrated equipment rather than warm-black or flat grey.
 
-   ACCENT is a signal amber: the colour of a tally light, a lens coating
-   flare, a VU meter at peak. It is the one warm note against the cool ground,
-   and that chromatic tension is what gives the palette its charge. It is also
-   materially better than the crimson it replaces: amber measures 7.65:1 on
-   the card surface where crimson managed 3.05:1, so a single accent value now
-   carries small metadata text, UI edges, and dark-text-on-fill buttons with
-   no compromise shade needed anywhere.
+   The accent is a CHROMATIC TRIAD, not one hue:
+     · Signal amber   #F0A93C — the primary. A tally light, a lens flare, a
+       VU meter at peak. Carries every interactive and emphasis state.
+     · Support cobalt #6FB4FF — reserved for the Systems & AI section, where
+       the subject is infrastructure rather than film. Cool against amber's
+       warmth, which is what gives the page two distinct registers.
+     · Titanium slate #7A828F — the structural neutral for metadata.
 
-   Verified contrast, all on --color-surface:
-     ink 15.75:1 · ink-muted 7.19:1 · ink-faint 4.29:1
-     accent 7.65:1 · accent-bright 9.78:1 · accent-deep 4.30:1
-     ground ink on an accent fill 8.30:1
-   Accent-to-ink is 2.06:1, low enough that the accent reads as a signal
-   beside body copy instead of competing with it. */
+   One caveat recorded deliberately: amber and cobalt are 1.08:1 apart in
+   LUMINANCE, so they are near-identical in greyscale and to a viewer with
+   colour vision deficiency. They are therefore used as sectional identity,
+   never as the sole carrier of meaning between two things on one screen.
+
+   Verified contrast (AAA is 7:1 for normal text):
+     on ground   ink 18.71:1 AAA · ink-muted 8.20:1 AAA · ink-faint 5.28:1
+     on ground   accent 10.13:1 AAA · cobalt 9.36:1 AAA
+     on surface  ink 17.35:1 · ink-muted 7.61:1 · ink-faint 4.87:1 AA
+     ground ink on an amber fill 10.13:1, on a cobalt fill 9.36:1
+
+   ink-faint is #7A828F rather than a darker slate because the mono metadata
+   it paints is 11px — normal-size text, needing 4.5:1. A #6B7280 measured
+   3.91:1 there and would have failed AA outright. */
 @theme {
-  --color-void: #08090b;
-  --color-ground: #0a0b0e;
-  --color-surface: #13161b;
-  --color-surface-2: #1a1e25;
-  --color-surface-3: #232830;
+  --color-void: #030304;
+  --color-ground: #050506;
+  --color-surface: #0f1115;
+  --color-surface-2: #161920;
+  --color-surface-3: #1e222b;
 
   --color-hairline: rgba(255, 255, 255, 0.07);
-  --color-hairline-strong: rgba(255, 255, 255, 0.13);
-  --color-hairline-accent: rgba(224, 154, 62, 0.24);
+  --color-hairline-strong: rgba(255, 255, 255, 0.12);
+  --color-hairline-accent: rgba(240, 169, 60, 0.26);
 
-  --color-ink: #edeff3;
-  --color-ink-muted: #9ba4b0;
-  --color-ink-faint: #737c89;
+  --color-ink: #f5f5f7;
+  --color-ink-muted: #a1a4b0;
+  --color-ink-faint: #7a828f;
 
-  --color-accent: #e09a3e;
-  --color-accent-bright: #f5b15c;
-  --color-accent-deep: #a96f22;
-  --color-ember: #3a2410;
-  --color-ember-deep: #1e1208;
+  --color-accent: #f0a93c;
+  --color-accent-bright: #ffc163;
+  --color-accent-deep: #b87a22;
+  --color-cobalt: #6fb4ff;
+  --color-cobalt-deep: #2f6fb0;
+  --color-ember: #2a1a08;
+  --color-ember-deep: #150c04;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: "Archivo", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -184,25 +194,25 @@ html.lenis, html.lenis body {
      hairline border then draws the object's actual boundary. All three are
      doing separate work; removing any one flattens the component. */
   .surface {
-    background: color-mix(in srgb, var(--color-surface) 86%, transparent);
-    backdrop-filter: blur(16px) saturate(1.1);
-    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+    backdrop-filter: blur(24px) saturate(1.25);
+    -webkit-backdrop-filter: blur(24px) saturate(1.25);
     border: 1px solid var(--color-hairline);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.05),
-      0 1px 2px rgba(0, 0, 0, 0.4),
-      0 8px 24px -16px rgba(0, 0, 0, 0.8);
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 1px 2px rgba(0, 0, 0, 0.6),
+      0 10px 30px -18px rgba(0, 0, 0, 0.95);
   }
 
   .surface-raised {
-    background: color-mix(in srgb, var(--color-surface-2) 90%, transparent);
-    backdrop-filter: blur(20px) saturate(1.15);
-    -webkit-backdrop-filter: blur(20px) saturate(1.15);
+    background: color-mix(in srgb, var(--color-surface-2) 88%, transparent);
+    backdrop-filter: blur(28px) saturate(1.3);
+    -webkit-backdrop-filter: blur(28px) saturate(1.3);
     border: 1px solid var(--color-hairline-strong);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.07),
-      0 2px 4px rgba(0, 0, 0, 0.45),
-      0 18px 50px -28px rgba(0, 0, 0, 0.9);
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 2px 4px rgba(0, 0, 0, 0.65),
+      0 22px 60px -30px rgba(0, 0, 0, 1);
   }
 
   .hairline {

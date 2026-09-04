@@ -21,6 +21,7 @@ export const navLinks = [
   { id: 'about', href: '#about' },
   { id: 'design', href: '#design' },
   { id: 'video', href: '#video' },
+  { id: 'systems', href: '#systems' },
   { id: 'campaigns', href: '#campaigns' },
   { id: 'system', href: '#system' },
   { id: 'contact', href: '#contact' },
