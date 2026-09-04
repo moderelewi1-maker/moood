@@ -5,7 +5,7 @@ export default function GlassCard({ children, className = '', as: Tag = 'div', r
     <Tag
       ref={ref}
       className={cn(
-        'surface glow-wine-hover rounded-2xl',
+        'surface glow-ember-hover rounded-2xl',
         className
       )}
       {...props}

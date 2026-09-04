@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useAmbientAudio } from '../../hooks/useAmbientAudio.js'
 import { useLocale } from '../../i18n/useLocale.js'
+import { EASE_AUTHORITY } from '../../lib/motion.js'
 
 // Uneven durations keep the four bars from marching in lockstep.
 const BARS = [
@@ -28,7 +29,7 @@ export default function SoundToggle() {
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, delay: 1.1, ease: EASE_AUTHORITY }}
       className="fixed bottom-6 left-6 z-50"
     >
       <button
@@ -36,11 +37,11 @@ export default function SoundToggle() {
         onClick={toggle}
         aria-pressed={playing}
         aria-label={playing ? copy.disable : copy.enable}
-        className="group surface glow-wine-hover relative flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-500 hover:border-crimson/40 sm:h-12 sm:w-12"
+        className="group surface glow-ember-hover relative flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-500 hover:border-accent/40 sm:h-12 sm:w-12"
       >
         {/* Crimson bloom on hover, kept behind the bars. */}
         <span
-          className="pointer-events-none absolute inset-0 rounded-full bg-crimson/0 opacity-0 blur-md transition-all duration-500 group-hover:bg-crimson/25 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-0 rounded-full bg-accent/0 opacity-0 blur-md transition-all duration-500 group-hover:bg-accent/25 group-hover:opacity-100"
           aria-hidden="true"
         />
 
@@ -51,7 +52,7 @@ export default function SoundToggle() {
               data-playing={playing}
               style={{ animationDuration: bar.duration, animationDelay: bar.delay }}
               className={`eq-bar h-full w-[2.5px] rounded-full ${
-                playing ? 'bg-crimson-soft' : 'bg-ink-faint group-hover:bg-ink-muted'
+                playing ? 'bg-accent-bright' : 'bg-ink-faint group-hover:bg-ink-muted'
               }`}
             />
           ))}

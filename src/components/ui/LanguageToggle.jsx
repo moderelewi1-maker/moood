@@ -26,7 +26,7 @@ export default function LanguageToggle({ className = '', showIcon = true }) {
             lang={code}
             className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 ${
               active
-                ? 'bg-crimson text-ink'
+                ? 'bg-accent text-ink'
                 : 'text-ink-muted hover:text-ink'
             }`}
           >

@@ -6,6 +6,7 @@ import Reveal from './ui/Reveal.jsx'
 import AssetImage from './ui/AssetImage.jsx'
 import { designItems, designCategoryKeys } from '../data/media.js'
 import { useLocale } from '../i18n/useLocale.js'
+import { EASE_AUTHORITY } from '../lib/motion.js'
 
 const GALLERY_ASSETS = designItems
 // Keep the first paint light: 71 assets would otherwise decode at once.
@@ -58,7 +59,7 @@ export default function DesignShowcase() {
     <section id="design" className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
+          <SectionHeading index="03" eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
           <Reveal delay={0.1} className="flex flex-wrap gap-2">
             {designCategoryKeys.map((key) => (
@@ -69,7 +70,7 @@ export default function DesignShowcase() {
                   setExpanded(false)
                 }}
                 className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 sm:text-sm ${
-                  active === key ? 'bg-crimson text-ink' : 'surface text-ink-muted hover:text-ink'
+                  active === key ? 'bg-accent text-ink' : 'surface text-ink-muted hover:text-ink'
                 }`}
               >
                 {copy.categories[key]}
@@ -88,7 +89,7 @@ export default function DesignShowcase() {
               layout
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.4, ease: EASE_AUTHORITY }}
               onClick={() => setLightboxIndex(i)}
               aria-label={`${copy.openLightbox} — ${asset.title[locale]}`}
               className={`group relative overflow-hidden rounded-xl hairline border ${
@@ -102,11 +103,11 @@ export default function DesignShowcase() {
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 iconClassName="h-8 w-8"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/85 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ground/85 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               <span className="pointer-events-none absolute inset-x-2 bottom-2 truncate rounded-full surface px-2.5 py-1 text-start text-[10px] font-medium text-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {asset.title[locale]}
               </span>
-              <span className="pointer-events-none absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full surface text-crimson-soft opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="pointer-events-none absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full surface text-accent-bright opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </motion.button>
@@ -117,7 +118,7 @@ export default function DesignShowcase() {
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setExpanded((v) => !v)}
-              className="surface inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-medium text-ink-muted transition-colors hover:text-crimson-soft sm:text-sm"
+              className="surface inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-medium text-ink-muted transition-colors hover:text-accent-bright sm:text-sm"
             >
               {expanded ? copy.showLess : `${copy.viewAll} (${filtered.length})`}
               <ChevronDown
@@ -136,7 +137,7 @@ export default function DesignShowcase() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-carbon/95 backdrop-blur-xl"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-ground/95 backdrop-blur-xl"
             role="dialog"
             aria-modal="true"
             onClick={close}
@@ -144,7 +145,7 @@ export default function DesignShowcase() {
             <button
               onClick={close}
               aria-label={copy.closeLightbox}
-              className="surface absolute end-5 top-5 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-crimson-soft"
+              className="surface absolute end-5 top-5 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-accent-bright"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -155,7 +156,7 @@ export default function DesignShowcase() {
                 step(-1)
               }}
               aria-label={copy.prev}
-              className="surface absolute start-4 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-crimson-soft sm:start-8"
+              className="surface absolute start-4 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-accent-bright sm:start-8"
             >
               <ChevronLeft className="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />
             </button>
@@ -166,7 +167,7 @@ export default function DesignShowcase() {
                 step(1)
               }}
               aria-label={copy.next}
-              className="surface absolute end-4 bottom-1/2 flex h-11 w-11 translate-y-1/2 items-center justify-center rounded-full text-ink transition-colors hover:text-crimson-soft sm:end-8"
+              className="surface absolute end-4 bottom-1/2 flex h-11 w-11 translate-y-1/2 items-center justify-center rounded-full text-ink transition-colors hover:text-accent-bright sm:end-8"
             >
               <ChevronRight className="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />
             </button>
@@ -175,7 +176,7 @@ export default function DesignShowcase() {
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: EASE_AUTHORITY }}
               className="mx-6 flex max-h-[82vh] w-full max-w-4xl flex-col items-center gap-4"
               onClick={(e) => e.stopPropagation()}
             >

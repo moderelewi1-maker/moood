@@ -17,7 +17,7 @@ export default function App() {
   useLenis()
 
   return (
-    <div className="relative min-h-screen bg-carbon text-ink">
+    <div className="relative min-h-screen bg-ground text-ink">
       <ScrollStoryCanvas />
       <div className="noise-overlay" aria-hidden="true" />
       <CustomCursor />
