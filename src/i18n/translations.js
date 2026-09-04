@@ -218,6 +218,40 @@ export const translations = {
         actual: 'Actual size',
       },
     },
+    ads: {
+      eyebrow: 'Account Performance',
+      title: 'Meta Ads Manager — Account View',
+      description:
+        'Live account structure across active and completed reach campaigns.',
+      columns: {
+        campaign: 'Campaign',
+        results: 'Results',
+        costPerResult: 'Cost per result',
+        spend: 'Amount spent',
+        frequency: 'Frequency',
+        impressions: 'Impressions',
+        reach: 'Reach',
+      },
+      status: {
+        active: 'Active',
+        completed: 'Completed',
+        paused: 'Paused',
+      },
+      resultUnit: 'people reached',
+      costUnit: 'per 1,000 reached',
+      totalsLabel: 'Results from {count} campaigns',
+      totals: {
+        spend: 'Total spend',
+        reach: 'Total reach',
+        impressions: 'Total impressions',
+        frequency: 'Average frequency',
+      },
+      objectiveNote:
+        'Reach objective. Ads Manager reports frequency rather than return for this buying type.',
+      provenance:
+        'Account totals are actual. The per-campaign split is a reconciling breakdown, not an Ads Manager export.',
+      scrollHint: 'Scroll to see all columns',
+    },
     campaigns: {
       eyebrow: 'Campaign Studies',
       title: 'Media Buying Case Studies',
@@ -531,6 +565,40 @@ export const translations = {
         reset: 'ملء الشاشة',
         actual: 'الحجم الأصلي',
       },
+    },
+    ads: {
+      eyebrow: 'أداء الحساب',
+      title: 'مدير إعلانات ميتا — عرض الحساب',
+      description:
+        'بنية الحساب عبر حملات الوصول النشطة والمكتملة.',
+      columns: {
+        campaign: 'الحملة',
+        results: 'النتائج',
+        costPerResult: 'تكلفة النتيجة',
+        spend: 'المبلغ المُنفق',
+        frequency: 'التكرار',
+        impressions: 'مرات الظهور',
+        reach: 'الوصول',
+      },
+      status: {
+        active: 'نشطة',
+        completed: 'مكتملة',
+        paused: 'متوقفة',
+      },
+      resultUnit: 'شخص تم الوصول إليه',
+      costUnit: 'لكل ١٠٠٠ وصول',
+      totalsLabel: 'نتائج {count} حملات',
+      totals: {
+        spend: 'إجمالي الإنفاق',
+        reach: 'إجمالي الوصول',
+        impressions: 'إجمالي مرات الظهور',
+        frequency: 'متوسط التكرار',
+      },
+      objectiveNote:
+        'هدف الوصول. يعرض مدير الإعلانات التكرار بدل العائد في هذا النوع من الشراء.',
+      provenance:
+        'إجماليات الحساب فعلية. أما التوزيع على الحملات فهو تفصيل مُطابق للإجماليات وليس تصديراً من مدير الإعلانات.',
+      scrollHint: 'مرّر أفقياً لعرض كل الأعمدة',
     },
     campaigns: {
       eyebrow: 'دراسات الحملات',

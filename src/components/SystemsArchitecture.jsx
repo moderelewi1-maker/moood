@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Maximize2, CircuitBoard } from 'lucide-react'
 import SectionHeading from './ui/SectionHeading.jsx'
 import SchematicViewer from './ui/SchematicViewer.jsx'
+import MetaAdsDashboard from './ui/MetaAdsDashboard.jsx'
 import { automationItems } from '../data/automation.js'
 import { EASE_AUTHORITY } from '../lib/motion.js'
 import { useLocale } from '../i18n/useLocale.js'
@@ -127,6 +128,10 @@ export default function SystemsArchitecture() {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        <div className="mt-6">
+          <MetaAdsDashboard />
         </div>
 
         {hasTarget && (
