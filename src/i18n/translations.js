@@ -15,6 +15,12 @@ export const translations = {
       title: 'Modar Akram Elewi — Digital Marketing & Growth',
       switchTo: 'التبديل إلى العربية',
     },
+    audio: {
+      on: 'Sound: On',
+      off: 'Sound: Off',
+      enable: 'Turn ambient sound on',
+      disable: 'Turn ambient sound off',
+    },
     nav: {
       brand: 'M.Elewi',
       home: 'Home',
@@ -295,6 +301,12 @@ export const translations = {
     meta: {
       title: 'مضر أكرم عليوي — التسويق الرقمي والنمو',
       switchTo: 'Switch to English',
+    },
+    audio: {
+      on: 'الصوت: مفعّل',
+      off: 'الصوت: صامت',
+      enable: 'تشغيل الصوت المحيط',
+      disable: 'كتم الصوت المحيط',
     },
     nav: {
       brand: 'م.عليوي',

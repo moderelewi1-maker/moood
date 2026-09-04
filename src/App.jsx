@@ -11,6 +11,7 @@ import OperatingSystem from './components/OperatingSystem.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import CustomCursor from './components/ui/CustomCursor.jsx'
+import SoundToggle from './components/ui/SoundToggle.jsx'
 
 export default function App() {
   useLenis()
@@ -32,6 +33,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <SoundToggle />
     </div>
   )
 }
