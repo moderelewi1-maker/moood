@@ -17,7 +17,7 @@ export default function OperatingSystem() {
     <section id="system" className="relative py-28 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <SectionHeading
-          index="06"
+          index="07"
           eyebrow={copy.eyebrow}
           title={copy.title}
           description={copy.description}
