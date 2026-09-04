@@ -218,39 +218,68 @@ export const translations = {
         actual: 'Actual size',
       },
     },
-    ads: {
-      eyebrow: 'Account Performance',
-      title: 'Meta Ads Manager — Account View',
+    audit: {
+      eyebrow: 'Performance Marketing',
+      title: 'Meta Ads Scaling Ledger',
       description:
-        'Live account structure across active and completed reach campaigns.',
+        'Ads Manager telemetry across acquisition, conversational commerce and localized reach funnels.',
+      beacon: 'Verified Meta Ads audit',
+      inspect: 'Inspect ledger',
+      inspectHint: 'Opens the raw Ads Manager capture · zoom and pan to read individual rows',
       columns: {
         campaign: 'Campaign',
+        objective: 'Objective',
         results: 'Results',
         costPerResult: 'Cost per result',
         spend: 'Amount spent',
-        frequency: 'Frequency',
-        impressions: 'Impressions',
         reach: 'Reach',
+        impressions: 'Impressions',
+        frequency: 'Frequency',
       },
-      status: {
-        active: 'Active',
-        completed: 'Completed',
-        paused: 'Paused',
+      objectives: {
+        linkClicks: 'Link clicks',
+        conversations: 'Messaging conversations',
+        reach: 'Reach',
+        profileVisits: 'Profile visits',
       },
-      resultUnit: 'people reached',
-      costUnit: 'per 1,000 reached',
-      totalsLabel: 'Results from {count} campaigns',
+      units: {
+        linkClicks: 'clicks',
+        conversations: 'conversations',
+        reach: 'accounts reached',
+        profileVisits: 'visits',
+        perThousand: 'per 1,000 accounts',
+      },
+      inferredNote: 'Objective inferred from the attribution window; label clipped in the capture.',
+      scopeNote:
+        'Nine rows shown, sorted by spend. Totals below are account-level across all campaigns, not the sum of these rows.',
+      totalsLabel: 'Account totals',
       totals: {
         spend: 'Total spend',
         reach: 'Total reach',
         impressions: 'Total impressions',
-        frequency: 'Average frequency',
+        frequency: 'Blended frequency',
       },
-      objectiveNote:
-        'Reach objective. Ads Manager reports frequency rather than return for this buying type.',
-      provenance:
-        'Account totals are actual. The per-campaign split is a reconciling breakdown, not an Ads Manager export.',
+      reachUnit: 'Meta accounts',
       scrollHint: 'Scroll to see all columns',
+      findingsTitle: 'Strategic Performance Audit',
+      findings: {
+        acquisition: {
+          title: 'Ultra-low acquisition economics',
+          body: 'Direct-to-WhatsApp and link acquisition ran at $0.01–$0.02 per click, with Instagram profile traffic captured at $0.003 per visit — sub-cent traffic at volume.',
+        },
+        conversational: {
+          title: 'Conversational commerce funnels',
+          body: 'Intent-led messaging campaigns for Jood and Clean Water held $0.07–$0.17 per qualified inquiry, filtering low-intent audiences before anything reached a sales agent.',
+        },
+        saturation: {
+          title: 'Saturation and frequency control',
+          body: 'Frequency held between 1.03 and 1.81 across every active tier, extracting unique reach without tipping campaigns into creative fatigue.',
+        },
+        scaling: {
+          title: 'High-volume distribution',
+          body: 'Delivery infrastructure carried 37.2M unique accounts reached and 52.6M impressions across omnichannel consumer touchpoints.',
+        },
+      },
     },
     campaigns: {
       eyebrow: 'Campaign Studies',
@@ -566,39 +595,68 @@ export const translations = {
         actual: 'الحجم الأصلي',
       },
     },
-    ads: {
-      eyebrow: 'أداء الحساب',
-      title: 'مدير إعلانات ميتا — عرض الحساب',
+    audit: {
+      eyebrow: 'تسويق الأداء',
+      title: 'سجل توسع حملات Meta',
       description:
-        'بنية الحساب عبر حملات الوصول النشطة والمكتملة.',
+        'بيانات من مدير الإعلانات تغطي قنوات الاستحواذ والمحادثة والوصول الموجّه.',
+      beacon: 'تدقيق أداء معتمد',
+      inspect: 'فحص السجل',
+      inspectHint: 'يفتح لقطة مدير الإعلانات الأصلية · كبّر وحرّك لقراءة الصفوف',
       columns: {
         campaign: 'الحملة',
+        objective: 'الهدف',
         results: 'النتائج',
-        costPerResult: 'تكلفة النتيجة',
+        costPerResult: 'التكلفة لكل نتيجة',
         spend: 'المبلغ المُنفق',
-        frequency: 'التكرار',
-        impressions: 'مرات الظهور',
         reach: 'الوصول',
+        impressions: 'مرات الظهور',
+        frequency: 'التكرار',
       },
-      status: {
-        active: 'نشطة',
-        completed: 'مكتملة',
-        paused: 'متوقفة',
+      objectives: {
+        linkClicks: 'النقرات على الروابط',
+        conversations: 'محادثات تم بدؤها',
+        reach: 'الوصول',
+        profileVisits: 'زيارات الملف الشخصي',
       },
-      resultUnit: 'شخص تم الوصول إليه',
-      costUnit: 'لكل ١٠٠٠ وصول',
-      totalsLabel: 'نتائج {count} حملات',
+      units: {
+        linkClicks: 'نقرة',
+        conversations: 'محادثة',
+        reach: 'حساب تم الوصول إليه',
+        profileVisits: 'زيارة',
+        perThousand: 'لكل ١٠٠٠ حساب',
+      },
+      inferredNote: 'الهدف مستنتج من نافذة الإسناد؛ التسمية مقطوعة في اللقطة.',
+      scopeNote:
+        'تسعة صفوف مرتّبة حسب الإنفاق. الإجماليات أدناه على مستوى الحساب بالكامل، وليست مجموع هذه الصفوف.',
+      totalsLabel: 'إجماليات الحساب',
       totals: {
         spend: 'إجمالي الإنفاق',
         reach: 'إجمالي الوصول',
         impressions: 'إجمالي مرات الظهور',
-        frequency: 'متوسط التكرار',
+        frequency: 'التكرار المُجمّع',
       },
-      objectiveNote:
-        'هدف الوصول. يعرض مدير الإعلانات التكرار بدل العائد في هذا النوع من الشراء.',
-      provenance:
-        'إجماليات الحساب فعلية. أما التوزيع على الحملات فهو تفصيل مُطابق للإجماليات وليس تصديراً من مدير الإعلانات.',
+      reachUnit: 'حساب Meta',
       scrollHint: 'مرّر أفقياً لعرض كل الأعمدة',
+      findingsTitle: 'التدقيق الاستراتيجي للأداء',
+      findings: {
+        acquisition: {
+          title: 'كفاءة الاستحواذ والتكلفة الميكروية',
+          body: 'الاستحواذ المباشر عبر واتساب والروابط بتكلفة ٠٫٠١–٠٫٠٢ دولار للنقرة، وزيارات ملف إنستغرام عند ٠٫٠٠٣ دولار للزيارة — أي أقل من سنت واحد على نطاق واسع.',
+        },
+        conversational: {
+          title: 'هندسة قنوات المحادثة المباشرة',
+          body: 'حملات المحادثة لعلامتي Jood وكلين ووتر ضمن ٠٫٠٧–٠٫١٧ دولار للاستفسار المؤهل، مع تصفية الجمهور منخفض النية قبل تحويله إلى فريق المبيعات.',
+        },
+        saturation: {
+          title: 'إدارة التشبع ومعدل التكرار',
+          body: 'بقي التكرار بين ١٫٠٣ و١٫٨١ في كل المستويات النشطة، لاستخلاص أقصى وصول فريد دون إنهاك المحتوى الإعلاني.',
+        },
+        scaling: {
+          title: 'التوسع الرأسي والأفقي',
+          body: 'بنية توزيع استوعبت الوصول إلى ٣٧٫٢ مليون حساب فريد و٥٢٫٦ مليون ظهور عبر نقاط تواصل متعددة القنوات.',
+        },
+      },
     },
     campaigns: {
       eyebrow: 'دراسات الحملات',

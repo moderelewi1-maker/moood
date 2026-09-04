@@ -157,7 +157,9 @@ export default function SchematicViewer({ item, onClose }) {
           {/* Console bar */}
           <div className="flex flex-none items-center gap-3 border-b border-hairline px-4 py-3 sm:px-6">
             <span className="mono-meta text-cobalt" dir="ltr">{item.ref}</span>
-            <span className="mono-meta hidden sm:inline">{item.nodeCount} NODES</span>
+            {item.nodeCount != null && (
+              <span className="mono-meta hidden sm:inline">{item.nodeCount} NODES</span>
+            )}
             <span className="mono-meta hidden md:inline" dir="ltr">
               {Math.round(scale * 100)}%
             </span>
