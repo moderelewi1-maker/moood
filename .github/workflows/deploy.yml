@@ -61,6 +61,12 @@ jobs:
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
+          # Pinned to v4. The action defaults to wrangler 3.x, which cannot
+          # parse an assets-only Worker — a config with `assets` and no
+          # `main` is a v4 feature, and v3 rejects it with "Missing
+          # entry-point". This is the exact version the config was validated
+          # against locally with `wrangler deploy --dry-run`.
+          wranglerVersion: '4.129.0'
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           # accountId is optional when the token is scoped to one account;
           # set the secret if the token can see more than one.
