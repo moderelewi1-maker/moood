@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { PlayCircle, PauseCircle, Volume2, VolumeX, Maximize2, Clock3, Film, Gauge, Crosshair, TrendingUp } from 'lucide-react'
+import { PlayCircle, PauseCircle, Volume2, VolumeX, Maximize2, Clock3, Film, Gauge, Crosshair, Clapperboard } from 'lucide-react'
 import AssetImage from './AssetImage.jsx'
 import { toEmbedUrl } from '../../lib/utils.js'
 import { useLocale } from '../../i18n/useLocale.js'
@@ -19,7 +19,7 @@ export default function VideoCard({ video, onExpand }) {
     title: video.title[locale],
     hook: video.hook[locale],
     pacing: video.pacing[locale],
-    ctr: video.ctr,
+    tag: video.tag[locale],
   }
 
   const hasEmbed = Boolean(video.embedUrl)
@@ -194,9 +194,9 @@ export default function VideoCard({ video, onExpand }) {
       <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-4 sm:p-5">
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-display text-sm font-semibold text-ink sm:text-base">{text.title}</h3>
-          <span className="flex shrink-0 items-center gap-1 rounded-full bg-accent/12 px-2.5 py-1 text-[10px] font-semibold text-accent-bright">
-            <TrendingUp className="h-3 w-3 rtl:-scale-x-100" aria-hidden="true" />
-            <span dir="ltr">{text.ctr}</span>
+          <span className="flex shrink-0 items-center gap-1.5 rounded-sm border border-hairline px-2.5 py-1 text-[10px] font-medium text-ink-muted">
+            <Clapperboard className="h-3 w-3" aria-hidden="true" />
+            <span>{text.tag}</span>
           </span>
         </div>
 

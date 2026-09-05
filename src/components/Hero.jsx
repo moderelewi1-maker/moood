@@ -152,7 +152,7 @@ export default function Hero() {
             {/* Caption rule, as on a slate. */}
             <div className="mt-3 flex items-center justify-between gap-3 border-t border-hairline pt-3">
               <span className="mono-meta" dir="ltr">MAE · 01</span>
-              <span className="mono-meta" dir="ltr">4:5 · BAGHDAD, IQ</span>
+              <span className="mono-meta" dir="ltr">4:5 · DAMASCUS · REMOTE</span>
             </div>
           </div>
 

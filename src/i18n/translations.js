@@ -39,32 +39,32 @@ export const translations = {
     },
     hero: {
       name: 'Modar Akram Elewi',
-      title: 'Digital Marketing & Growth Manager | Paid Media Specialist & High-Impact Visual Producer',
+      title: 'Digital Marketing & Growth Manager | Paid Media & Visual Creative Systems',
       headline: {
-        lead: 'Connecting ',
-        highlightOne: 'digital performance analytics',
-        mid: ' with ',
-        highlightTwo: 'advertising content engineered for return on investment',
+        lead: 'Where ',
+        highlightOne: 'performance data',
+        mid: ' meets ',
+        highlightTwo: 'creative execution.',
       },
       subtitle:
-        'Building paid acquisition channels, scaling Meta Ads budgets, and engineering marketing operations automation.',
+        'I build paid acquisition systems, scale Meta campaigns, produce performance-driven creative, and automate the operations behind growth.',
       badges: {
         meta: 'Meta Blueprint Credentialed',
         roas: 'ROAS Optimization',
-        funnel: 'Full-Funnel Media Buying',
+        funnel: 'Full-Funnel Acquisition',
       },
-      ctaReel: 'View Portfolio',
-      ctaContact: 'Get in Touch for Collaboration',
+      ctaReel: 'View Work',
+      ctaContact: 'Discuss a Growth Opportunity',
       availability: 'Open to growth roles & partnerships',
-      scroll: 'Scroll',
+      scroll: 'Explore',
       scrollAria: 'Scroll to next section',
       portraitAlt: 'Portrait of Modar Akram Elewi',
     },
     about: {
       eyebrow: 'The Discipline',
-      title: 'Three Phases, One Performance Engine',
+      title: 'Three Disciplines, One Performance Engine',
       description:
-        'Every asset moves through the same pipeline — shot with intent, cut for retention, then scaled against the numbers.',
+        'Every creative asset moves through the same discipline: purposeful production, retention-led editing, and data-driven iteration.',
       phases: {
         production: {
           index: '01',
@@ -157,12 +157,12 @@ export const translations = {
     },
     design: {
       eyebrow: 'Design Gallery',
-      title: 'Graphic Design & Visual Branding',
+      title: 'Design Systems & Visual Identity',
       description:
-        'Ad banners, brand systems, and performance creative — filter by track, click any tile to open it full screen.',
+        'Ad banners, brand systems, and performance creative — filter by track, click any tile to inspect full screen.',
       categories: {
         all: 'All Work',
-        packshot: 'E-Commerce Packshot',
+        packshot: 'Product Photography',
         'direct-response': 'Direct Response',
         brand: 'Brand Identity',
         logistics: 'Logistics',
@@ -177,7 +177,7 @@ export const translations = {
       counter: 'of',
     },
     video: {
-      eyebrow: 'Media Direction & Production',
+      eyebrow: 'Creative Direction & Video Production',
       title: 'Shot for Attention, Cut for Retention',
       description:
         'Landscape commercials and long-form retention edits alongside vertical direct-response hooks built for the feed.',
@@ -189,7 +189,7 @@ export const translations = {
       labels: {
         hook: 'Hook Angle',
         pacing: 'Pacing',
-        ctr: 'CTR Impact',
+        tag: 'Style',
       },
       addEmbed: 'Add YouTube / Vimeo embed',
       cinema: {
@@ -202,7 +202,7 @@ export const translations = {
         fullscreen: 'Full screen',
         exitFullscreen: 'Exit full screen',
         close: 'Close',
-        silent: 'Silent by design',
+        silent: 'Muted by default',
         hint: 'Space to play · M to mute · Esc to close',
       },
       controls: {
@@ -215,9 +215,9 @@ export const translations = {
     },
     systems: {
       eyebrow: 'Systems & Automation',
-      title: 'Systems & AI Architecture',
+      title: 'Systems & AI Automation Architecture',
       description:
-        'Architecting autonomous agents, real-time CRM synchronisations, and custom conversational funnels.',
+        'Designing autonomous agents, real-time CRM synchronizations, and custom conversational funnels.',
       labels: {
         stack: 'Stack',
         nodes: 'Nodes in graph',
@@ -235,9 +235,9 @@ export const translations = {
     },
     audit: {
       eyebrow: 'Paid Media Management',
-      title: 'Meta Ads Scaling Ledger',
+      title: 'Meta Ads Performance Ledger',
       description:
-        'Managing and scaling return-oriented advertising budgets across acquisition, conversational commerce and localized reach funnels.',
+        'Managing and scaling return-oriented advertising budgets across acquisition, conversational commerce, and localized reach funnels.',
       beacon: 'Verified Meta Ads audit',
       inspect: 'Inspect ledger',
       inspectHint: 'Opens the raw Ads Manager capture · zoom and pan to read individual rows',
@@ -274,28 +274,28 @@ export const translations = {
         impressions: 'Total impressions',
         frequency: 'Blended frequency',
       },
-      reachUnit: 'Meta accounts',
+      reachUnit: 'Reported reach',
       scrollHint: 'Scroll to see all columns',
       contextTitle: 'How to read these figures',
       context:
-        'Every objective here is top-of-funnel — reach, link clicks, profile visits and messaging — so cost per result is the cost of a click, a visit or an opened conversation, not the cost of a sale. The qualifying step happens after the click, inside WhatsApp, where intent is filtered before anything reaches a sales agent. Costs at this level reflect MENA reach inventory priced at a $0.079 blended CPM, held there by frequency discipline between 1.03 and 1.81 rather than by repeated impressions against the same audience. Reach and impressions are cumulative across the account, not a single campaign.',
+        'These campaigns were optimized for reach, link clicks, profile visits, and messaging — not direct sales. Cost per result therefore reflects the platform objective selected for each campaign rather than customer acquisition cost. Qualification happened downstream, within the WhatsApp conversation flow, before qualified opportunities reached the sales team.',
       findingsTitle: 'Strategic Performance Audit',
       findings: {
         acquisition: {
-          title: 'Ultra-low acquisition economics',
-          body: 'Direct-to-WhatsApp and link acquisition ran at $0.01–$0.02 per click, with Instagram profile traffic captured at $0.003 per visit — sub-cent traffic at volume.',
+          title: 'Efficient acquisition economics',
+          body: 'Selected traffic campaigns delivered low platform-level costs, with click costs reaching $0.01–$0.02 and profile visits at $0.003 in the reported campaigns.',
         },
         conversational: {
-          title: 'Conversational commerce funnels',
-          body: 'Intent-led messaging campaigns for Jood and Clean Water held $0.07–$0.17 per qualified inquiry, filtering low-intent audiences before anything reached a sales agent.',
+          title: 'Conversational acquisition flows',
+          body: 'Messaging campaigns generated conversations at $0.07–$0.17 per result, with lead qualification taking place downstream in the conversation flow.',
         },
         saturation: {
-          title: 'Saturation and frequency control',
-          body: 'Frequency held between 1.03 and 1.81 across every active tier, extracting unique reach without tipping campaigns into creative fatigue.',
+          title: 'Frequency and audience control',
+          body: 'Reported campaign frequency remained controlled between 1.03 and 1.81 across the displayed rows to minimize ad fatigue.',
         },
         scaling: {
-          title: 'High-volume distribution',
-          body: 'Delivery infrastructure carried 37.2M unique accounts reached and 52.6M impressions across omnichannel consumer touchpoints.',
+          title: 'Scale of distribution',
+          body: 'The account reported 37.27M reach and 52.67M impressions across the measured campaigns.',
         },
       },
     },
@@ -313,6 +313,7 @@ export const translations = {
         cac: 'CAC Reduction',
         scale: 'Spend Scaled',
       },
+      illustrative: 'Illustrative Case Study',
       items: {
         'us-acquisition': {
           market: 'US Operations Hub — B2B Logistics',
@@ -389,9 +390,9 @@ export const translations = {
     },
     contact: {
       eyebrow: 'Contact & Global Connect',
-      title: 'Start Your Next Project With Me',
+      title: 'Discuss a Growth Opportunity',
       description:
-        'Available for full-time growth roles, media buying partnerships, and direct-response video production.',
+        'Available for growth management roles, media buying partnerships, and performance video creative systems.',
       emailLabel: 'Email',
       sendEmail: 'Send an Email',
       copy: 'Copy Address',
@@ -412,7 +413,7 @@ export const translations = {
     },
     audio: {
       on: 'الصوت: مفعّل',
-      off: 'الصوت: صامت',
+      off: 'الصوت: مغلق',
       enable: 'تشغيل الصوت المحيط',
       prompt: 'استمع للأجواء الصوتية',
       disable: 'كتم الصوت المحيط',
@@ -434,50 +435,50 @@ export const translations = {
     },
     hero: {
       name: 'مضر أكرم عليوي',
-      title: 'مدير تسويق رقمي ونمو | خبير إعلانات ممولة وإنتاج مرئي عالي التأثير',
+      title: 'مدير التسويق الرقمي والنمو | متخصص في الإعلام المدفوع والإنتاج المرئي',
       headline: {
-        lead: 'الربط بين ',
-        highlightOne: 'التحليل البياني الرقمي',
-        mid: ' وصناعة المحتوى الإعلاني الموجه لتحقيق ',
-        highlightTwo: 'أعلى عائد استثماري',
+        lead: 'حيث تلتقي ',
+        highlightOne: 'بيانات الأداء',
+        mid: '',
+        highlightTwo: 'بالتنفيذ الإبداعي.',
       },
       subtitle:
-        'بناء قنوات الاستحواذ المدفوعة، التوسع في ميزانيات Meta Ads، وهندسة أتمتة العمليات التسويقية.',
+        'أبني أنظمة الاستحواذ المدفوعة، وأوسّع حملات Meta، وأنتج محتوى موجهاً للأداء، وأؤتمت العمليات التي تدعم النمو.',
       badges: {
-        meta: 'معتمد من Meta Blueprint',
-        roas: 'تحسين العائد على الإنفاق الإعلاني',
-        funnel: 'إدارة القمع التسويقي الكامل',
+        meta: 'حاصل على اعتماد Meta Blueprint',
+        roas: 'تحسين العائد على الإنفاق (ROAS)',
+        funnel: 'إدارة مسارات التحويل الكاملة',
       },
-      ctaReel: 'استعرض معرض الأعمال',
-      ctaContact: 'تواصل للتعاون المشترك',
+      ctaReel: 'استعرض الأعمال',
+      ctaContact: 'ناقش فرصة نمو',
       availability: 'متاح لفرص النمو والشراكات',
-      scroll: 'مرّر',
+      scroll: 'استكشف',
       scrollAria: 'الانتقال إلى القسم التالي',
       portraitAlt: 'صورة مضر أكرم عليوي',
     },
     about: {
       eyebrow: 'منهجية العمل',
-      title: 'ثلاث مراحل، ومحرك أداء واحد',
+      title: 'ثلاثة مسارات. منظومة أداء واحدة.',
       description:
-        'كل عمل إعلاني يمر عبر المسار نفسه: تصوير بهدف، ومونتاج يخدم الاحتفاظ، ثم تحجيم يقوده الرقم.',
+        'كل أصل إبداعي يمر عبر المنهج نفسه: تصوير مقصود، ومونتاج مدفوع بسلوك المشاهدة، ثم تحسين تقوده البيانات.',
       phases: {
         production: {
           index: '٠١',
           label: 'الإنتاج',
-          title: 'الإنتاج الميداني المباشر',
-          text: 'ضبط الزوايا وصناعة المشاهد الإعلانية القائمة على علم نفس المستهلك (Consumer Psychology).',
+          title: 'الإنتاج في موقع التصوير',
+          text: 'التكوين، وتوجيه الكاميرا، وبناء المشاهد الإعلانية المبنية على فهم سلوك المستهلك.',
         },
         post: {
           index: '٠٢',
           label: 'ما بعد الإنتاج',
-          title: 'المونتاج وهندسة الاحتفاظ',
-          text: 'تحرير سينمائي سريع يضمن رفع معدل المشاهدة (Retention Rate) ونسب النقر (CTR).',
+          title: 'المونتاج وهندسة المشاهدة',
+          text: 'تحرير سريع يعزز معدل إكمال المشاهدة (Watch-Through Rate) ونسب النقر (CTR).',
         },
         scaling: {
           index: '٠٣',
-          label: 'التحجيم والنمو',
-          title: 'إدارة الحملات والتحجيم',
-          text: 'توزيع الميزانيات بدقة، استهداف الشرائح المربحة، وتحقيق أعلى عائد على الإنفاق الإعلاني (ROAS).',
+          label: 'التوسع والنمو',
+          title: 'إدارة الحملات والتوسع',
+          text: 'توزيع الميزانيات بدقة، استهداف الشرائح الأعلى أداءً، وتحسين العائد على الإنفاق (ROAS).',
         },
       },
       stats: {
@@ -551,15 +552,15 @@ export const translations = {
       },
     },
     design: {
-      eyebrow: 'معرض التصاميم',
-      title: 'التصميم الجرافيكي والهوية البصرية',
+      eyebrow: 'معرض التصميم',
+      title: 'التصميم والهوية البصرية',
       description:
-        'لافتات إعلانية وأنظمة هوية بصرية ومواد إعلانية موجهة للأداء — صنّف حسب المسار، واضغط أي عمل لعرضه بملء الشاشة.',
+        'لافتات إعلانية، وأنظمة هوية، وإبداعات مصممة للأداء — اختر الفئة واضغط أي عمل لعرضه بالحجم الكامل.',
       categories: {
-        all: 'كل الأعمال',
-        packshot: 'صور المنتجات التجارية',
+        all: 'جميع الأعمال',
+        packshot: 'تصوير المنتجات',
         'direct-response': 'الاستجابة المباشرة',
-        brand: 'الهوية البصرية',
+        brand: 'الهوية والعلامة التجارية',
         logistics: 'الخدمات اللوجستية',
       },
       itemAlt: 'نموذج عمل تصميمي',
@@ -572,10 +573,10 @@ export const translations = {
       counter: 'من',
     },
     video: {
-      eyebrow: 'إخراج وإنتاج الوسائط السينمائية',
-      title: 'تصوير يجذب الانتباه، ومونتاج يحافظ عليه',
+      eyebrow: 'الإخراج والإنتاج البصري',
+      title: 'نصوّر لجذب الانتباه، ونمنتج للحفاظ عليه.',
       description:
-        'إعلانات أفقية ومونتاج طويل عالي الاحتفاظ، إلى جانب خطّافات عمودية للاستجابة المباشرة مصمّمة لبيئة التمرير السريع.',
+        'إعلانات أفقية ومحتوى مصمم لتعزيز المشاهدة، إلى جانب افتتاحيات عمودية مهيأة للاستجابة المباشرة داخل المنصات.',
       formats: {
         all: 'كل الصيغ',
         landscape: 'أفقي 16:9',
@@ -584,7 +585,7 @@ export const translations = {
       labels: {
         hook: 'زاوية الخطّاف',
         pacing: 'إيقاع المونتاج',
-        ctr: 'أثر نسبة النقر',
+        tag: 'الأسلوب',
       },
       addEmbed: 'أضف رابط يوتيوب / فيميو',
       cinema: {
@@ -593,11 +594,11 @@ export const translations = {
         mute: 'كتم الصوت',
         unmute: 'تشغيل الصوت',
         volume: 'مستوى الصوت',
-        scrub: 'التنقل في المقطع',
+        scrub: 'التنقل',
         fullscreen: 'ملء الشاشة',
         exitFullscreen: 'إنهاء ملء الشاشة',
         close: 'إغلاق',
-        silent: 'صامت بحكم التصميم',
+        silent: 'يبدأ بلا صوت',
         hint: 'مسافة للتشغيل · M للكتم · Esc للإغلاق',
       },
       controls: {
@@ -610,9 +611,9 @@ export const translations = {
     },
     systems: {
       eyebrow: 'الأنظمة والأتمتة',
-      title: 'هندسة الأنظمة والأتمتة الذكية',
+      title: 'هندسة الأنظمة والذكاء الاصطناعي',
       description:
-        'بناء وكلاء مستقلين، ومزامنة فورية لبيانات العملاء، وقنوات محادثة مصمّمة خصيصاً.',
+        'تصميم وكلاء ذكيين، ومزامنة شبه فورية لبيانات العملاء، ومسارات محادثة مخصصة.',
       labels: {
         stack: 'التقنيات',
         nodes: 'عدد العقد',
@@ -629,10 +630,10 @@ export const translations = {
       },
     },
     audit: {
-      eyebrow: 'إدارة الميزانيات الإعلانية',
-      title: 'سجل توسع حملات Meta',
+      eyebrow: 'إدارة الإعلانات المدفوعة',
+      title: 'سجل أداء حملات Meta',
       description:
-        'إدارة وتوسيع الميزانيات الإعلانية الموجهة للعائد عبر قنوات الاستحواذ والمحادثة والوصول الموجّه.',
+        'إدارة وتوسيع ميزانيات الإعلانات الموجهة للأداء عبر مسارات الاستحواذ والتجارة بالمحادثة والوصول الموجّه.',
       beacon: 'تدقيق أداء معتمد',
       inspect: 'فحص السجل',
       inspectHint: 'يفتح لقطة مدير الإعلانات الأصلية · كبّر وحرّك لقراءة الصفوف',
@@ -669,28 +670,28 @@ export const translations = {
         impressions: 'إجمالي مرات الظهور',
         frequency: 'التكرار المُجمّع',
       },
-      reachUnit: 'حساب Meta',
+      reachUnit: 'وصول مُسجّل',
       scrollHint: 'مرّر أفقياً لعرض كل الأعمدة',
       contextTitle: 'كيف تُقرأ هذه الأرقام',
       context:
-        'جميع الأهداف هنا في أعلى القمع — الوصول والنقرات وزيارات الملف والمحادثات — أي أن تكلفة النتيجة هي كلفة نقرة أو زيارة أو محادثة مفتوحة، لا كلفة عملية بيع. تتم مرحلة التأهيل بعد النقرة داخل واتساب، حيث تُصفّى نية العميل قبل تحويله إلى فريق المبيعات. وتعكس هذه الكلفة أسعار مخزون الوصول في أسواق المنطقة عند متوسط تكلفة ألف ظهور يبلغ ٠٫٠٧٩ دولار، مع انضباط في التكرار بين ١٫٠٣ و١٫٨١ بدلاً من تكرار العرض على الجمهور نفسه. أرقام الوصول والظهور تراكمية على مستوى الحساب وليست حملة واحدة.',
+        'هذه الحملات حُسّنت لتحقيق أهداف مثل الوصول، والنقرات، وزيارات الملف، وبدء المحادثات، لا لإثبات المبيعات المباشرة. لذلك تعكس تكلفة النتيجة الهدف الذي جرى تحسين الحملة من أجله، ولا تمثل تكلفة اكتساب العميل بالضرورة. وجرت عملية التأهيل في المرحلة اللاحقة داخل مسار المحادثة عبر واتساب، قبل تحويل الفرص المؤهلة إلى فريق المبيعات.',
       findingsTitle: 'التدقيق الاستراتيجي للأداء',
       findings: {
         acquisition: {
-          title: 'كفاءة الاستحواذ والتكلفة الميكروية',
-          body: 'الاستحواذ المباشر عبر واتساب والروابط بتكلفة ٠٫٠١–٠٫٠٢ دولار للنقرة، وزيارات ملف إنستغرام عند ٠٫٠٠٣ دولار للزيارة — أي أقل من سنت واحد على نطاق واسع.',
+          title: 'اقتصاديات استحواذ منخفضة التكلفة',
+          body: 'حققت حملات الزيارات تكلفة منخفضة على مستوى المنصة، مع كلفة نقرة بلغت 0.01–0.02 دولار، وزيارات للملف الشخصي بـ 0.003 دولار في الحملات المسجلة.',
         },
         conversational: {
-          title: 'هندسة قنوات المحادثة المباشرة',
-          body: 'حملات المحادثة لعلامتي Jood وكلين ووتر ضمن ٠٫٠٧–٠٫١٧ دولار للاستفسار المؤهل، مع تصفية الجمهور منخفض النية قبل تحويله إلى فريق المبيعات.',
+          title: 'مسارات الاستحواذ عبر المحادثة',
+          body: 'ولّدت حملات الرسائل محادثات بتكلفة 0.07–0.17 دولار لكل نتيجة، مع إتمام تأهيل العملاء في المرحلة اللاحقة داخل مسار المحادثة.',
         },
         saturation: {
-          title: 'إدارة التشبع ومعدل التكرار',
-          body: 'بقي التكرار بين ١٫٠٣ و١٫٨١ في كل المستويات النشطة، لاستخلاص أقصى وصول فريد دون إنهاك المحتوى الإعلاني.',
+          title: 'ضبط التكرار والجمهور',
+          body: 'بقي معدل التكرار منضبطاً بين 1.03 و 1.81 في الصفوف المعروضة للحد من تشبع الجمهور وإنهاك المحتوى الإعلاني.',
         },
         scaling: {
-          title: 'التوسع الرأسي والأفقي',
-          body: 'بنية توزيع استوعبت الوصول إلى ٣٧٫٢ مليون حساب فريد و٥٢٫٦ مليون ظهور عبر نقاط تواصل متعددة القنوات.',
+          title: 'التوزيع على نطاق واسع',
+          body: 'سجل الحساب 37.27 مليون وصول و 52.67 مليون ظهور عبر الحملات المقاسة.',
         },
       },
     },
@@ -708,6 +709,7 @@ export const translations = {
         cac: 'خفض تكلفة الاستحواذ',
         scale: 'توسيع الإنفاق',
       },
+      illustrative: 'دراسة توضيحية',
       items: {
         'us-acquisition': {
           market: 'السوق الأمريكي — خدمات لوجستية للشركات',
@@ -784,9 +786,9 @@ export const translations = {
     },
     contact: {
       eyebrow: 'تواصل وتعاون عالمي',
-      title: 'ابدأ مشروعك القادم معي',
+      title: 'ناقش فرصة نمو',
       description:
-        'متاح لأدوار النمو بدوام كامل، وشراكات الإعلانات الممولة، وإنتاج فيديوهات الاستجابة المباشرة.',
+        'متاح لأدوار إدارة النمو، وشراكات الإعلام المدفوع، وبناء أنظمة الفيديو الإعلاني الموجه للأداء.',
       emailLabel: 'البريد الإلكتروني',
       sendEmail: 'أرسل بريداً إلكترونياً',
       copy: 'نسخ العنوان',

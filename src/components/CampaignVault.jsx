@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Globe2, Layers3, Target, Workflow } from 'lucide-react'
+import { FlaskConical, Globe2, Layers3, Target, Workflow } from 'lucide-react'
 import SectionHeading from './ui/SectionHeading.jsx'
 import Reveal from './ui/Reveal.jsx'
 import { campaigns } from '../data/campaigns.js'
@@ -80,11 +80,19 @@ export default function CampaignVault() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.6 }}
                     transition={{ duration: 0.6, ease: EASE_AUTHORITY }}
-                    className="mt-auto grid grid-cols-3 gap-4 border-t border-hairline pt-5"
+                    className="mt-auto flex flex-col gap-4 border-t border-hairline pt-5"
                   >
-                    <Metric label={copy.labels.roas} value={campaign.metrics.roas} emphasis />
-                    <Metric label={copy.labels.cac} value={campaign.metrics.cac} />
-                    <Metric label={copy.labels.scale} value={campaign.metrics.scale} />
+                    {campaign.illustrative && (
+                      <span className="mono-meta inline-flex w-fit items-center gap-1.5 rounded-sm border border-hairline px-2 py-1 text-ink-faint">
+                        <FlaskConical className="h-3 w-3" aria-hidden="true" />
+                        {copy.illustrative}
+                      </span>
+                    )}
+                    <div className="grid grid-cols-3 gap-4">
+                      <Metric label={copy.labels.roas} value={campaign.metrics.roas} emphasis />
+                      <Metric label={copy.labels.cac} value={campaign.metrics.cac} />
+                      <Metric label={copy.labels.scale} value={campaign.metrics.scale} />
+                    </div>
                   </motion.div>
                 </article>
               </Reveal>

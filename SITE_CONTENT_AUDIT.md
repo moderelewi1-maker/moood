@@ -2,7 +2,7 @@
 
 Generated from the source of truth — `src/i18n/translations.js`, `src/data/*.js` and `src/App.jsx` — not transcribed by hand. Regenerate after any content change.
 
-**Commit at generation:** `188ab3d` · **Locales:** en, ar · **Translation keys:** 247 per locale, at full parity
+**Commit at generation:** `6dd445e` · **Locales:** en, ar · **Translation keys:** 248 per locale, at full parity
 
 ---
 
@@ -47,19 +47,19 @@ Navigation order:
 | --- | --- | --- |
 | Page title | Modar Akram Elewi — Digital Marketing & Growth | مضر أكرم عليوي — التسويق الرقمي والنمو |
 | Name | Modar Akram Elewi | مضر أكرم عليوي |
-| Headline (lead) | Connecting  | الربط بين  |
-| Headline (accent 1) | digital performance analytics | التحليل البياني الرقمي |
-| Headline (mid) |  with  |  وصناعة المحتوى الإعلاني الموجه لتحقيق  |
-| Headline (accent 2) | advertising content engineered for return on investment | أعلى عائد استثماري |
-| Role line | Digital Marketing & Growth Manager \| Paid Media Specialist & High-Impact Visual Producer | مدير تسويق رقمي ونمو \| خبير إعلانات ممولة وإنتاج مرئي عالي التأثير |
-| Subtitle | Building paid acquisition channels, scaling Meta Ads budgets, and engineering marketing operations automation. | بناء قنوات الاستحواذ المدفوعة، التوسع في ميزانيات Meta Ads، وهندسة أتمتة العمليات التسويقية. |
-| Badge · meta | Meta Blueprint Credentialed | معتمد من Meta Blueprint |
-| Badge · roas | ROAS Optimization | تحسين العائد على الإنفاق الإعلاني |
-| Badge · funnel | Full-Funnel Media Buying | إدارة القمع التسويقي الكامل |
-| CTA primary | View Portfolio | استعرض معرض الأعمال |
-| CTA secondary | Get in Touch for Collaboration | تواصل للتعاون المشترك |
+| Headline (lead) | Where  | حيث تلتقي  |
+| Headline (accent 1) | performance data | بيانات الأداء |
+| Headline (mid) |  meets  |  |
+| Headline (accent 2) | creative execution. | بالتنفيذ الإبداعي. |
+| Role line | Digital Marketing & Growth Manager \| Paid Media & Visual Creative Systems | مدير التسويق الرقمي والنمو \| متخصص في الإعلام المدفوع والإنتاج المرئي |
+| Subtitle | I build paid acquisition systems, scale Meta campaigns, produce performance-driven creative, and automate the operations behind growth. | أبني أنظمة الاستحواذ المدفوعة، وأوسّع حملات Meta، وأنتج محتوى موجهاً للأداء، وأؤتمت العمليات التي تدعم النمو. |
+| Badge · meta | Meta Blueprint Credentialed | حاصل على اعتماد Meta Blueprint |
+| Badge · roas | ROAS Optimization | تحسين العائد على الإنفاق (ROAS) |
+| Badge · funnel | Full-Funnel Acquisition | إدارة مسارات التحويل الكاملة |
+| CTA primary | View Work | استعرض الأعمال |
+| CTA secondary | Discuss a Growth Opportunity | ناقش فرصة نمو |
 | Availability | Open to growth roles & partnerships | متاح لفرص النمو والشراكات |
-| Scroll cue | Scroll | مرّر |
+| Scroll cue | Explore | استكشف |
 | Portrait alt | Portrait of Modar Akram Elewi | صورة مضر أكرم عليوي |
 
 Static plate metadata (deliberately Latin in both locales): `MAE · 01`, `4:5 · BAGHDAD, IQ`.
@@ -80,15 +80,15 @@ Drawn to `<canvas>` in `ScrollStoryCanvas.jsx`, not sourced from translations.
 
 | Field | English | العربية |
 | --- | --- | --- |
-| Eyebrow | Media Direction & Production | إخراج وإنتاج الوسائط السينمائية |
-| Title | Shot for Attention, Cut for Retention | تصوير يجذب الانتباه، ومونتاج يحافظ عليه |
-| Description | Landscape commercials and long-form retention edits alongside vertical direct-response hooks built for the feed. | إعلانات أفقية ومونتاج طويل عالي الاحتفاظ، إلى جانب خطّافات عمودية للاستجابة المباشرة مصمّمة لبيئة التمرير السريع. |
+| Eyebrow | Creative Direction & Video Production | الإخراج والإنتاج البصري |
+| Title | Shot for Attention, Cut for Retention | نصوّر لجذب الانتباه، ونمنتج للحفاظ عليه. |
+| Description | Landscape commercials and long-form retention edits alongside vertical direct-response hooks built for the feed. | إعلانات أفقية ومحتوى مصمم لتعزيز المشاهدة، إلى جانب افتتاحيات عمودية مهيأة للاستجابة المباشرة داخل المنصات. |
 
 **Format filters:** `All Formats` / `كل الصيغ` · `Landscape 16:9` / `أفقي 16:9` · `Vertical 9:16` / `عمودي 9:16`
 
 | # | Title (EN) | العنوان (AR) | Orientation | Duration | Silent |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Cinematic Production Reel | ريل الإنتاج السينمائي | vertical | 0:26 | **yes — forced** |
+| 1 | Cinematic Production Reel | عرض الإنتاج المرئي | vertical | 0:26 | **yes — forced** |
 | 2 | Adidas Brand Explainer | إعلان تعريفي — أديداس | vertical | 0:15 | no |
 | 3 | Marketing Services Explainer | فيديو تعريفي بخدمات التسويق | vertical | 0:30 | no |
 | 4 | Animated Follow CTA | دعوة متحركة للمتابعة | vertical | 0:22 | no |
@@ -96,38 +96,38 @@ Drawn to `<canvas>` in `ScrollStoryCanvas.jsx`, not sourced from translations.
 
 | # | Hook (EN) | الخطّاف (AR) |
 | --- | --- | --- |
-| 1 | Cold open on the set, not the pitch | افتتاحية من داخل موقع التصوير لا من العرض |
-| 2 | Origin-story hook in the first frame | خطّاف قصة النشأة في اللقطة الأولى |
-| 3 | Problem framed before the offer | طرح المشكلة قبل عرض الخدمة |
-| 4 | Silhouette motion holds the loop | حركة الظل تحافظ على التكرار |
-| 5 | Type reveal synced to the beat | ظهور النصوص متزامن مع الإيقاع |
+| 1 | Opens on the work, not the pitch. | يبدأ بالمشهد، لا بالكلام عنه. |
+| 2 | The origin story lands in the first frame. | تبدأ القصة من اللقطة الأولى. |
+| 3 | Lead with the problem, then the offer. | نبدأ بالمشكلة قبل تقديم الحل. |
+| 4 | The silhouette drives the loop. | حركة الظل تبني الحلقة البصرية. |
+| 5 | Typography reveals on the beat. | ظهور النصوص منسجم مع الإيقاع. |
 
-| # | Pacing (EN) | الإيقاع (AR) | CTR badge |
-| --- | --- | --- | --- |
-| 1 | Cinematic · kinetic caption cuts | سينمائي · قطعات مع نصوص حركية | +41% CTR |
-| 2 | Snap · product-led motion | سريع · حركة يقودها المنتج | +36% CTR |
-| 3 | Measured · typographic build | متزن · بناء طباعي | +28% CTR |
-| 4 | Loop · minimal silhouette animation | متكرر · أنيميشن ظلّي بسيط | +19% CTR |
-| 5 | Dense · After Effects composite | مكثّف · تركيب في أفتر إفكتس | Brand Lift |
+| # | Pacing (EN) | الإيقاع (AR) | Style tag (EN) | الأسلوب (AR) |
+| --- | --- | --- | --- | --- |
+| 1 | Cinematic · kinetic caption cuts | سينمائي · قطعات مع نصوص حركية | Performance Edit | مونتاج موجه للأداء |
+| 2 | Snap · product-led motion | سريع · حركة يقودها المنتج | Product-Led Motion | حركة يقودها المنتج |
+| 3 | Measured · typographic build | متزن · بناء طباعي | Typographic Build | بناء طباعي متزن |
+| 4 | Loop · minimal silhouette animation | متكرر · أنيميشن ظلّي بسيط | Loop Architecture | بنية تكرار بصرية |
+| 5 | Dense · After Effects composite | مكثّف · تركيب في أفتر إفكتس | Brand-Focused Motion | رسوم متحركة للعلامة |
 
-**Cinema modal labels:** Play / تشغيل · Pause / إيقاف مؤقت · Mute / كتم الصوت · Unmute / تشغيل الصوت · Volume / مستوى الصوت · Seek / التنقل في المقطع · Full screen / ملء الشاشة · Exit full screen / إنهاء ملء الشاشة · Close / إغلاق · Silent by design / صامت بحكم التصميم · Space to play · M to mute · Esc to close / مسافة للتشغيل · M للكتم · Esc للإغلاق
+**Cinema modal labels:** Play / تشغيل · Pause / إيقاف مؤقت · Mute / كتم الصوت · Unmute / تشغيل الصوت · Volume / مستوى الصوت · Seek / التنقل · Full screen / ملء الشاشة · Exit full screen / إنهاء ملء الشاشة · Close / إغلاق · Muted by default / يبدأ بلا صوت · Space to play · M to mute · Esc to close / مسافة للتشغيل · M للكتم · Esc للإغلاق
 
 ### 2.4 Design & Visual Identity Gallery
 
 | Field | English | العربية |
 | --- | --- | --- |
-| Eyebrow | Design Gallery | معرض التصاميم |
-| Title | Graphic Design & Visual Branding | التصميم الجرافيكي والهوية البصرية |
-| Description | Ad banners, brand systems, and performance creative — filter by track, click any tile to open it full screen. | لافتات إعلانية وأنظمة هوية بصرية ومواد إعلانية موجهة للأداء — صنّف حسب المسار، واضغط أي عمل لعرضه بملء الشاشة. |
+| Eyebrow | Design Gallery | معرض التصميم |
+| Title | Design Systems & Visual Identity | التصميم والهوية البصرية |
+| Description | Ad banners, brand systems, and performance creative — filter by track, click any tile to inspect full screen. | لافتات إعلانية، وأنظمة هوية، وإبداعات مصممة للأداء — اختر الفئة واضغط أي عمل لعرضه بالحجم الكامل. |
 
 **Category filters:**
 
 | Key | English | العربية | Assets |
 | --- | --- | --- | --- |
-| `all` | All Work | كل الأعمال | 71 |
-| `packshot` | E-Commerce Packshot | صور المنتجات التجارية | 54 |
+| `all` | All Work | جميع الأعمال | 71 |
+| `packshot` | Product Photography | تصوير المنتجات | 54 |
 | `direct-response` | Direct Response | الاستجابة المباشرة | 7 |
-| `brand` | Brand Identity | الهوية البصرية | 6 |
+| `brand` | Brand Identity | الهوية والعلامة التجارية | 6 |
 | `logistics` | Logistics | الخدمات اللوجستية | 4 |
 
 **Total assets:** 71 · initial render 12, expands to all 71.
@@ -150,8 +150,8 @@ Sample titles (first 8 of 71):
 | Field | English | العربية |
 | --- | --- | --- |
 | Eyebrow | Systems & Automation | الأنظمة والأتمتة |
-| Title | Systems & AI Architecture | هندسة الأنظمة والأتمتة الذكية |
-| Description | Architecting autonomous agents, real-time CRM synchronisations, and custom conversational funnels. | بناء وكلاء مستقلين، ومزامنة فورية لبيانات العملاء، وقنوات محادثة مصمّمة خصيصاً. |
+| Title | Systems & AI Automation Architecture | هندسة الأنظمة والذكاء الاصطناعي |
+| Description | Designing autonomous agents, real-time CRM synchronizations, and custom conversational funnels. | تصميم وكلاء ذكيين، ومزامنة شبه فورية لبيانات العملاء، ومسارات محادثة مخصصة. |
 
 **SYS-01 — Autonomous Lead Qualification Agent / وكيل ذكي لتأهيل العملاء المحتملين**
 
@@ -185,9 +185,9 @@ Sample titles (first 8 of 71):
 
 | Field | English | العربية |
 | --- | --- | --- |
-| Eyebrow | Paid Media Management | إدارة الميزانيات الإعلانية |
-| Title | Meta Ads Scaling Ledger | سجل توسع حملات Meta |
-| Description | Managing and scaling return-oriented advertising budgets across acquisition, conversational commerce and localized reach funnels. | إدارة وتوسيع الميزانيات الإعلانية الموجهة للعائد عبر قنوات الاستحواذ والمحادثة والوصول الموجّه. |
+| Eyebrow | Paid Media Management | إدارة الإعلانات المدفوعة |
+| Title | Meta Ads Performance Ledger | سجل أداء حملات Meta |
+| Description | Managing and scaling return-oriented advertising budgets across acquisition, conversational commerce, and localized reach funnels. | إدارة وتوسيع ميزانيات الإعلانات الموجهة للأداء عبر مسارات الاستحواذ والتجارة بالمحادثة والوصول الموجّه. |
 
 **Column headers:**
 
@@ -229,35 +229,35 @@ Sample titles (first 8 of 71):
 
 | | Text |
 | --- | --- |
-| EN | Every objective here is top-of-funnel — reach, link clicks, profile visits and messaging — so cost per result is the cost of a click, a visit or an opened conversation, not the cost of a sale. The qualifying step happens after the click, inside WhatsApp, where intent is filtered before anything reaches a sales agent. Costs at this level reflect MENA reach inventory priced at a $0.079 blended CPM, held there by frequency discipline between 1.03 and 1.81 rather than by repeated impressions against the same audience. Reach and impressions are cumulative across the account, not a single campaign. |
-| AR | جميع الأهداف هنا في أعلى القمع — الوصول والنقرات وزيارات الملف والمحادثات — أي أن تكلفة النتيجة هي كلفة نقرة أو زيارة أو محادثة مفتوحة، لا كلفة عملية بيع. تتم مرحلة التأهيل بعد النقرة داخل واتساب، حيث تُصفّى نية العميل قبل تحويله إلى فريق المبيعات. وتعكس هذه الكلفة أسعار مخزون الوصول في أسواق المنطقة عند متوسط تكلفة ألف ظهور يبلغ ٠٫٠٧٩ دولار، مع انضباط في التكرار بين ١٫٠٣ و١٫٨١ بدلاً من تكرار العرض على الجمهور نفسه. أرقام الوصول والظهور تراكمية على مستوى الحساب وليست حملة واحدة. |
+| EN | These campaigns were optimized for reach, link clicks, profile visits, and messaging — not direct sales. Cost per result therefore reflects the platform objective selected for each campaign rather than customer acquisition cost. Qualification happened downstream, within the WhatsApp conversation flow, before qualified opportunities reached the sales team. |
+| AR | هذه الحملات حُسّنت لتحقيق أهداف مثل الوصول، والنقرات، وزيارات الملف، وبدء المحادثات، لا لإثبات المبيعات المباشرة. لذلك تعكس تكلفة النتيجة الهدف الذي جرى تحسين الحملة من أجله، ولا تمثل تكلفة اكتساب العميل بالضرورة. وجرت عملية التأهيل في المرحلة اللاحقة داخل مسار المحادثة عبر واتساب، قبل تحويل الفرص المؤهلة إلى فريق المبيعات. |
 
 **Four strategic takeaways:**
 
-1. **Ultra-low acquisition economics** / **كفاءة الاستحواذ والتكلفة الميكروية**
-   - EN: Direct-to-WhatsApp and link acquisition ran at $0.01–$0.02 per click, with Instagram profile traffic captured at $0.003 per visit — sub-cent traffic at volume.
-   - AR: الاستحواذ المباشر عبر واتساب والروابط بتكلفة ٠٫٠١–٠٫٠٢ دولار للنقرة، وزيارات ملف إنستغرام عند ٠٫٠٠٣ دولار للزيارة — أي أقل من سنت واحد على نطاق واسع.
-2. **Conversational commerce funnels** / **هندسة قنوات المحادثة المباشرة**
-   - EN: Intent-led messaging campaigns for Jood and Clean Water held $0.07–$0.17 per qualified inquiry, filtering low-intent audiences before anything reached a sales agent.
-   - AR: حملات المحادثة لعلامتي Jood وكلين ووتر ضمن ٠٫٠٧–٠٫١٧ دولار للاستفسار المؤهل، مع تصفية الجمهور منخفض النية قبل تحويله إلى فريق المبيعات.
-3. **Saturation and frequency control** / **إدارة التشبع ومعدل التكرار**
-   - EN: Frequency held between 1.03 and 1.81 across every active tier, extracting unique reach without tipping campaigns into creative fatigue.
-   - AR: بقي التكرار بين ١٫٠٣ و١٫٨١ في كل المستويات النشطة، لاستخلاص أقصى وصول فريد دون إنهاك المحتوى الإعلاني.
-4. **High-volume distribution** / **التوسع الرأسي والأفقي**
-   - EN: Delivery infrastructure carried 37.2M unique accounts reached and 52.6M impressions across omnichannel consumer touchpoints.
-   - AR: بنية توزيع استوعبت الوصول إلى ٣٧٫٢ مليون حساب فريد و٥٢٫٦ مليون ظهور عبر نقاط تواصل متعددة القنوات.
+1. **Efficient acquisition economics** / **اقتصاديات استحواذ منخفضة التكلفة**
+   - EN: Selected traffic campaigns delivered low platform-level costs, with click costs reaching $0.01–$0.02 and profile visits at $0.003 in the reported campaigns.
+   - AR: حققت حملات الزيارات تكلفة منخفضة على مستوى المنصة، مع كلفة نقرة بلغت 0.01–0.02 دولار، وزيارات للملف الشخصي بـ 0.003 دولار في الحملات المسجلة.
+2. **Conversational acquisition flows** / **مسارات الاستحواذ عبر المحادثة**
+   - EN: Messaging campaigns generated conversations at $0.07–$0.17 per result, with lead qualification taking place downstream in the conversation flow.
+   - AR: ولّدت حملات الرسائل محادثات بتكلفة 0.07–0.17 دولار لكل نتيجة، مع إتمام تأهيل العملاء في المرحلة اللاحقة داخل مسار المحادثة.
+3. **Frequency and audience control** / **ضبط التكرار والجمهور**
+   - EN: Reported campaign frequency remained controlled between 1.03 and 1.81 across the displayed rows to minimize ad fatigue.
+   - AR: بقي معدل التكرار منضبطاً بين 1.03 و 1.81 في الصفوف المعروضة للحد من تشبع الجمهور وإنهاك المحتوى الإعلاني.
+4. **Scale of distribution** / **التوزيع على نطاق واسع**
+   - EN: The account reported 37.27M reach and 52.67M impressions across the measured campaigns.
+   - AR: سجل الحساب 37.27 مليون وصول و 52.67 مليون ظهور عبر الحملات المقاسة.
 
 ### 2.7 Narrative / Executive Philosophy
 
 | Field | English | العربية |
 | --- | --- | --- |
 | Eyebrow | The Discipline | منهجية العمل |
-| Title | Three Phases, One Performance Engine | ثلاث مراحل، ومحرك أداء واحد |
-| Description | Every asset moves through the same pipeline — shot with intent, cut for retention, then scaled against the numbers. | كل عمل إعلاني يمر عبر المسار نفسه: تصوير بهدف، ومونتاج يخدم الاحتفاظ، ثم تحجيم يقوده الرقم. |
+| Title | Three Disciplines, One Performance Engine | ثلاثة مسارات. منظومة أداء واحدة. |
+| Description | Every creative asset moves through the same discipline: purposeful production, retention-led editing, and data-driven iteration. | كل أصل إبداعي يمر عبر المنهج نفسه: تصوير مقصود، ومونتاج مدفوع بسلوك المشاهدة، ثم تحسين تقوده البيانات. |
 
-| Phase · production | On-Location Production — Framing, angle direction, and building advertising scenes grounded in consumer psychology. | الإنتاج الميداني المباشر — ضبط الزوايا وصناعة المشاهد الإعلانية القائمة على علم نفس المستهلك (Consumer Psychology). |
-| Phase · post | Editing & Retention Engineering — Fast cinematic editing that lifts watch-through rate and click-through rate. | المونتاج وهندسة الاحتفاظ — تحرير سينمائي سريع يضمن رفع معدل المشاهدة (Retention Rate) ونسب النقر (CTR). |
-| Phase · scaling | Campaign Management & Scaling — Precise budget distribution, profitable audience targeting, and maximum return on ad spend. | إدارة الحملات والتحجيم — توزيع الميزانيات بدقة، استهداف الشرائح المربحة، وتحقيق أعلى عائد على الإنفاق الإعلاني (ROAS). |
+| Phase · production | On-Location Production — Framing, angle direction, and building advertising scenes grounded in consumer psychology. | الإنتاج في موقع التصوير — التكوين، وتوجيه الكاميرا، وبناء المشاهد الإعلانية المبنية على فهم سلوك المستهلك. |
+| Phase · post | Editing & Retention Engineering — Fast cinematic editing that lifts watch-through rate and click-through rate. | المونتاج وهندسة المشاهدة — تحرير سريع يعزز معدل إكمال المشاهدة (Watch-Through Rate) ونسب النقر (CTR). |
+| Phase · scaling | Campaign Management & Scaling — Precise budget distribution, profitable audience targeting, and maximum return on ad spend. | إدارة الحملات والتوسع — توزيع الميزانيات بدقة، استهداف الشرائح الأعلى أداءً، وتحسين العائد على الإنفاق (ROAS). |
 
 ### 2.8 Experience Timeline
 
@@ -274,6 +274,9 @@ Sample titles (first 8 of 71):
 | Eyebrow | Campaign Studies | دراسات الحملات |
 | Title | Media Buying Case Studies | دراسات حالة في الإعلانات الممولة |
 | Description | How budget, creative, and targeting were structured on live accounts — and what moved as a result. | كيف جرى بناء الميزانية والمحتوى والاستهداف على حسابات فعلية — وما الذي تغيّر نتيجة ذلك. |
+| Disclosure tag | Illustrative Case Study | دراسة توضيحية |
+
+Every one of the 4 studies carries `illustrative: true`, so the disclosure tag renders on each card beside its metrics.
 
 ### 2.10 Operating System / Technical Stack
 
@@ -288,15 +291,15 @@ Sample titles (first 8 of 71):
 | Field | English | العربية |
 | --- | --- | --- |
 | Eyebrow | Contact & Global Connect | تواصل وتعاون عالمي |
-| Title | Start Your Next Project With Me | ابدأ مشروعك القادم معي |
-| Description | Available for full-time growth roles, media buying partnerships, and direct-response video production. | متاح لأدوار النمو بدوام كامل، وشراكات الإعلانات الممولة، وإنتاج فيديوهات الاستجابة المباشرة. |
+| Title | Discuss a Growth Opportunity | ناقش فرصة نمو |
+| Description | Available for growth management roles, media buying partnerships, and performance video creative systems. | متاح لأدوار إدارة النمو، وشراكات الإعلام المدفوع، وبناء أنظمة الفيديو الإعلاني الموجه للأداء. |
 
 **Audio control strings:**
 
 | Key | English | العربية |
 | --- | --- | --- |
 | `on` | Sound: On | الصوت: مفعّل |
-| `off` | Sound: Off | الصوت: صامت |
+| `off` | Sound: Off | الصوت: مغلق |
 | `enable` | Turn ambient sound on | تشغيل الصوت المحيط |
 | `prompt` | Enable ambient audio | استمع للأجواء الصوتية |
 | `disable` | Turn ambient sound off | كتم الصوت المحيط |
@@ -348,10 +351,10 @@ Sample titles (first 8 of 71):
 ### Content decisions for you
 
 1. **Canvas scene labels are English-only** in both locales (`SCENE 01 — PRODUCTION`, `TC 00:00:00:00`, `CUT · RIPPLE · ROLL`). Treated as instrument-slate metadata. Say the word if you want them localised.
-2. **Video CTR badges remain simulated.** `videoItems[].ctr` values (`+41% CTR` etc.) are placeholders flagged in `src/data/media.js`. Every other number on the site is now sourced. These are the last unsourced figures — consider supplying real ones or dropping the badge.
-3. **Campaign study metrics remain illustrative.** `src/data/campaigns.js` carries a placeholder warning on its ROAS/CAC/scale figures.
+2. **Video CTR badges are gone.** `videoItems[].ctr` carried simulated percentages; each is now a `tag` — an editorial descriptor of the cut (`Performance Edit`, `Loop Architecture`) with no numeric claim attached.
+3. **Campaign study metrics remain illustrative — and now say so on the page.** Every study in `src/data/campaigns.js` carries `illustrative: true`, which renders a disclosure tag beside its ROAS/CAC/scale figures in both locales. Drop the flag in the same edit that replaces the numbers with verified ones.
 4. **Row 9 objective is inferred**, not read — its label is clipped at the capture edge. Marked with `*` and footnoted. A fuller screenshot would let it be read directly.
-5. **Plate metadata says `BAGHDAD, IQ`** — confirm that is the location you want shown publicly.
+5. **Plate metadata reads `4:5 · DAMASCUS · REMOTE`**, matching the contact block’s `Damascus, Syria / Global Remote`.
 
 ### Layout & responsiveness
 

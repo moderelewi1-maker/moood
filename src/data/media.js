@@ -583,7 +583,9 @@ export const designItems = [
 
 export const videoFormats = ['all', 'landscape', 'vertical']
 
-// ⚠ CTR figures are simulated placeholders for layout purposes — replace with
+// Per-reel `tag` is an editorial descriptor of the cut, not a metric. The
+// simulated CTR badges that used to sit here were removed: unverifiable
+// numbers on a portfolio cost more credibility than they buy. — replace with
 // verified Ads Manager numbers before presenting these as results.
 export const videoItems = [
   {
@@ -596,10 +598,10 @@ export const videoItems = [
     poster: '/assets/video/video-production-reel-poster.jpg',
     orientation: 'vertical',
     duration: '0:26',
-    title: { en: "Cinematic Production Reel", ar: "ريل الإنتاج السينمائي" },
-    hook: { en: "Cold open on the set, not the pitch", ar: "افتتاحية من داخل موقع التصوير لا من العرض" },
+    title: { en: "Cinematic Production Reel", ar: "عرض الإنتاج المرئي" },
+    hook: { en: "Opens on the work, not the pitch.", ar: "يبدأ بالمشهد، لا بالكلام عنه." },
     pacing: { en: "Cinematic · kinetic caption cuts", ar: "سينمائي · قطعات مع نصوص حركية" },
-    ctr: '+41% CTR',
+    tag: { en: 'Performance Edit', ar: 'مونتاج موجه للأداء' },
   },
   {
     id: 'video-adidas-reel',
@@ -608,9 +610,9 @@ export const videoItems = [
     orientation: 'vertical',
     duration: '0:15',
     title: { en: "Adidas Brand Explainer", ar: "إعلان تعريفي — أديداس" },
-    hook: { en: "Origin-story hook in the first frame", ar: "خطّاف قصة النشأة في اللقطة الأولى" },
+    hook: { en: "The origin story lands in the first frame.", ar: "تبدأ القصة من اللقطة الأولى." },
     pacing: { en: "Snap · product-led motion", ar: "سريع · حركة يقودها المنتج" },
-    ctr: '+36% CTR',
+    tag: { en: 'Product-Led Motion', ar: 'حركة يقودها المنتج' },
   },
   {
     id: 'video-marketing-explainer',
@@ -619,9 +621,9 @@ export const videoItems = [
     orientation: 'vertical',
     duration: '0:30',
     title: { en: "Marketing Services Explainer", ar: "فيديو تعريفي بخدمات التسويق" },
-    hook: { en: "Problem framed before the offer", ar: "طرح المشكلة قبل عرض الخدمة" },
+    hook: { en: "Lead with the problem, then the offer.", ar: "نبدأ بالمشكلة قبل تقديم الحل." },
     pacing: { en: "Measured · typographic build", ar: "متزن · بناء طباعي" },
-    ctr: '+28% CTR',
+    tag: { en: 'Typographic Build', ar: 'بناء طباعي متزن' },
   },
   {
     id: 'video-social-cta',
@@ -630,9 +632,9 @@ export const videoItems = [
     orientation: 'vertical',
     duration: '0:22',
     title: { en: "Animated Follow CTA", ar: "دعوة متحركة للمتابعة" },
-    hook: { en: "Silhouette motion holds the loop", ar: "حركة الظل تحافظ على التكرار" },
+    hook: { en: "The silhouette drives the loop.", ar: "حركة الظل تبني الحلقة البصرية." },
     pacing: { en: "Loop · minimal silhouette animation", ar: "متكرر · أنيميشن ظلّي بسيط" },
-    ctr: '+19% CTR',
+    tag: { en: 'Loop Architecture', ar: 'بنية تكرار بصرية' },
   },
   {
     id: 'video-motion-showcase',
@@ -641,9 +643,9 @@ export const videoItems = [
     orientation: 'landscape',
     duration: '0:10',
     title: { en: "Motion Graphics Showcase", ar: "عرض الموشن غرافيك" },
-    hook: { en: "Type reveal synced to the beat", ar: "ظهور النصوص متزامن مع الإيقاع" },
+    hook: { en: "Typography reveals on the beat.", ar: "ظهور النصوص منسجم مع الإيقاع." },
     pacing: { en: "Dense · After Effects composite", ar: "مكثّف · تركيب في أفتر إفكتس" },
-    ctr: 'Brand Lift',
+    tag: { en: 'Brand-Focused Motion', ar: 'رسوم متحركة للعلامة' },
   },
 ]
 
