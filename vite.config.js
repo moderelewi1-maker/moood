@@ -7,4 +7,9 @@ export default defineConfig({
   server: {
     host: true,
   },
+  build: {
+    // three.js is a single lazy chunk (loaded after first paint), so its size
+    // is expected; this only keeps the build log free of that warning.
+    chunkSizeWarningLimit: 650,
+  },
 })

@@ -1,9 +1,9 @@
 {
   "name": "modar-elewi-portfolio",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "description": "Personal portfolio for Modar Akram Elewi — Digital Marketing & Growth Manager, Performance Media Buyer & Direct-Response Video Producer.",
+  "description": "Bilingual work showcase and executive capability portfolio for Modar Akram Elewi.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "framer-motion": "^13.2.0",
-    "gsap": "^3.15.0",
     "lenis": "^1.3.26",
     "lucide-react": "^1.40.0",
     "react": "^19.2.8",

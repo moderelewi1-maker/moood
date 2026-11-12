@@ -1,6 +1,5 @@
-// lucide-react no longer ships brand/logo glyphs, so these three social
-// marks are small inline SVGs (fill: currentColor, so they inherit text
-// color like any lucide icon would).
+// Brand marks for the profile links. lucide-react ships no logos, so these
+// are small inline SVGs that inherit the text colour like any other icon.
 export function LinkedInIcon({ className = '', ...props }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} {...props}>

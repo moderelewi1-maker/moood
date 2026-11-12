@@ -1,61 +1,28 @@
-import { useMemo, useState } from 'react'
-import { ImageOff } from 'lucide-react'
-
-const CATEGORY_GRADIENTS = {
-  hero: 'from-crimson/18 via-carbon to-white/5',
-  creative: 'from-crimson/12 via-carbon to-white/4',
-  brand: 'from-white/8 via-carbon to-wine/12',
-  proof: 'from-crimson/16 via-carbon to-carbon',
-  campaign: 'from-wine/16 via-carbon to-white/5',
-  default: 'from-white/6 via-carbon to-white/3',
-}
+import { useState } from 'react'
+import { isRenderableImage } from '../../lib/utils.js'
 
 /**
- * Renders <img>, trying each candidate in `sources` (or the single `src`)
- * in order, and swapping to a themed gradient placeholder once every
- * candidate has failed to load. Lets a call site chain a remote asset URL
- * -> local placeholder path -> styled fallback without extra state.
+ * An <img> that degrades gracefully: when the source is missing, is not a
+ * direct image file, or fails to load, it renders `fallback` instead of a
+ * broken-image icon. Tracking the failed URL (rather than a boolean) means a
+ * changed `src` is retried without any effect.
  */
-export default function AssetImage({
-  src,
-  sources,
-  alt = '',
-  category = 'default',
-  className = '',
-  iconClassName = '',
-  fallbackIcon: FallbackIcon = ImageOff,
-  hideIcon = false,
-}) {
-  const candidates = useMemo(
-    () => (sources && sources.length ? sources : [src]).filter(Boolean),
-    [src, sources]
-  )
-  const [index, setIndex] = useState(0)
-  const gradient = CATEGORY_GRADIENTS[category] || CATEGORY_GRADIENTS.default
-  const current = candidates[index]
+export default function AssetImage({ src, alt = '', className, fallback = null, onLoad, ...rest }) {
+  const [failedSrc, setFailedSrc] = useState(null)
 
-  if (!current) {
-    return (
-      <div
-        className={`flex items-center justify-center bg-gradient-to-br ${gradient} ${className}`}
-        role="img"
-        aria-label={alt || 'Image placeholder'}
-      >
-        {!hideIcon && (
-          <FallbackIcon className={`text-white/25 ${iconClassName || 'h-6 w-6'}`} strokeWidth={1.5} aria-hidden="true" />
-        )}
-      </div>
-    )
-  }
+  if (!isRenderableImage(src) || failedSrc === src) return fallback
 
   return (
     <img
-      key={current}
-      src={current}
+      src={src}
       alt={alt}
       loading="lazy"
-      onError={() => setIndex((i) => i + 1)}
+      decoding="async"
+      draggable={false}
+      onLoad={onLoad}
+      onError={() => setFailedSrc(src)}
       className={className}
+      {...rest}
     />
   )
 }
