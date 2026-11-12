@@ -37,7 +37,7 @@ export default function Capabilities() {
     >
       <div className="shell">
         <SectionHeader
-          number="03"
+          number="04"
           label={copy.label}
           title={copy.title}
           description={copy.description}

@@ -116,7 +116,7 @@ export const disciplines = [
       { en: 'Data integration between advertising, CRM, and reporting systems', ar: 'ربط بيانات المنصات الإعلانية وأنظمة إدارة العملاء والتقارير' },
       { en: 'ERP-based operational reporting', ar: 'التقارير التشغيلية عبر أنظمة تخطيط الموارد (ERP)' },
     ],
-    tools: ['n8n', 'Al-Ameen ERP'],
+    tools: ['n8n', 'OpenAI API', 'PostgreSQL', 'Al-Ameen ERP'],
   },
   {
     id: 'web-development',

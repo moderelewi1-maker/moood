@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer.jsx'
 import Hero from './components/sections/Hero.jsx'
 import FeaturedWork from './components/sections/FeaturedWork.jsx'
 import WorkIndex from './components/sections/WorkIndex.jsx'
+import Results from './components/sections/Results.jsx'
 import Capabilities from './components/sections/Capabilities.jsx'
 import Approach from './components/sections/Approach.jsx'
 import Contact from './components/sections/Contact.jsx'
@@ -47,6 +48,7 @@ export default function App() {
             <Hero />
             <FeaturedWork />
             <WorkIndex />
+            <Results />
             <Capabilities />
             <Approach />
             <Contact />

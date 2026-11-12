@@ -38,6 +38,10 @@ export function useAmbientAudio() {
   const [wanted, setWanted] = useState(readStoredPreference)
   const [playing, setPlaying] = useState(false)
   const [blocked, setBlocked] = useState(false)
+  // True while a film with its own sound is playing in the project viewer,
+  // which announces itself with these window events. The bed yields to it.
+  const [yielding, setYielding] = useState(false)
+  const active = wanted && !yielding
   const audioRef = useRef(null)
   const frameRef = useRef(0)
   const timeoutRef = useRef(0)
@@ -89,7 +93,18 @@ export function useAmbientAudio() {
   )
 
   useEffect(() => {
-    if (!wanted) return undefined
+    const start = () => setYielding(true)
+    const end = () => setYielding(false)
+    window.addEventListener('portfolio:media-start', start)
+    window.addEventListener('portfolio:media-end', end)
+    return () => {
+      window.removeEventListener('portfolio:media-start', start)
+      window.removeEventListener('portfolio:media-end', end)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!active) return undefined
 
     const audio = ensureAudio()
     let cancelled = false
@@ -119,16 +134,16 @@ export function useAmbientAudio() {
       window.removeEventListener('pointerdown', attempt)
       window.removeEventListener('keydown', attempt)
     }
-  }, [wanted, ensureAudio, fadeTo])
+  }, [active, ensureAudio, fadeTo])
 
   useEffect(() => {
-    if (wanted) return undefined
+    if (active) return undefined
     const audio = audioRef.current
     if (!audio || audio.paused) return undefined
     // Fade out first so the bed never cuts off mid-phrase.
     fadeTo(0, () => audio.pause())
     return undefined
-  }, [wanted, fadeTo])
+  }, [active, fadeTo])
 
   useEffect(
     () => () => {

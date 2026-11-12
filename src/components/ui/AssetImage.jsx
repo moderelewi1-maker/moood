@@ -2,25 +2,27 @@ import { useState } from 'react'
 import { isRenderableImage } from '../../lib/utils.js'
 
 /**
- * An <img> that degrades gracefully: when the source is missing, is not a
- * direct image file, or fails to load, it renders `fallback` instead of a
- * broken-image icon. Tracking the failed URL (rather than a boolean) means a
- * changed `src` is retried without any effect.
+ * An <img> that degrades gracefully. It tries `src`, then `fallbackSrc`
+ * (typically: a generated preview first, the original file second), and if
+ * neither is a loadable image it renders `fallback` instead of a
+ * broken-image icon. Remembering which URLs failed — rather than a boolean —
+ * means a changed `src` is retried without any effect.
  */
-export default function AssetImage({ src, alt = '', className, fallback = null, onLoad, ...rest }) {
-  const [failedSrc, setFailedSrc] = useState(null)
+export default function AssetImage({ src, fallbackSrc, alt = '', className, fallback = null, ...rest }) {
+  const [failed, setFailed] = useState([])
+  const current = [src, fallbackSrc].find((candidate) => isRenderableImage(candidate) && !failed.includes(candidate))
 
-  if (!isRenderableImage(src) || failedSrc === src) return fallback
+  if (!current) return fallback
 
   return (
     <img
-      src={src}
+      key={current}
+      src={current}
       alt={alt}
       loading="lazy"
       decoding="async"
       draggable={false}
-      onLoad={onLoad}
-      onError={() => setFailedSrc(src)}
+      onError={() => setFailed((list) => [...list, current])}
       className={className}
       {...rest}
     />

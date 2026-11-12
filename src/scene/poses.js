@@ -54,6 +54,14 @@ export const POSES = {
     tilt: [0.4, -0.7],
     drive: 1,
   },
+  // Verified Results is a table of figures: the instrument stays out of it.
+  results: {
+    wide: { x: -1.22, y: 0.2, scale: 0.52, presence: 0.28 },
+    narrow: { x: -1.15, y: 0.3, scale: 0.9, presence: 0.12 },
+    rings: [0.3, 0.9, 0.2],
+    tilt: [0.5, 0.6],
+    drive: 0.8,
+  },
   // All three gimbals in one plane, seen at an angle, in the margin column.
   capabilities: {
     wide: { x: -0.73, y: -0.44, scale: 0.46, presence: 0.62 },
@@ -69,8 +77,9 @@ export const POSES = {
     tilt: [0.5, 0.5],
     drive: 0.7,
   },
+  // Open into a full sphere, standing behind the portrait.
   contact: {
-    wide: { x: 0.56, y: 0, scale: 0.7, presence: 0.9 },
+    wide: { x: 0.6, y: -0.04, scale: 0.84, presence: 0.85 },
     narrow: { x: 0.8, y: 0.64, scale: 0.76, presence: 0.2 },
     rings: [0, HALF_PI, HALF_PI],
     tilt: [0.26, 0.62],

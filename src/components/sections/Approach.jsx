@@ -59,7 +59,7 @@ export default function Approach() {
     <section id="approach" data-scene="approach" aria-labelledby="approach-title" className="relative py-24 lg:py-36">
       <div className="shell">
         <SectionHeader
-          number="04"
+          number="05"
           label={copy.label}
           title={copy.title}
           description={copy.description}

@@ -1,18 +1,23 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Play, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Play, X, ZoomIn } from 'lucide-react'
 import AssetImage from '../ui/AssetImage.jsx'
 import CategoryMotif from './CategoryMotif.jsx'
 import { contact } from '../../data/site.js'
+import { previewOf } from '../../data/works/helpers.js'
 import { getCategory, getFormat, getMedia, getMotif, getNumber, worksById } from '../../data/works/index.js'
 import { useLocale } from '../../i18n/useLocale.js'
 import { EASE, SETTLE_SPRING } from '../../motion/config.js'
-import { cn, isRenderableImage, lockScroll, toEmbedUrl } from '../../lib/utils.js'
+import { backdropClass, cn, isRenderableImage, lockScroll, toEmbedUrl } from '../../lib/utils.js'
 
-const FIELD_ORDER = ['objective', 'approach', 'concept', 'pacing', 'platform', 'outcome']
+const FIELD_ORDER = ['objective', 'approach', 'concept', 'pacing', 'style', 'reading', 'nodes', 'platform', 'outcome']
+
+// Lets the ambient soundtrack step aside while a film with sound is playing.
+const announce = (name) => window.dispatchEvent(new Event(`portfolio:${name}`))
 const FOCUSABLE = 'a[href], button:not([disabled]), video[controls], iframe, [tabindex]:not([tabindex="-1"])'
 
 const pad = (value) => String(value).padStart(2, '0')
+const thumbOf = (item) => (item.type === 'image' ? item.src : item.poster)
 
 function IconButton({ label, icon: Icon, onClick, disabled, className, buttonRef }) {
   return (
@@ -43,99 +48,184 @@ function Unavailable({ work, note }) {
   )
 }
 
+/**
+ * An image on the stage. The lightweight preview paints first and the
+ * full-size file fades in over it once it has loaded. Clicking toggles
+ * between fitting the stage and the image's real size, which is what makes
+ * dense captures (a dashboard, a workflow diagram) readable.
+ */
+function ImageStage({ item, title, onUnavailable }) {
+  const { t } = useLocale()
+  const [loaded, setLoaded] = useState(false)
+  const [zoomed, setZoomed] = useState(false)
+  const preview = previewOf(item.src)
+
+  if (zoomed) {
+    return (
+      <div data-lenis-prevent className="absolute inset-0 overflow-auto rounded-[2px] border border-line bg-surface">
+        <button
+          type="button"
+          onClick={() => setZoomed(false)}
+          aria-label={t.viewer.zoomOut}
+          className="block min-h-full min-w-full cursor-zoom-out"
+        >
+          <img src={item.src} alt={title} draggable={false} className={cn('mx-auto block max-w-none', backdropClass(item))} />
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setZoomed(true)}
+      aria-label={`${t.viewer.zoomIn}: ${title}`}
+      className="group/zoom absolute inset-0 flex cursor-zoom-in items-center justify-center"
+    >
+      {preview && !loaded && (
+        <img
+          src={preview}
+          alt=""
+          aria-hidden="true"
+          draggable={false}
+          className={cn('absolute max-h-full max-w-full rounded-[2px] object-contain', backdropClass(item))}
+        />
+      )}
+      <img
+        src={item.src}
+        alt={title}
+        onLoad={() => setLoaded(true)}
+        onError={onUnavailable}
+        draggable={false}
+        className={cn(
+          'relative max-h-full max-w-full rounded-[2px] object-contain transition-opacity duration-500',
+          loaded ? 'opacity-100' : 'opacity-0',
+          backdropClass(item),
+        )}
+      />
+      <span
+        aria-hidden="true"
+        className="absolute end-3 bottom-3 flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-ground/70 text-ink opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover/zoom:opacity-100 group-focus-visible/zoom:opacity-100"
+      >
+        <ZoomIn strokeWidth={1.5} className="h-4 w-4" />
+      </span>
+    </button>
+  )
+}
+
 /** One media item on the stage: image, self-hosted video, or click-to-load embed. */
 function MediaStage({ item, work }) {
   const { t, tr } = useLocale()
   const [failed, setFailed] = useState(false)
   const [playing, setPlaying] = useState(false)
-  const title = tr(work.title)
+  const title = tr(item.title) || tr(work.title)
   const vertical = item.orientation === 'vertical'
   const placeholder = <Unavailable work={work} note={t.viewer.unavailable} />
   const frame = cn(
-    'max-h-full overflow-hidden rounded-[2px] border border-line bg-surface',
+    'max-h-full max-w-full overflow-hidden rounded-[2px] border border-line bg-surface',
     vertical ? 'aspect-[9/16] h-full' : 'aspect-video w-full',
   )
 
+  // Whatever was playing, the soundtrack may return once this item goes away.
+  useEffect(() => () => announce('media-end'), [])
+
   if (item.type === 'image') {
     if (!isRenderableImage(item.src) || failed) return placeholder
-    return (
-      <img
-        src={item.src}
-        alt={tr(item.alt) || title}
-        onError={() => setFailed(true)}
-        draggable={false}
-        className="max-h-full max-w-full rounded-[2px] object-contain"
-      />
-    )
+    return <ImageStage item={item} title={title} onUnavailable={() => setFailed(true)} />
   }
 
   if (item.type === 'video') {
     if (!item.src || failed) return placeholder
     return (
-      <video
-        src={item.src}
-        poster={item.poster}
-        controls
-        playsInline
-        preload="metadata"
-        onError={() => setFailed(true)}
-        aria-label={title}
-        className={cn(frame, 'object-contain')}
-      />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <video
+          src={item.src}
+          poster={item.poster}
+          controls
+          playsInline
+          preload="metadata"
+          muted={item.forceMuted || undefined}
+          // A film marked forceMuted stays silent even if the control is used.
+          onVolumeChange={(event) => {
+            const player = event.currentTarget
+            if (item.forceMuted && !player.muted) player.muted = true
+            else if (!player.paused) announce(player.muted ? 'media-end' : 'media-start')
+          }}
+          onPlay={(event) => !event.currentTarget.muted && announce('media-start')}
+          onPause={() => announce('media-end')}
+          onEnded={() => announce('media-end')}
+          onError={() => setFailed(true)}
+          aria-label={title}
+          className={cn(frame, 'object-contain')}
+        />
+      </div>
     )
   }
 
   if (item.type === 'embed') {
     if (!item.url) return placeholder
-    if (playing) {
-      return (
-        <iframe
-          src={toEmbedUrl(item.url)}
-          title={title}
-          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          allowFullScreen
-          className={frame}
-        />
-      )
-    }
     return (
-      <button
-        type="button"
-        onClick={() => setPlaying(true)}
-        aria-label={`${t.viewer.play}: ${title}`}
-        className={cn(frame, 'group relative')}
-      >
-        <AssetImage src={item.poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <span className="absolute inset-0 flex items-center justify-center bg-ground/30">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full border border-line-strong bg-ground/60 text-ink transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-ground">
-            <Play aria-hidden="true" strokeWidth={1.5} className="h-5 w-5 translate-x-0.5" />
-          </span>
-        </span>
-      </button>
+      <div className="absolute inset-0 flex items-center justify-center">
+        {playing ? (
+          <iframe
+            src={toEmbedUrl(item.url)}
+            title={title}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            className={frame}
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => {
+              announce('media-start')
+              setPlaying(true)
+            }}
+            aria-label={`${t.viewer.play}: ${title}`}
+            className={cn(frame, 'group relative')}
+          >
+            <AssetImage src={item.poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
+            <span className="absolute inset-0 flex items-center justify-center bg-ground/30">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full border border-line-strong bg-ground/60 text-ink transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-ground">
+                <Play aria-hidden="true" strokeWidth={1.5} className="h-5 w-5 translate-x-0.5" />
+              </span>
+            </span>
+          </button>
+        )}
+      </div>
     )
   }
 
   return placeholder
 }
 
-function Metrics({ metrics, large = false }) {
+function Metrics({ metrics, large = false, illustrative = false }) {
   const { t, tr } = useLocale()
   return (
-    <dl className={cn('grid gap-x-6 gap-y-6', large ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-2')}>
-      {metrics.map((metric, i) => (
-        <div key={i} className="flex flex-col-reverse justify-end gap-2 border-t border-line pt-4">
-          <dt className="text-[0.8125rem] leading-snug text-ink-muted">
-            {typeof metric.label === 'string' ? (t.work.metrics[metric.label] ?? metric.label) : tr(metric.label)}
-          </dt>
-          <dd className={cn('display tabular-nums text-ink', large ? 'display-2' : 'display-3')}>
-            {/* Isolated left-to-right so "-38%" keeps its sign in front in Arabic. */}
-            <span dir="ltr" className="inline-block">
-              {metric.value}
-            </span>
-          </dd>
-        </div>
-      ))}
-    </dl>
+    <div>
+      <dl className={cn('grid gap-x-6 gap-y-6', large ? 'grid-cols-2 xl:grid-cols-4' : 'grid-cols-2')}>
+        {metrics.map((metric, i) => (
+          <div key={i} className="flex flex-col-reverse justify-end gap-2 border-t border-line pt-4">
+            <dt className="text-[0.8125rem] leading-snug text-ink-muted">
+              {typeof metric.label === 'string' ? (t.work.metrics[metric.label] ?? metric.label) : tr(metric.label)}
+              {metric.kind === 'target' && <span className="mt-1 block text-xs text-ink-faint">{t.work.target}</span>}
+            </dt>
+            <dd className={cn('display tabular-nums text-ink', large ? 'display-2' : 'display-3')}>
+              {/* Isolated left-to-right so "-38%" keeps its sign in front in Arabic. */}
+              <span dir="ltr" className="inline-block">
+                {tr(metric.value)}
+              </span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      {illustrative && (
+        <p className="mt-5 flex gap-2.5 text-xs leading-relaxed text-ink-faint">
+          <span aria-hidden="true" className="mt-[0.55em] h-px w-3 shrink-0 bg-accent" />
+          {t.work.illustrative}
+        </p>
+      )}
+    </div>
   )
 }
 
@@ -151,6 +241,7 @@ function WorkRecord({ work }) {
   const many = media.length > 1
   const metrics = work.metrics ?? []
   const details = FIELD_ORDER.filter((key) => work.details?.[key])
+  const caption = hasMedia ? tr(media[mediaIndex].title) : ''
 
   useEffect(() => {
     if (!many) return undefined
@@ -176,7 +267,7 @@ function WorkRecord({ work }) {
       className="h-full overflow-y-auto lg:grid lg:grid-cols-[minmax(0,1fr)_27rem] lg:overflow-hidden xl:grid-cols-[minmax(0,1fr)_30rem]"
     >
       {/* ── Stage ── */}
-      <div className="flex min-h-[56svh] flex-col gap-4 p-4 sm:p-6 lg:h-full lg:min-h-0 lg:p-8">
+      <div className="flex h-[62svh] flex-col gap-4 p-4 sm:p-6 lg:h-full lg:p-8">
         <div className="relative flex min-h-0 flex-1 items-center justify-center">
           {hasMedia ? (
             <MediaStage key={mediaIndex} item={media[mediaIndex]} work={work} />
@@ -185,10 +276,21 @@ function WorkRecord({ work }) {
               <div className="flex min-h-0 flex-1 items-center justify-center">
                 <CategoryMotif {...getMotif(work)} className="h-full max-h-72 w-full max-w-md" />
               </div>
-              {metrics.length > 0 && <Metrics metrics={metrics} large />}
+              {metrics.length > 0 && <Metrics metrics={metrics} large illustrative={work.illustrative} />}
             </div>
           )}
         </div>
+
+        {(caption || many) && (
+          <div className="flex shrink-0 items-baseline justify-between gap-6">
+            <p className="min-w-0 truncate text-[0.875rem] text-ink-muted">{caption}</p>
+            {many && (
+              <p className="label shrink-0 tabular-nums text-ink-faint" dir="ltr">
+                {pad(mediaIndex + 1)} / {pad(media.length)}
+              </p>
+            )}
+          </div>
+        )}
 
         {many && (
           <div className="flex shrink-0 items-center gap-3">
@@ -210,9 +312,10 @@ function WorkRecord({ work }) {
                     )}
                   >
                     <AssetImage
-                      src={item.type === 'image' ? item.src : item.poster}
+                      src={previewOf(thumbOf(item)) ?? thumbOf(item)}
+                      fallbackSrc={thumbOf(item)}
                       alt=""
-                      className="h-full w-full object-cover"
+                      className={cn('h-full w-full object-cover', backdropClass(item))}
                       fallback={
                         <span
                           className={cn(
@@ -267,6 +370,19 @@ function WorkRecord({ work }) {
           </div>
         )}
 
+        {work.stack?.length > 0 && (
+          <div className="mt-9">
+            <h3 className="label text-ink-faint">{t.work.stack}</h3>
+            <ul className="mt-3.5 flex flex-wrap gap-2">
+              {work.stack.map((entry) => (
+                <li key={entry} dir="ltr" className="rounded-[2px] border border-line px-2.5 py-1 text-xs text-ink">
+                  {entry}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {details.length > 0 && (
           <dl className="mt-9 flex flex-col gap-6">
             {details.map((key) => (
@@ -281,7 +397,7 @@ function WorkRecord({ work }) {
         {hasMedia && metrics.length > 0 && (
           <div className="mt-9">
             <h3 className="label mb-4 text-ink-faint">{t.work.results}</h3>
-            <Metrics metrics={metrics} />
+            <Metrics metrics={metrics} illustrative={work.illustrative} />
           </div>
         )}
 

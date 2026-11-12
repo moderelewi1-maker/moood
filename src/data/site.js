@@ -2,6 +2,8 @@
 
 export const contact = {
   email: 'modarelewi86@gmail.com',
+  // Portrait shown in the Contact section. Set to '' to hide it.
+  portrait: '/assets/profile-hero.jpg',
 }
 
 // Profile links. An entry is only shown once its `href` is a real URL, so
@@ -19,6 +21,7 @@ export const socials = [
 // link as active while they are on screen.
 export const navLinks = [
   { id: 'work', href: '#work', sections: ['work', 'index'] },
+  { id: 'results', href: '#results', sections: ['results'] },
   { id: 'capabilities', href: '#capabilities', sections: ['capabilities'] },
   { id: 'approach', href: '#approach', sections: ['approach'] },
   { id: 'contact', href: '#contact', sections: ['contact'] },

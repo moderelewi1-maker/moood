@@ -1,17 +1,60 @@
-import { images } from './helpers.js'
+import { image } from './helpers.js'
 
-// Campaign strategy and paid media projects.
+// Campaign strategy and paid media.
 //
-// ⚠ VERIFY BEFORE PUBLISHING: the `metrics` figures on the four case studies
-// were carried over from the previous version of the site, where they were
-// marked as illustrative placeholders. Replace each with the verified number
-// from the ad account, or delete the `metrics` line to present the study
-// without figures.
+// Two kinds of entry live here and they are deliberately kept apart:
+//
+//   · The Meta Ads Performance Ledger carries VERIFIED figures, transcribed
+//     from the Ads Manager capture in /assets/gallery. Its row-level data is
+//     in src/data/adsAudit.js and is shown in the Results section.
+//
+//   · The four case studies describe how campaigns were structured. Their
+//     ROAS / CAC / scaling figures are MODELLED, not pulled from an account,
+//     so each one carries `illustrative: true`, which prints a disclosure
+//     beside the numbers wherever they appear. To promote a study to
+//     verified, replace its metrics with Ads Manager figures and delete the
+//     `illustrative` line in the same edit.
 export const campaignWorks = [
+  {
+    id: 'meta-ads-performance-ledger',
+    category: 'campaigns',
+    featured: true,
+    format: 'caseStudy',
+    cover: false, // the capture is a dense table; the line-art cover reads better
+    title: { en: 'Meta Ads Performance Ledger', ar: 'سجل أداء حملات Meta الإعلانية' },
+    summary: {
+      en: 'Account-level results read directly from Meta Ads Manager, across customer acquisition, messaging, and reach campaigns.',
+      ar: 'نتائج على مستوى الحساب مأخوذة مباشرةً من مدير إعلانات Meta، تشمل حملات اكتساب العملاء والمحادثات والوصول.',
+    },
+    scope: [
+      { en: 'Paid media management', ar: 'إدارة الإعلانات المدفوعة' },
+      { en: 'Budget scaling', ar: 'توسيع الميزانيات' },
+      { en: 'Performance analysis', ar: 'تحليل الأداء' },
+    ],
+    details: {
+      reading: {
+        en: 'These campaigns were optimized for reach, link clicks, profile visits, and messaging, not for direct sales. Cost per result therefore reflects the objective selected for each campaign rather than customer acquisition cost.',
+        ar: 'حُسِّنت هذه الحملات لأهداف الوصول والنقرات على الروابط وزيارات الملف الشخصي وبدء المحادثات، لا للمبيعات المباشرة. لذلك تعكس تكلفة النتيجة الهدف المحدَّد لكل حملة، لا تكلفة اكتساب العميل.',
+      },
+      platform: 'Meta Ads Manager',
+    },
+    metrics: [
+      { label: 'spend', value: '$4,163' },
+      { label: 'reach', value: '37.27M' },
+      { label: 'impressions', value: '52.67M' },
+      { label: 'frequency', value: '1.41' },
+    ],
+    media: [
+      image('/assets/gallery/meta-ads-scaling-proof.png', {
+        en: 'Meta Ads Manager account capture',
+        ar: 'لقطة من حساب مدير إعلانات Meta',
+      }),
+    ],
+  },
   {
     id: 'b2b-lead-generation-us',
     category: 'campaigns',
-    featured: true,
+    illustrative: true,
     title: {
       en: 'B2B Lead Generation for the U.S. Logistics Market',
       ar: 'توليد العملاء المحتملين لقطاع الخدمات اللوجستية في السوق الأمريكية',
@@ -45,6 +88,7 @@ export const campaignWorks = [
   {
     id: 'account-recovery',
     category: 'campaigns',
+    illustrative: true,
     title: {
       en: 'Account Recovery and Performance Restoration',
       ar: 'استعادة الحسابات الإعلانية وإعادة الأداء إلى الربحية',
@@ -78,6 +122,7 @@ export const campaignWorks = [
   {
     id: 'local-demand-generation',
     category: 'campaigns',
+    illustrative: true,
     title: {
       en: 'Local Demand Generation for Retail and Services',
       ar: 'تحفيز الطلب المحلي لقطاعَي التجزئة والخدمات',
@@ -111,6 +156,7 @@ export const campaignWorks = [
   {
     id: 'b2b-pipeline-europe',
     category: 'campaigns',
+    illustrative: true,
     title: {
       en: 'B2B Pipeline Development for the European Market',
       ar: 'بناء مسار مبيعات للشركات في السوق الأوروبية',
@@ -143,30 +189,5 @@ export const campaignWorks = [
       { label: 'cac', value: '-22%' },
       { label: 'scale', value: '1.8x' },
     ],
-  },
-  {
-    id: 'campaign-performance-records',
-    category: 'campaigns',
-    title: {
-      en: 'Campaign Performance Records',
-      ar: 'سجلات أداء الحملات',
-    },
-    summary: {
-      en: 'Documented results from managed advertising accounts.',
-      ar: 'نتائج موثَّقة من حسابات إعلانية جرت إدارتها.',
-    },
-    scope: [
-      { en: 'Performance reporting', ar: 'تقارير الأداء' },
-      { en: 'Results documentation', ar: 'توثيق النتائج' },
-    ],
-    // ⚠ These are ibb.co *viewer page* links, which cannot be displayed as
-    // images. Replace each with its direct https://i.ibb.co/… link, or with a
-    // file placed in /public/assets/works/ (see README → "Adding images").
-    media: images(
-      'https://ibb.co/k604yNWT',
-      'https://ibb.co/pjYx56fK',
-      'https://ibb.co/nqPLN4Tt',
-      'https://ibb.co/Gv0xmScq',
-    ),
   },
 ]

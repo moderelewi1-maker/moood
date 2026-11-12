@@ -6,9 +6,10 @@ portfolio. One page, in this order:
 1. **Hero** — positioning statement
 2. **Selected Work** — featured projects in a scroll-driven 3D sequence
 3. **Work Index** — every project, filterable by discipline
-4. **Capabilities** — executive leadership and governance, then functional expertise
-5. **Approach** — the project lifecycle and delivery standards
-6. **Contact**
+4. **Verified Results** — the audited Meta Ads account: totals, ledger, findings
+5. **Capabilities** — executive leadership and governance, then functional expertise
+6. **Approach** — the project lifecycle and delivery standards
+7. **Contact**
 
 ## Getting started
 
@@ -28,31 +29,32 @@ npm run build
 npm run lint
 ```
 
-`npm run build` writes the production site to `dist/`. Deployment is
-configured for Cloudflare Workers static assets in `wrangler.jsonc`.
+`npm run build` writes the production site to `dist/`.
 
-## Before publishing
+## Deployment
 
-These items are placeholders carried over from the earlier version of the
-site. Each is marked with a `⚠` comment in the file named.
+Every push to `main` is built and deployed to the Cloudflare Worker named in
+`wrangler.jsonc` by `.github/workflows/deploy.yml` (lint → build → asset size
+check → `wrangler deploy`). The workflow needs the repository secrets
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+
+## Open items
 
 | Item | Where | What to do |
 | --- | --- | --- |
-| Result figures (ROAS, CAC, CTR, view duration) | `src/data/works/campaigns.js`, `src/data/works/video.js` | Replace with verified numbers, or delete the `metrics` line |
-| Gallery images | `src/data/works/design.js`, `src/data/works/campaigns.js` | The links are `ibb.co` viewer pages, which cannot be displayed. See [Adding images](#adding-images) |
-| Films | `src/data/works/video.js` | Paste a YouTube/Vimeo URL into `embed('')`, or add the `.mp4` files |
 | Profile links | `src/data/site.js` | Fill in each `href`; empty ones are hidden |
-| Tools for 3D, audio and AI work | `src/data/capabilities.js` | Add the tools you use to each `tools` list |
+| Case-study figures | `src/data/works/campaigns.js` | The four case studies carry modelled figures and are labelled "illustrative" on the site. Replace with Ads Manager figures and delete `illustrative: true`, or delete the `metrics` line |
+| Tools for 3D, audio and design work | `src/data/capabilities.js` | Add the tools you use to each `tools` list |
 
-Until then the site still looks complete: a project without an image shows a
-line-art cover for its discipline, and its viewer states that the material is
-available on request.
+The Meta Ads ledger is the opposite case: every figure in
+`src/data/adsAudit.js` is transcribed from the Ads Manager capture, and the
+file documents how each was verified.
 
 ## Adding a project
 
 Everything about the works lives in `src/data/works/`. Open the file for the
-project's discipline (`campaigns.js`, `video.js`, `design.js`) and add one
-object to the list:
+project's discipline (`campaigns.js`, `video.js`, `design.js`, `imagery.js`,
+`automation.js`) and add one object to the list:
 
 ```js
 {
@@ -70,7 +72,10 @@ object to the list:
     platform:  'Meta Ads Manager',       // a plain string shows in both languages
   },
   metrics: [{ label: 'roas', value: '4.2x' }],   // optional
-  media: images('/assets/works/spring-01.jpg', '/assets/works/spring-02.jpg'),
+  media: [
+    image('/assets/gallery/spring-01.jpg', { en: 'Key visual', ar: 'التصميم الرئيسي' }),
+    image('/assets/gallery/spring-02.jpg', { en: 'Poster', ar: 'الملصق' }),
+  ],
 }
 ```
 
@@ -78,34 +83,40 @@ Only `id`, `category` and `title` are required. Nothing else needs to change:
 the Selected Work sequence, the Work Index, its filters and counts, catalogue
 numbers and the project viewer are all generated from this list.
 
-- **Detail fields:** `objective`, `approach`, `concept`, `pacing`, `platform`, `outcome`.
-- **Metric labels:** `roas`, `cac`, `scale`, `ctr`, `avd`, or your own `{ en, ar }` label.
-- **Media helpers** (from `helpers.js`): `images(...)`, `video(src, { poster, duration, orientation })`, `embed(url, { poster, duration, orientation })`.
-- **Order:** projects appear in the order of the `works` list in `src/data/works/index.js`.
+- **Detail fields:** `objective`, `approach`, `concept`, `pacing`, `style`, `reading`, `nodes`, `platform`, `outcome`.
+- **Metric labels:** `roas`, `cac`, `scale`, `ctr`, `avd`, `spend`, `reach`, `impressions`, `frequency`, or your own `{ en, ar }` label. Add `kind: 'target'` to a metric that is a design goal rather than a measurement, and `illustrative: true` to a project whose figures are modelled; both are disclosed on the site.
+- **Media helpers** (from `helpers.js`): `image(path, title, { backdrop: 'light' })`, `video(path, { poster, duration, orientation, forceMuted })`, `embed(url, { poster, duration, orientation })`.
+- **Cover:** the first image, or the video poster. Set `coverFit: 'contain'` to show a logo or diagram whole, `cover: '/assets/…'` to choose another image, or `cover: false` for the line-art cover.
+- **Order:** disciplines are dealt out in turn in the index; within a discipline, projects keep the order of their file. See `src/data/works/index.js` to pin an exact order.
 
-### Adding images
+### Adding images and films
 
-Put the files in `public/assets/works/` and refer to them as
-`/assets/works/file-name.jpg`.
+1. Put images in `public/assets/gallery/` and films (with a poster image) in
+   `public/assets/video/`. A single file must stay under 25 MB.
+2. Generate the lightweight previews used by covers and thumbnails:
 
-To keep using ImgBB instead, each link must be the *direct* image address:
-open the `ibb.co/…` page, right-click the image, choose "Copy image address",
-and paste the resulting `https://i.ibb.co/…` link.
+```bash
+npm run media
+```
+
+The command only processes new or changed images. If you skip it the site
+still works; it loads the full-size originals instead.
 
 ### Adding a discipline
 
 Add one entry to `src/data/works/categories.js`. Its filter tab appears as
-soon as a project uses it. `3d`, `ai` and `web` are already defined and are
-waiting for their first projects.
+soon as a project uses it. `3d` and `web` are already defined and are waiting
+for their first projects.
 
 ## Editing content
 
 | Content | File |
 | --- | --- |
 | Interface text (navigation, headings, buttons) in both languages | `src/i18n/translations.js` |
+| Meta Ads ledger rows, totals and findings | `src/data/adsAudit.js` |
 | Leadership competencies, disciplines and tools | `src/data/capabilities.js` |
 | Lifecycle stages and delivery standards | `src/data/process.js` |
-| Email, profile links, navigation | `src/data/site.js` |
+| Email, portrait, profile links, navigation | `src/data/site.js` |
 
 Content is written as `{ en: '…', ar: '…' }` pairs next to the data it
 belongs to. The language switch re-renders in place and mirrors the whole
@@ -141,6 +152,8 @@ Defined once in `src/index.css`:
   `src/motion/config.js`, so all motion keeps one character.
 - **Reduced motion:** with the system setting on, scroll-linked effects are
   replaced by static layouts and the 3D scene becomes a still image.
-- **Performance:** three.js loads on demand after first paint, and the scene
-  lowers its render resolution automatically on devices that cannot hold a
-  smooth frame rate.
+- **Performance:** three.js loads on demand after first paint, covers load
+  generated previews rather than originals, and the scene lowers its render
+  resolution automatically on devices that cannot hold a smooth frame rate.
+- **Ambient sound** (`src/hooks/useAmbientAudio.js`) is off by default, loads
+  only when switched on, and steps aside while a film with sound is playing.

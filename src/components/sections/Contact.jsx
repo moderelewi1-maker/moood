@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ArrowUpRight, Check, Copy } from 'lucide-react'
+import AssetImage from '../ui/AssetImage.jsx'
 import Button from '../ui/Button.jsx'
 import { GithubIcon, LinkedInIcon, WhatsAppIcon } from '../ui/BrandIcons.jsx'
 import Reveal from '../../motion/Reveal.jsx'
@@ -47,21 +48,36 @@ export default function Contact() {
         <div className="border-t border-line pt-6">
           <Reveal depth={false} className="flex items-baseline gap-4">
             <span className="label text-accent tabular-nums" dir="ltr">
-              05
+              06
             </span>
             <span className="label text-ink-muted">{copy.label}</span>
           </Reveal>
 
-          <RevealText
-            as="h2"
-            id="contact-title"
-            text={copy.title}
-            className="display display-1 mt-10 max-w-[15ch] text-ink lg:mt-14"
-          />
+          <div className="grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <RevealText
+                as="h2"
+                id="contact-title"
+                text={copy.title}
+                className="display display-1 mt-10 max-w-[15ch] text-ink lg:mt-14"
+              />
 
-          <Reveal depth={false} delay={0.2} className="mt-8 max-w-xl lg:mt-10">
-            <p className="prose-lead">{copy.description}</p>
-          </Reveal>
+              <Reveal depth={false} delay={0.2} className="mt-8 max-w-xl lg:mt-10">
+                <p className="prose-lead">{copy.description}</p>
+              </Reveal>
+            </div>
+
+            {/* Portrait: a plate standing in front of the instrument. */}
+            {contact.portrait && (
+              <Reveal delay={0.15} className="lg:col-span-4">
+                <AssetImage
+                  src={contact.portrait}
+                  alt={copy.portraitAlt}
+                  className="aspect-[3/4] w-40 rounded-[2px] border border-line object-cover object-top sm:w-52 lg:ms-auto lg:w-full lg:max-w-[19rem]"
+                />
+              </Reveal>
+            )}
+          </div>
 
           <Reveal delay={0.1} className="mt-12 lg:mt-16">
             <a

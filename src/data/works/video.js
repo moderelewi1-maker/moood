@@ -1,211 +1,135 @@
-import { embed, video } from './helpers.js'
+import { video } from './helpers.js'
 
-// Video production projects.
-//
-// Films with an empty `embed('')` have no published link yet: the project
-// still appears in the portfolio and its viewer states that the footage is
-// available on request. Paste a YouTube or Vimeo URL to make it playable.
-//
-// ⚠ VERIFY BEFORE PUBLISHING: the `metrics` figures below were carried over
-// from the previous version of the site. Confirm each against platform
-// analytics, or delete the `metrics` line.
+// Video production. Every film here is a file in /public/assets/video with
+// a matching poster image. `details.style` is an editorial description of
+// the cut, not a performance figure.
 export const videoWorks = [
   {
-    id: 'brand-commercial-product-launch',
+    id: 'cinematic-production-reel',
     category: 'video',
     featured: true,
-    title: { en: 'Brand Commercial: Product Launch', ar: 'إعلان تجاري: إطلاق منتج' },
+    title: { en: 'Cinematic Production Reel', ar: 'عرض الإنتاج المرئي' },
     summary: {
-      en: "A 60-second launch film that opens on the customer's problem before introducing the product.",
-      ar: 'فيلم إطلاق مدته 60 ثانية يبدأ من مشكلة العميل قبل تقديم المنتج.',
+      en: 'A 26-second reel of production work that opens on the footage itself rather than on a pitch.',
+      ar: 'عرض مدته 26 ثانية لأعمال الإنتاج، يبدأ بالمشهد نفسه لا بالحديث عنه.',
     },
     scope: [
       { en: 'Direction', ar: 'الإخراج' },
-      { en: 'Production', ar: 'الإنتاج' },
-      { en: 'Post-production', ar: 'ما بعد الإنتاج' },
+      { en: 'Cinematography', ar: 'التصوير' },
+      { en: 'Editing', ar: 'المونتاج' },
     ],
     details: {
-      concept: {
-        en: 'A cinematic opening built on the problem rather than the product.',
-        ar: 'افتتاحية سينمائية تنطلق من المشكلة لا من المنتج.',
-      },
-      pacing: {
-        en: 'Cinematic, at 2.4 seconds per shot on average.',
-        ar: 'إيقاع سينمائي بمتوسط 2.4 ثانية للّقطة.',
-      },
+      concept: { en: 'Opens on the work, not the pitch.', ar: 'يبدأ بالمشهد، لا بالكلام عنه.' },
+      pacing: { en: 'Cinematic, with kinetic caption cuts.', ar: 'إيقاع سينمائي مع قطعات تصاحبها نصوص حركية.' },
+      style: { en: 'Performance edit', ar: 'مونتاج موجَّه للأداء' },
     },
-    media: [embed('', { poster: '/assets/video/commercial-launch-poster.jpg', duration: '1:00' })],
+    media: [
+      video('/assets/video/video-production-reel.mp4', {
+        poster: '/assets/video/video-production-reel-poster.jpg',
+        orientation: 'vertical',
+        duration: '0:26',
+        // Presented silent by design, in every player.
+        forceMuted: true,
+      }),
+    ],
   },
   {
-    id: 'podcast-retention-edit',
+    id: 'adidas-brand-explainer',
     category: 'video',
-    title: { en: 'Podcast Edit for Audience Retention', ar: 'مونتاج بودكاست يعزّز استبقاء الجمهور' },
+    title: { en: 'Adidas Brand Explainer', ar: 'فيديو تعريفي بعلامة أديداس' },
     summary: {
-      en: 'A long-form podcast episode restructured to hold attention from its first seconds.',
-      ar: 'حلقة بودكاست طويلة أُعيد بناؤها للحفاظ على انتباه المشاهد منذ الثواني الأولى.',
+      en: 'A 15-second product-led motion piece that establishes the brand story in its first frame.',
+      ar: 'عمل حركي مدته 15 ثانية يتمحور حول المنتج، ويقدّم قصة العلامة منذ اللقطة الأولى.',
     },
     scope: [
-      { en: 'Editorial structure', ar: 'البناء التحريري' },
-      { en: 'Video editing', ar: 'المونتاج' },
-      { en: 'Audio post-production', ar: 'المعالجة الصوتية' },
+      { en: 'Motion design', ar: 'التصميم الحركي' },
+      { en: 'Editing', ar: 'المونتاج' },
     ],
     details: {
-      concept: {
-        en: 'An opening drawn from the strongest twenty seconds of the episode.',
-        ar: 'افتتاحية مأخوذة من أقوى عشرين ثانية في الحلقة.',
-      },
-      pacing: {
-        en: 'Dense, with every idle moment removed.',
-        ar: 'إيقاع مكثَّف تُحذف فيه كل لحظة فراغ.',
-      },
+      concept: { en: 'The origin story lands in the first frame.', ar: 'تبدأ القصة من اللقطة الأولى.' },
+      pacing: { en: 'Quick, with product-led motion.', ar: 'إيقاع سريع تقوده حركة المنتج.' },
+      style: { en: 'Product-led motion', ar: 'حركة يقودها المنتج' },
     },
-    metrics: [{ label: 'avd', value: '+44%' }],
-    media: [embed('', { poster: '/assets/video/podcast-retention-poster.jpg', duration: '12:04' })],
-  },
-  {
-    id: 'brand-commercial-service',
-    category: 'video',
-    title: { en: 'Brand Commercial: Service Spotlight', ar: 'إعلان تجاري: التعريف بخدمة' },
-    summary: {
-      en: "A 45-second interview-led film that presents the founder's credibility as proof for the customer.",
-      ar: 'فيلم مدته 45 ثانية يعتمد على المقابلة، ويقدّم مصداقية المؤسس دليلاً يطمئن العميل.',
-    },
-    scope: [
-      { en: 'Direction', ar: 'الإخراج' },
-      { en: 'Interview production', ar: 'إنتاج المقابلات' },
-      { en: 'Post-production', ar: 'ما بعد الإنتاج' },
+    media: [
+      video('/assets/video/video-adidas-reel.mp4', {
+        poster: '/assets/video/video-adidas-reel-poster.jpg',
+        orientation: 'vertical',
+        duration: '0:15',
+      }),
     ],
-    details: {
-      concept: {
-        en: "The founder's credibility presented as customer proof.",
-        ar: 'تقديم مصداقية المؤسس بوصفها دليلاً للعميل.',
-      },
-      pacing: {
-        en: 'Measured and interview-led.',
-        ar: 'إيقاع متزن يقوم على المقابلة.',
-      },
-    },
-    media: [embed('', { poster: '/assets/video/commercial-service-poster.jpg', duration: '0:45' })],
   },
   {
-    id: 'long-form-youtube-edit',
+    id: 'marketing-services-explainer',
     category: 'video',
-    title: { en: 'Long-Form YouTube Edit', ar: 'مونتاج محتوى طويل ليوتيوب' },
+    title: { en: 'Marketing Services Explainer', ar: 'فيديو تعريفي بخدمات التسويق' },
     summary: {
-      en: 'A chaptered long-form edit that states its value to the viewer within the first eight seconds.',
-      ar: 'مونتاج لمحتوى طويل مقسَّم إلى فصول، يوضّح للمشاهد قيمته خلال الثواني الثماني الأولى.',
-    },
-    scope: [
-      { en: 'Editorial structure', ar: 'البناء التحريري' },
-      { en: 'Video editing', ar: 'المونتاج' },
-      { en: 'Motion graphics', ar: 'الرسوم المتحركة' },
-    ],
-    details: {
-      concept: {
-        en: 'The value to the viewer is stated within the first eight seconds.',
-        ar: 'توضيح القيمة التي سيحصل عليها المشاهد خلال الثواني الثماني الأولى.',
-      },
-      pacing: {
-        en: 'Chaptered, with a change of pattern every 30 seconds.',
-        ar: 'تقسيم إلى فصول مع تغيير في النمط البصري كل 30 ثانية.',
-      },
-    },
-    metrics: [{ label: 'avd', value: '+31%' }],
-    media: [embed('', { poster: '/assets/video/youtube-retention-poster.jpg', duration: '9:22' })],
-  },
-  {
-    id: 'direct-response-video-ad',
-    category: 'video',
-    title: { en: 'Direct-Response Video Advertisement', ar: 'إعلان فيديو للاستجابة المباشرة' },
-    summary: {
-      en: 'A 32-second vertical advertisement built around a direct opening line addressed to international shippers.',
-      ar: 'إعلان عمودي مدته 32 ثانية، مبني على جملة افتتاحية مباشرة موجَّهة إلى شركات الشحن الدولي.',
+      en: 'A 30-second typographic explainer that states the problem before presenting the offer.',
+      ar: 'فيديو تعريفي مدته 30 ثانية يعتمد على الطباعة الحركية، ويعرض المشكلة قبل تقديم الحل.',
     },
     scope: [
       { en: 'Scriptwriting', ar: 'كتابة النص' },
-      { en: 'Production', ar: 'الإنتاج' },
-      { en: 'Video editing', ar: 'المونتاج' },
+      { en: 'Motion design', ar: 'التصميم الحركي' },
+      { en: 'Editing', ar: 'المونتاج' },
     ],
     details: {
-      concept: {
-        en: 'Opening line: “Stop scrolling if you ship internationally.”',
-        ar: 'الجملة الافتتاحية: «توقّف عن التمرير إن كنت تشحن دولياً».',
-      },
-      pacing: {
-        en: 'Fast, at 1.2 seconds per shot on average.',
-        ar: 'إيقاع سريع بمتوسط 1.2 ثانية للّقطة.',
-      },
+      concept: { en: 'Lead with the problem, then the offer.', ar: 'البدء بالمشكلة قبل تقديم الحل.' },
+      pacing: { en: 'Measured, with a typographic build.', ar: 'إيقاع متزن وبناء طباعي متدرّج.' },
+      style: { en: 'Typographic build', ar: 'بناء طباعي' },
     },
-    metrics: [{ label: 'ctr', value: '+38%' }],
     media: [
-      video('/assets/video/video1.mp4', {
-        poster: '/assets/video/video1-poster.jpg',
+      video('/assets/video/video-marketing-explainer.mp4', {
+        poster: '/assets/video/video-marketing-explainer-poster.jpg',
         orientation: 'vertical',
-        duration: '0:32',
+        duration: '0:30',
       }),
     ],
   },
   {
-    id: 'founder-led-advertisement',
+    id: 'animated-follow-call-to-action',
     category: 'video',
-    title: { en: 'Founder-Led Advertisement', ar: 'إعلان يقدّمه المؤسس' },
+    title: { en: 'Animated Follow Call to Action', ar: 'دعوة متحركة للمتابعة' },
     summary: {
-      en: 'A 41-second handheld advertisement delivered by the founder in a deliberately informal, platform-native style.',
-      ar: 'إعلان مدته 41 ثانية مصوَّر بكاميرا محمولة، يقدّمه المؤسس بأسلوب عفوي مقصود يلائم طبيعة المنصة.',
+      en: 'A 22-second looping animation in which a single silhouette carries the call to follow.',
+      ar: 'رسم متحرك متكرر مدته 22 ثانية، تحمل فيه حركة ظلّ واحد الدعوة إلى المتابعة.',
     },
     scope: [
-      { en: 'Creative direction', ar: 'التوجيه الإبداعي' },
-      { en: 'Production', ar: 'الإنتاج' },
-      { en: 'Video editing', ar: 'المونتاج' },
+      { en: 'Animation', ar: 'التحريك' },
+      { en: 'Motion design', ar: 'التصميم الحركي' },
     ],
     details: {
-      concept: {
-        en: 'Opening line: “I almost didn’t post this.”',
-        ar: 'الجملة الافتتاحية: «كدتُ ألّا أنشر هذا الفيديو».',
-      },
-      pacing: {
-        en: 'Handheld and informal by design.',
-        ar: 'تصوير بكاميرا محمولة وأسلوب عفوي مقصود.',
-      },
+      concept: { en: 'The silhouette drives the loop.', ar: 'حركة الظلّ تبني الحلقة البصرية.' },
+      pacing: { en: 'Looping, with minimal silhouette animation.', ar: 'حلقة متكررة بتحريك ظلّي بسيط.' },
+      style: { en: 'Loop structure', ar: 'بنية تكرار بصرية' },
     },
-    metrics: [{ label: 'ctr', value: '+52%' }],
     media: [
-      video('/assets/video/video2.mp4', {
-        poster: '/assets/video/video2-poster.jpg',
+      video('/assets/video/video-social-cta.mp4', {
+        poster: '/assets/video/video-social-cta-poster.jpg',
         orientation: 'vertical',
-        duration: '0:41',
+        duration: '0:22',
       }),
     ],
   },
   {
-    id: 'offer-led-short-form-ad',
+    id: 'motion-graphics-showcase',
     category: 'video',
-    title: { en: 'Offer-Led Short-Form Advertisement', ar: 'إعلان قصير يتمحور حول العرض' },
+    title: { en: 'Motion Graphics Showcase', ar: 'عرض الرسوم المتحركة' },
     summary: {
-      en: 'A 28-second vertical advertisement that answers the price objection in its opening frame.',
-      ar: 'إعلان عمودي مدته 28 ثانية يعالج اعتراض السعر في لقطته الأولى.',
+      en: 'A 10-second motion graphics piece in which typography is revealed on the beat.',
+      ar: 'عمل رسوم متحركة مدته 10 ثوانٍ، يظهر فيه النص منسجماً مع الإيقاع.',
     },
     scope: [
-      { en: 'Offer development', ar: 'صياغة العرض' },
-      { en: 'Video editing', ar: 'المونتاج' },
       { en: 'Motion graphics', ar: 'الرسوم المتحركة' },
+      { en: 'Compositing', ar: 'التركيب البصري' },
     ],
     details: {
-      concept: {
-        en: 'The price objection is answered in the opening frame.',
-        ar: 'معالجة اعتراض السعر في اللقطة الأولى.',
-      },
-      pacing: {
-        en: 'Quick cuts, with on-screen text timed to the beat.',
-        ar: 'قطعات سريعة مع نصوص متزامنة مع الإيقاع.',
-      },
+      concept: { en: 'Typography is revealed on the beat.', ar: 'ظهور النصوص منسجم مع الإيقاع.' },
+      pacing: { en: 'Dense, composited in After Effects.', ar: 'إيقاع مكثَّف بتركيب منفَّذ في After Effects.' },
+      style: { en: 'Brand-focused motion', ar: 'رسوم متحركة للعلامة' },
     },
-    metrics: [{ label: 'ctr', value: '+29%' }],
     media: [
-      embed('', {
-        poster: '/assets/video/reels-offer-poster.jpg',
-        orientation: 'vertical',
-        duration: '0:28',
+      video('/assets/video/video-motion-showcase.mp4', {
+        poster: '/assets/video/video-motion-showcase-poster.jpg',
+        duration: '0:10',
       }),
     ],
   },

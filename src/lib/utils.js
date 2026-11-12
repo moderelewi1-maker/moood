@@ -31,6 +31,11 @@ export function lockScroll() {
   }
 }
 
+/** Class for the studio backdrop behind a cut-out image (see `image()` in data/works/helpers.js). */
+export function backdropClass(item) {
+  return item?.backdrop === 'light' ? 'bg-[#d6d3cd]' : ''
+}
+
 /** True for a URL the browser can render in an <img>. */
 export function isRenderableImage(src) {
   if (!src) return false

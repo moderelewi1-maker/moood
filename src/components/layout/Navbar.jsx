@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import Button from '../ui/Button.jsx'
 import LanguageToggle from '../ui/LanguageToggle.jsx'
+import SoundToggle from '../ui/SoundToggle.jsx'
 import { contact, navLinks } from '../../data/site.js'
 import { useLocale } from '../../i18n/useLocale.js'
 import { EASE, SCROLL_SPRING } from '../../motion/config.js'
@@ -92,7 +93,7 @@ export default function Navbar() {
             {t.nav.brand}
           </a>
 
-          <nav aria-label={t.nav.primaryAria} className="hidden items-center gap-9 lg:flex">
+          <nav aria-label={t.nav.primaryAria} className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => {
               const current = link.sections.includes(active)
               return (
@@ -122,7 +123,8 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-1 sm:gap-3">
+            <SoundToggle />
             <LanguageToggle />
             <div className="hidden sm:block">
               <Button variant="outline" size="sm" onClick={() => go('#contact')}>
